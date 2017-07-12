@@ -93,23 +93,22 @@ function create_music_review_pages()
 register_activation_hook(__FILE__, 'create_music_review_pages');*/
 
 
-add_action('admin_menu', 'plugin_admin_add_page');
-function plugin_admin_add_page()
+add_action('admin_menu', 'plugin_admin_add_wnd_calc_page');
+function plugin_admin_add_wnd_calc_page()
 {
-    add_options_page('Настройки калькулятора окон', 'Настройки калькулятора окон', 'manage_options', 'plugin', 'plugin_options_page');
+    add_options_page('Настройки калькулятора окон', 'Настройки калькулятора окон', 'manage_options', 'windows_calculator', 'plugin_options_page');
 }
 
 function plugin_options_page()
 {
     ?>
-    <div>
-        <h2>My custom plugin</h2>
-        Options relating to the Custom Plugin.
+    <div class="wrap">
+        <h2>Расчет цены окон</h2>
         <form action="options.php" method="post">
-            <?php settings_fields('plugin_options'); ?>
-            <?php do_settings_sections('plugin'); ?>
+            <?php settings_fields('plugin_options_wnd_calc'); ?>
+            <?php do_settings_sections('windows_calculator'); ?>
 
-            <input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>"/>
+            <input name="Submit" type="submit" value="<?php esc_attr_e('Сохранить изменения'); ?>"/>
         </form>
     </div>
 
@@ -120,31 +119,58 @@ function plugin_options_page()
 add_action('admin_init', 'plugin_admin_init');
 function plugin_admin_init()
 {
-    register_setting('plugin_options', 'plugin_options', 'plugin_options_validate');
-    add_settings_section('plugin_main', 'Main Settings', 'plugin_section_text', 'plugin');
-    add_settings_field('plugin_text_string', 'Plugin Text Input', 'plugin_setting_string', 'plugin', 'plugin_main');
+    register_setting('plugin_options_wnd_calc', 'plugin_options_wnd_calc', 'plugin_options_validate_wnd_calc');
+    add_settings_section('plugin_main_wnd_calc', 'Настройки', 'plugin_section_text_wnd_calc', 'windows_calculator');
+    add_settings_field('plugin_text_string_wnd_calc', 'Ширина окна', 'plugin_setting_string_wnd_calc', 'windows_calculator', 'plugin_main_wnd_calc');
+
+    wp_enqueue_script('wnd_calc_admin_script', plugins_url('', __FILE__) . '/admin.js', ['jquery']);
 }
 
-function plugin_section_text() {
-    echo '<p>Main description of this section here.</p>';
+function plugin_section_text_wnd_calc() {
+    //echo '<p>Main description of this section here.</p>';
 }
 
-function plugin_setting_string() {
-    $options = get_option('plugin_options');
-    echo "<input id='plugin_text_string' name='plugin_options[text_string]' size='40' type='text' value='{$options['text_string']}' />";
+function plugin_setting_string_wnd_calc() {
+    $options = get_option('plugin_options_wnd_calc');
+    //echo "<input id='plugin_text_string_wnd_calc' name='plugin_options_wnd_calc[text_string]' size='40' type='text' value='{$options['text_string']}' />";
+    echo 'Профиль:<br>';
+    if (!empty($options['profile'])) {
+        echo '<table><th><td>ID</td><td>Название</td><td>&nbsp;</td></th>';
+        foreach ($options['profile'] as $pf) {
+            echo '<tr>'
+                . "<td>$pf[id]</td>"
+                . '<td>'
+                . '<input type="text" value="' . esc_html($pf['name']) . '" name="plugin_options_wnd_calc[\'profile\'][]" disabled="disabled">'
+                . '<input type="checkbox" class="mod_profile" title="Модифицировать">'
+                . '</td>'
+                . '<td><button class="rem_profile"></button></td>'
+                . '</tr>';
+        }
+        echo '<tr><td colspan="3"><button id="add_profile">Добавить</button></td></tr>
+<table>';
+    }
+    $s = <<<HTML
+<option name="plugin_options_wnd_calc[wnd_type]">
+    <option>
+</option>
+HTML;
+    echo $s;
 }
 
-function plugin_options_validate($input) {
-    $newinput['text_string'] = trim($input['text_string']);
+function plugin_options_validate_wnd_calc($input) {
+    /*$newinput['text_string'] = trim($input['text_string']);
     if(!preg_match('/^[a-z0-9]{32}$/i', $newinput['text_string'])) {
         $newinput['text_string'] = 'rrrrrrr';
     }
-    return $newinput;
+    return $newinput;*/
+    $newInput = $input;
+    $newInput['text_string'] = trim($input['text_string']);
+    return $newInput;
 }
 
 
 // ---------
-function shortcode()
+function shortcode_wnd_calc()
 {
     ob_start();
     include 'template.php';
@@ -153,4 +179,4 @@ function shortcode()
     return $content;
 }
 
-add_shortcode('windows_calculator', 'shortcode');
+add_shortcode('windows_calculator', 'shortcode_wnd_calc');
