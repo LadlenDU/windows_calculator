@@ -104,6 +104,7 @@ function plugin_options_page()
     ?>
     <div class="wrap">
         <h2>Расчет цены окон</h2>
+
         <form action="options.php" method="post">
             <?php settings_fields('plugin_options_wnd_calc'); ?>
             <?php do_settings_sections('windows_calculator'); ?>
@@ -121,23 +122,27 @@ function plugin_admin_init()
 {
     register_setting('plugin_options_wnd_calc', 'plugin_options_wnd_calc', 'plugin_options_validate_wnd_calc');
     add_settings_section('plugin_main_wnd_calc', 'Настройки', 'plugin_section_text_wnd_calc', 'windows_calculator');
-    add_settings_field('plugin_text_string_wnd_calc', 'Ширина окна', 'plugin_setting_string_wnd_calc', 'windows_calculator', 'plugin_main_wnd_calc');
+    add_settings_field('plugin_text_string_wnd_calc', 'Профиль', 'plugin_setting_string_wnd_calc_profile', 'windows_calculator', 'plugin_main_wnd_calc');
 
+    wp_enqueue_style('wnd_calc_admin_style', plugins_url('', __FILE__) . '/admin.css');
     wp_enqueue_script('wnd_calc_admin_script', plugins_url('', __FILE__) . '/admin.js', ['jquery']);
 }
 
-function plugin_section_text_wnd_calc() {
+function plugin_section_text_wnd_calc()
+{
     //echo '<p>Main description of this section here.</p>';
 }
 
-function plugin_setting_string_wnd_calc() {
+function plugin_setting_string_wnd_calc_profile()
+{
+    $s = '';
+
     $options = get_option('plugin_options_wnd_calc');
     //echo "<input id='plugin_text_string_wnd_calc' name='plugin_options_wnd_calc[text_string]' size='40' type='text' value='{$options['text_string']}' />";
-    echo 'Профиль:<br>';
+    $s = '<table id="wnd_calc_profile"><thead><tr><th>ID</th><th>Название</th><th>&nbsp;</th></tr></thead><tbody>';
     if (!empty($options['profile'])) {
-        echo '<table><th><td>ID</td><td>Название</td><td>&nbsp;</td></th>';
         foreach ($options['profile'] as $pf) {
-            echo '<tr>'
+            $s .= '<tr>'
                 . "<td>$pf[id]</td>"
                 . '<td>'
                 . '<input type="text" value="' . esc_html($pf['name']) . '" name="plugin_options_wnd_calc[\'profile\'][]" disabled="disabled">'
@@ -146,18 +151,16 @@ function plugin_setting_string_wnd_calc() {
                 . '<td><button class="rem_profile"></button></td>'
                 . '</tr>';
         }
-        echo '<tr><td colspan="3"><button id="add_profile">Добавить</button></td></tr>
-<table>';
     }
-    $s = <<<HTML
-<option name="plugin_options_wnd_calc[wnd_type]">
-    <option>
-</option>
-HTML;
+
+    $s .= '<tr><td colspan="3"><button class="add_profile">Добавить профиль</button></td></tr>'
+        . '</tbody></table>';
+
     echo $s;
 }
 
-function plugin_options_validate_wnd_calc($input) {
+function plugin_options_validate_wnd_calc($input)
+{
     /*$newinput['text_string'] = trim($input['text_string']);
     if(!preg_match('/^[a-z0-9]{32}$/i', $newinput['text_string'])) {
         $newinput['text_string'] = 'rrrrrrr';
