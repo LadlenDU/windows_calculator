@@ -1,27 +1,27 @@
-#wnd_calc_profile th {
+.wnd_calc_wnd_options th {
     padding: 5px 10px 10px;
     background-color: #222;
     color: white;
 }
 
-#wnd_calc_profile td {
+.wnd_calc_wnd_options td {
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-#wnd_calc_profile .mod_profile_name,
-#wnd_calc_profile .mod_profile_price {
+.wnd_calc_wnd_options .mod_wnd_option_name,
+.wnd_calc_wnd_options .mod_wnd_option_price {
     margin: 0 0 4px 5px;
 }
 
-#wnd_calc_profile tbody {
+.wnd_calc_wnd_options tbody {
     background-color: #DDD;
 }
 
-#wnd_calc_profile tr:nth-child(even) {
+.wnd_calc_wnd_options tr:nth-child(even) {
     background-color: #CCC;
 }
 
-#wnd_calc_profile .delete_profile {
+.wnd_calc_wnd_options .delete_wnd_option {
     text-align: center;
 }
