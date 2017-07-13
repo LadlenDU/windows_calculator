@@ -65,11 +65,11 @@ function showChangeOptionTable($id)
         foreach ($options[$id]['name'] as $key => $pf) {
             $s .= '<tr>'
                 . '<td>'
-                . '<input class="profile_wnd_option" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[' . $id . '][name][]" readonly="readonly">'
+                . '<input class="name_wnd_option" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[' . $id . '][name][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
-                . '<input type="text" value="' . esc_html($options['profile']['price'][$key]) . '" name="plugin_options_wnd_calc[' . $id . '][price][]" readonly="readonly">'
+                . '<input type="text" value="' . esc_html($options[$id]['price'][$key]) . '" name="plugin_options_wnd_calc[' . $id . '][price][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
                 . '</td>'
                 . '<td class="delete_wnd_option"><button class="rem_wnd_option">Удалить</button></td>'
@@ -77,7 +77,7 @@ function showChangeOptionTable($id)
         }
     }
 
-    $s .= '</tbody></table><br><button id="wnd_calc_profile_add">Добавить</button>';
+    $s .= '</tbody></table><br><button class="wnd_calc_wnd_option_add">Добавить</button>';
 
     echo $s;
 

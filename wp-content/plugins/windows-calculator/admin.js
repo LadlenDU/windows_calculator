@@ -1,11 +1,11 @@
 jQuery(function ($) {
     var wnd = $(".wnd_calc_wnd_options");
-    $("#wnd_calc_profile_add").click(function (e) {
+    $(".wnd_calc_wnd_option_add").click(function (e) {
         e.preventDefault();
 
         var newRow = '<tr>'
             + '<td>'
-            + '<input class="profile_wnd_option" type="text" value="" name="plugin_options_wnd_calc[profile][name][]">'
+            + '<input class="name_wnd_option" type="text" value="" name="plugin_options_wnd_calc[profile][name][]">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td>'
@@ -30,7 +30,7 @@ jQuery(function ($) {
         $(".wnd_calc_wnd_options .rem_wnd_option").unbind('click');
         $(".wnd_calc_wnd_options .rem_wnd_option").click(function (e) {
             e.preventDefault();
-            var name = $(this).parent().parent().find(".profile_wnd_option");
+            var name = $(this).parent().parent().find(".name_wnd_option");
             if (confirm('Вы уверены что хотите удалить элемент "' + name.val() + '"?')) {
                 $(this).parent().parent().remove();
             }
