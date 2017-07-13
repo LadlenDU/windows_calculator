@@ -144,14 +144,14 @@ function plugin_setting_string_wnd_calc_profile()
         foreach ($options['profile']['name'] as $key => $pf) {
             $s .= '<tr>'
                 . '<td>'
-                . '<input type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[profile][name][]" disabled="disabled">'
+                . '<input class="profile_text" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[profile][name][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_profile_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
-                . '<input type="text" value="' . esc_html($options['profile']['price'][$key]) . '" name="plugin_options_wnd_calc[profile][price][]" disabled="disabled">'
+                . '<input type="text" value="' . esc_html($options['profile']['price'][$key]) . '" name="plugin_options_wnd_calc[profile][price][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_profile_price" title="Редактировать">'
                 . '</td>'
-                . '<td><button class="rem_profile">Удалить</button></td>'
+                . '<td class="delete_profile"><button class="rem_profile">Удалить</button></td>'
                 . '</tr>';
         }
     }
