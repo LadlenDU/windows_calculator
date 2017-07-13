@@ -148,13 +148,12 @@ function plugin_setting_string_wnd_calc_profile()
                 . '<input type="text" value="' . esc_html($pf['name']) . '" name="plugin_options_wnd_calc[\'profile\'][]" disabled="disabled">'
                 . '<input type="checkbox" class="mod_profile" title="Модифицировать">'
                 . '</td>'
-                . '<td><button class="rem_profile"></button></td>'
+                . '<td><button class="rem_profile">Удалить</button></td>'
                 . '</tr>';
         }
     }
 
-    $s .= '<tr><td colspan="3"><button class="add_profile">Добавить профиль</button></td></tr>'
-        . '</tbody></table>';
+    $s .= '</tbody></table><br><button id="wnd_calc_profile_add">Добавить профиль</button>';
 
     echo $s;
 }
