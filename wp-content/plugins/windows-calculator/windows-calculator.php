@@ -139,14 +139,17 @@ function plugin_setting_string_wnd_calc_profile()
 
     $options = get_option('plugin_options_wnd_calc');
     //echo "<input id='plugin_text_string_wnd_calc' name='plugin_options_wnd_calc[text_string]' size='40' type='text' value='{$options['text_string']}' />";
-    $s = '<table id="wnd_calc_profile"><thead><tr><th>ID</th><th>Название</th><th>&nbsp;</th></tr></thead><tbody>';
+    $s = '<table id="wnd_calc_profile"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th></tr></thead><tbody>';
     if (!empty($options['profile'])) {
-        foreach ($options['profile'] as $pf) {
+        foreach ($options['profile']['name'] as $key => $pf) {
             $s .= '<tr>'
-                . "<td>$pf[id]</td>"
                 . '<td>'
-                . '<input type="text" value="' . esc_html($pf['name']) . '" name="plugin_options_wnd_calc[\'profile\'][]" disabled="disabled">'
-                . '<input type="checkbox" class="mod_profile" title="Модифицировать">'
+                . '<input type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[profile][name][]" disabled="disabled">'
+                . '<input type="checkbox" class="mod_profile_name" title="Редактировать">'
+                . '</td>'
+                . '<td>'
+                . '<input type="text" value="' . esc_html($options['profile']['price'][$key]) . '" name="plugin_options_wnd_calc[profile][price][]" disabled="disabled">'
+                . '<input type="checkbox" class="mod_profile_price" title="Редактировать">'
                 . '</td>'
                 . '<td><button class="rem_profile">Удалить</button></td>'
                 . '</tr>';
@@ -160,11 +163,6 @@ function plugin_setting_string_wnd_calc_profile()
 
 function plugin_options_validate_wnd_calc($input)
 {
-    /*$newinput['text_string'] = trim($input['text_string']);
-    if(!preg_match('/^[a-z0-9]{32}$/i', $newinput['text_string'])) {
-        $newinput['text_string'] = 'rrrrrrr';
-    }
-    return $newinput;*/
     $newInput = $input;
     $newInput['text_string'] = trim($input['text_string']);
     return $newInput;

@@ -3,3 +3,13 @@
     background-color: #222;
     color: white;
 }
+
+#wnd_calc_profile th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#wnd_calc_profile .mod_profile_name,
+#wnd_calc_profile .mod_profile_price {
+    margin: 0 0 4px 5px;
+}
