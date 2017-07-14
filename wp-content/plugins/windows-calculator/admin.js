@@ -95,9 +95,10 @@ jQuery(function ($) {
                 })
                     .on('select', function () {
                         var attachment = custom_uploader.state().get('selection').first().toJSON();
-                        button.prev().attr('src', attachment.url);
-                        button.prev().prev().val(attachment.url);
-                        button.prev().prev().prev().val(attachment.id);
+                        var srcElem = button.parent();
+                        srcElem.prev().attr('src', attachment.url);
+                        srcElem.prev().prev().val(attachment.url);
+                        srcElem.prev().prev().prev().val(attachment.id);
                     })
                     .open();
             }/* else { //fallback
