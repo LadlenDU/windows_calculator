@@ -34,12 +34,15 @@ function plugin_admin_init()
 {
     register_setting('plugin_options_wnd_calc', 'plugin_options_wnd_calc', 'plugin_options_validate_wnd_calc');
     add_settings_section('plugin_main_wnd_calc', 'Настройки', 'plugin_section_text_wnd_calc', 'windows_calculator');
+    add_settings_field('plugin_wnd_calc_window', 'Тип окон', 'plugin_wnd_calc_window_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_profile', 'Профиль', 'plugin_wnd_calc_profile_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_dglazed', 'Стеклопакет', 'plugin_wnd_calc_dglazed_func', 'windows_calculator', 'plugin_main_wnd_calc');
-    add_settings_field('plugin_wnd_calc_window', 'Тип окон', 'plugin_wnd_calc_window_func', 'windows_calculator', 'plugin_main_wnd_calc');
+
 
     wp_enqueue_style('wnd_calc_admin_style', plugins_url('', __FILE__) . '/admin.css');
     wp_enqueue_script('wnd_calc_admin_script', plugins_url('', __FILE__) . '/admin.js', ['jquery']);
+
+    wp_enqueue_media();
 }
 
 function plugin_section_text_wnd_calc()
@@ -74,6 +77,7 @@ function plugin_wnd_calc_window_func()
                 . '</td>'
                 . '<td>'
                 . '<input type="hidden" value="' . esc_html($options['window']['id_small'][$key]) . '" name="plugin_options_wnd_calc[window][id_small][]">'
+                . '<input type="hidden" value="' . esc_html($options['window']['src_small'][$key]) . '" name="plugin_options_wnd_calc[window][src_small][]">'
                 . '<img alt="маленькое окно" src="' . esc_html($options['window']['src_small'][$key]) . '" class="mod_wnd_option_class_preview_image">'
                 . '<button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button>'
                 . '</td>'

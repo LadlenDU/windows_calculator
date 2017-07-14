@@ -26,7 +26,8 @@
     text-align: center;
 }
 
-.wnd_calc_wnd_option_add {
+.wnd_calc_wnd_option_add,
+.wnd_calc_wnd_option_add_window {
     margin-top: 10px;
     padding-left: 3em;
     padding-right: 3em;

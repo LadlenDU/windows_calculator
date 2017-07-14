@@ -39,7 +39,8 @@ jQuery(function ($) {
             + '</td>'
             + '<td>'
             + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][id_small][]">'
-            + '<img alt="маленькое окно" src="#" class="mod_wnd_option_class_preview_image">'
+            + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][src_small][]">'
+            + '<img alt="" src="#" class="mod_wnd_option_class_preview_image">'
             + '<button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button>'
             + '</td>'
             + '<td class="delete_wnd_option"><button class="rem_wnd_option">Удалить</button></td>'
@@ -72,18 +73,21 @@ jQuery(function ($) {
         $(".wnd_calc_wnd_options .mod_wnd_option_change_preview_image").click(function (e) {
             e.preventDefault();
 
+            var button = $(this);
+
             if (typeof wp.media == 'function') {
                 var custom_uploader = wp.media({
-                    title: 'Insert Media',
+                    title: 'Выбор изображения',
                     button: {
-                        text: 'Add alternate image'
+                        text: 'Добавить изображение'
                     },
                     multiple: false
                 })
                     .on('select', function () {
                         var attachment = custom_uploader.state().get('selection').first().toJSON();
-                        jQuery(preview).attr('src', attachment.url);
-                        jQuery(image).val(attachment.id).trigger('change');
+                        button.prev().attr('src', attachment.url);
+                        button.prev().prev().val(attachment.url);
+                        button.prev().prev().prev().val(attachment.id);
                     })
                     .open();
             } else { //fallback
