@@ -5,6 +5,13 @@
  * Version: 1.0
  */
 
+add_action('wp_enqueue_scripts', 'wnd_calc_scripts');
+function wnd_calc_scripts()
+{
+    wp_enqueue_style('wnd_calc_style', plugins_url('', __FILE__) . '/template.css');
+    wp_enqueue_script('wnd_calc_script', plugins_url('', __FILE__) . '/template.js', ['jquery']);
+}
+
 add_action('admin_menu', 'plugin_admin_add_wnd_calc_page');
 function plugin_admin_add_wnd_calc_page()
 {
@@ -64,7 +71,7 @@ $defaultWndCalcOptions = [
 ];
 
 
-$r = delete_option('plugin_options_wnd_calc');
+//delete_option('plugin_options_wnd_calc');
 
 // add the admin settings and such
 add_action('admin_init', 'plugin_admin_init');

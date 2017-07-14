@@ -1,0 +1,17 @@
+.wnd_calc_container {
+    width: 100%;
+    /*height: auto;*/
+}
+
+.wnd_calc_select,
+.wnd_calc_result {
+    width: 50%;
+}
+
+.wnd_calc_window_type {
+    height: 20%;
+}
+
+.wnd_calc_characteristic {
+    height: 80%;
+}
