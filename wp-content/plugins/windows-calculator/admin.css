@@ -25,3 +25,13 @@
 .wnd_calc_wnd_options .delete_wnd_option {
     text-align: center;
 }
+
+.wnd_calc_wnd_option_add {
+    margin-top: 10px;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.mod_wnd_option_class_preview_image {
+    max-height: 50px;
+}
