@@ -75,13 +75,19 @@ function plugin_wnd_calc_window_func()
                 . '<input type="text" value="' . esc_html($options['window']['price'][$key]) . '" name="plugin_options_wnd_calc[window][price][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
                 . '</td>'
-                . '<td>'
+                . '<td class="tbl_center">'
                 . '<input type="hidden" value="' . esc_html($options['window']['id_small'][$key]) . '" name="plugin_options_wnd_calc[window][id_small][]">'
                 . '<input type="hidden" value="' . esc_html($options['window']['src_small'][$key]) . '" name="plugin_options_wnd_calc[window][src_small][]">'
-                . '<img alt="маленькое окно" src="' . esc_html($options['window']['src_small'][$key]) . '" class="mod_wnd_option_class_preview_image">'
-                . '<button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button>'
+                . '<img alt="" src="' . esc_html($options['window']['src_small'][$key]) . '" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
+                . '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button></div>'
                 . '</td>'
-                . '<td class="delete_wnd_option"><button class="rem_wnd_option">Удалить</button></td>'
+                . '<td class="tbl_center">'
+                . '<input type="hidden" value="' . esc_html($options['window']['id_big'][$key]) . '" name="plugin_options_wnd_calc[window][id_big][]">'
+                . '<input type="hidden" value="' . esc_html($options['window']['src_big'][$key]) . '" name="plugin_options_wnd_calc[window][src_big][]">'
+                . '<img alt="" src="' . esc_html($options['window']['src_big'][$key]) . '" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
+                . '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить большое окно">Бол. окно</button></div>'
+                . '</td>'
+                . '<td class="tbl_center"><button class="rem_wnd_option">Удалить</button></td>'
                 . '</tr>';
         }
     }
@@ -107,7 +113,7 @@ function showChangeOptionTable($id)
                 . '<input type="text" value="' . esc_html($options[$id]['price'][$key]) . '" name="plugin_options_wnd_calc[' . $id . '][price][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
                 . '</td>'
-                . '<td class="delete_wnd_option"><button class="rem_wnd_option">Удалить</button></td>'
+                . '<td class="tbl_center"><button class="rem_wnd_option">Удалить</button></td>'
                 . '</tr>';
         }
     }

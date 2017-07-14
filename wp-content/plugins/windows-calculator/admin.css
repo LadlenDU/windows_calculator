@@ -22,7 +22,7 @@
     background-color: #CCC;
 }
 
-.wnd_calc_wnd_options .delete_wnd_option {
+.wnd_calc_wnd_options .tbl_center {
     text-align: center;
 }
 
@@ -35,4 +35,5 @@
 
 .mod_wnd_option_class_preview_image {
     max-height: 50px;
+    cursor: pointer;
 }

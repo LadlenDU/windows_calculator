@@ -13,7 +13,7 @@ jQuery(function ($) {
             + '<input type="text" value="" name="plugin_options_wnd_calc[' + oType + '][price][]">'
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
             + '</td>'
-            + '<td class="delete_wnd_option"><button class="rem_wnd_option">Удалить</button></td>'
+            + '<td class="tbl_center"><button class="rem_wnd_option">Удалить</button></td>'
             + '</tr>';
 
         $(this).prev().find("tbody").append(newRow);
@@ -37,13 +37,19 @@ jQuery(function ($) {
             + '<input type="text" value="" name="plugin_options_wnd_calc[' + oType + '][price][]">'
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
             + '</td>'
-            + '<td>'
+            + '<td class="tbl_center">'
             + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][id_small][]">'
             + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][src_small][]">'
-            + '<img alt="" src="#" class="mod_wnd_option_class_preview_image">'
-            + '<button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button>'
+            + '<img alt="" src="#" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
+            + '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button></div>'
             + '</td>'
-            + '<td class="delete_wnd_option"><button class="rem_wnd_option">Удалить</button></td>'
+            + '<td class="tbl_center">'
+            + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][id_big][]">'
+            + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][src_big][]">'
+            + '<img alt="" src="#" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
+            + '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить большое окно">Бол. окно</button></div>'
+            + '</td>'
+            + '<td class="tbl_center"><button class="rem_wnd_option">Удалить</button></td>'
             + '</tr>';
 
         $(this).prev().find("tbody").append(newRow);
@@ -69,6 +75,10 @@ jQuery(function ($) {
             return false;
         });
         // window
+        $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").unbind('click');
+        $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").click(function(){
+            window.open($(this).attr('src'));
+        });
         $(".wnd_calc_wnd_options .mod_wnd_option_change_preview_image").unbind('click');
         $(".wnd_calc_wnd_options .mod_wnd_option_change_preview_image").click(function (e) {
             e.preventDefault();
@@ -90,7 +100,7 @@ jQuery(function ($) {
                         button.prev().prev().prev().val(attachment.id);
                     })
                     .open();
-            } else { //fallback
+            }/* else { //fallback
                 post_id = button.attr('rel');
 
                 tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id=' + post_id + '&type=image&TB_iframe=1');
@@ -104,7 +114,7 @@ jQuery(function ($) {
                     preview.attr('src', imgurl);
                     tb_remove();
                 }
-            }
+            }*/
 
             return false;
         });
