@@ -28,16 +28,60 @@ function plugin_options_page()
     <?php
 }
 
+$defaultWndCalcOptions = [
+    'profile' => [
+        'name' => ['REHAU BLITZ', 'REHAU INTELIO', 'REHAU BRILLANT', 'REHAU DELIGHT', 'REHAU SIB', 'REHAU GENEO'],
+        'price' => [100.3, 102, 110, 120, 140.40, 30],
+    ],
+    'dglazed' => [
+        'name' => ['Стандартный', 'Энергосберегающий'],
+        'price' => [1000, 2000],
+    ],
+    'sill' => [
+        'name' => ['Нет', '200 мм', '250 мм', '300 мм', '350 мм', '400 мм', '500 мм'],
+        'price' => [0, 101, 102, 103, 104, 105, 106],
+    ],
+    'otliv' => [
+        'name' => ['Нет', '100 мм', '150 мм', '200 мм', '250 мм', '300 мм', '350 мм', '400 мм'],
+        'price' => [0, 111, 112, 113, 114, 115, 116, 117],
+    ],
+    'setting' => [
+        'name' => ['Нет', 'Стандарт', 'ГОСТ'],
+        'price' => [0, 2000, 3000],
+    ],
+    'furniture' => [
+        'name' => ['Нет', 'ROTO', 'VORNE', 'SIGENIA'],
+        'price' => [0, 500, 600, 700],
+    ],
+    'slopes' => [
+        'name' => ['Нет', '200 мм', '250 мм', '300 мм', '350 мм', '400 мм', '500 мм'],
+        'price' => [0, 101, 102, 103, 104, 105, 106],
+    ],
+    'accessories' => [
+        'name' => ['Москитная сетка', 'Детский замок', 'Гребенка'],
+        'price' => [510, 620, 730],
+    ],
+];
+
+
+$r = delete_option('plugin_options_wnd_calc');
+
 // add the admin settings and such
 add_action('admin_init', 'plugin_admin_init');
 function plugin_admin_init()
 {
     register_setting('plugin_options_wnd_calc', 'plugin_options_wnd_calc', 'plugin_options_validate_wnd_calc');
     add_settings_section('plugin_main_wnd_calc', 'Настройки', 'plugin_section_text_wnd_calc', 'windows_calculator');
+
     add_settings_field('plugin_wnd_calc_window', 'Тип окон', 'plugin_wnd_calc_window_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_profile', 'Профиль', 'plugin_wnd_calc_profile_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_dglazed', 'Стеклопакет', 'plugin_wnd_calc_dglazed_func', 'windows_calculator', 'plugin_main_wnd_calc');
-
+    add_settings_field('plugin_wnd_calc_sill', 'Подоконник', 'plugin_wnd_calc_sill_func', 'windows_calculator', 'plugin_main_wnd_calc');
+    add_settings_field('plugin_wnd_calc_otliv', 'Отлив', 'plugin_wnd_calc_otliv_func', 'windows_calculator', 'plugin_main_wnd_calc');
+    add_settings_field('plugin_wnd_calc_setting', 'Установка', 'plugin_wnd_calc_setting_func', 'windows_calculator', 'plugin_main_wnd_calc');
+    add_settings_field('plugin_wnd_calc_furniture', 'Фурнитура', 'plugin_wnd_calc_furniture_func', 'windows_calculator', 'plugin_main_wnd_calc');
+    add_settings_field('plugin_wnd_calc_slopes', 'Откосы', 'plugin_wnd_calc_slopes_func', 'windows_calculator', 'plugin_main_wnd_calc');
+    add_settings_field('plugin_wnd_calc_accessories', 'Комплектующие', 'plugin_wnd_calc_accessories_func', 'windows_calculator', 'plugin_main_wnd_calc');
 
     wp_enqueue_style('wnd_calc_admin_style', plugins_url('', __FILE__) . '/admin.css');
     wp_enqueue_script('wnd_calc_admin_script', plugins_url('', __FILE__) . '/admin.js', ['jquery']);
@@ -49,6 +93,37 @@ function plugin_section_text_wnd_calc()
 {
     //echo '<p>Main description of this section here.</p>';
 }
+
+function plugin_wnd_calc_accessories_func()
+{
+    showChangeOptionTable('accessories');
+}
+
+function plugin_wnd_calc_slopes_func()
+{
+    showChangeOptionTable('slopes');
+}
+
+function plugin_wnd_calc_furniture_func()
+{
+    showChangeOptionTable('furniture');
+}
+
+function plugin_wnd_calc_setting_func()
+{
+    showChangeOptionTable('setting');
+}
+
+function plugin_wnd_calc_otliv_func()
+{
+    showChangeOptionTable('otliv');
+}
+
+function plugin_wnd_calc_sill_func()
+{
+    showChangeOptionTable('sill');
+}
+
 
 function plugin_wnd_calc_profile_func()
 {
@@ -62,7 +137,7 @@ function plugin_wnd_calc_dglazed_func()
 
 function plugin_wnd_calc_window_func()
 {
-    $options = get_option('plugin_options_wnd_calc');
+    $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
     $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>&nbsp;</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
     if (!empty($options['window'])) {
         foreach ($options['window']['name'] as $key => $pf) {
@@ -99,7 +174,7 @@ function plugin_wnd_calc_window_func()
 
 function showChangeOptionTable($id)
 {
-    $options = get_option('plugin_options_wnd_calc');
+    $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
     //echo "<input id='plugin_wnd_calc_profile' name='plugin_options_wnd_calc[text_string]' size='40' type='text' value='{$options['text_string']}' />";
     $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th><input class="calc_wnd_option_type" type="hidden" value="' . $id . '"></th></tr></thead><tbody>';
     if (!empty($options[$id])) {
@@ -123,12 +198,12 @@ function showChangeOptionTable($id)
     echo $s;
 }
 
-function plugin_options_validate_wnd_calc($input)
+/*function plugin_options_validate_wnd_calc($input)
 {
     $newInput = $input;
     $newInput['text_string'] = trim($input['text_string']);
     return $newInput;
-}
+}*/
 
 
 // ---------
