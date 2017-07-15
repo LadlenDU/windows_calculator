@@ -145,7 +145,7 @@ function plugin_wnd_calc_dglazed_func()
 function plugin_wnd_calc_window_func()
 {
     $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
-    $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Частей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
+    $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Частей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
     if (!empty($options['window'])) {
         foreach ($options['window']['name'] as $key => $pf) {
             $panes = isset($options['window']['panes'][$key]) ? $options['window']['panes'][$key] : [];
@@ -169,8 +169,16 @@ function plugin_wnd_calc_window_func()
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
+                . '<input class="name_wnd_option" type="text" value="' . esc_html($options['window']['height-min'][$key]) . '" name="plugin_options_wnd_calc[window][height-min][]" readonly="readonly">'
+                . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                . '</td>'
+                . '<td>'
+                . '<input class="name_wnd_option" type="text" value="' . esc_html($options['window']['height-max'][$key]) . '" name="plugin_options_wnd_calc[window][height-max][]" readonly="readonly">'
+                . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                . '</td>'
+                . '<td>'
                 //. '<input class="name_wnd_option" type="number" min="1" max="50" value="' . esc_html($options['window']['number_of_panes'][$key]) . '" name="plugin_options_wnd_calc[window][number_of_panes][]" readonly="readonly">'
-                . '<input class="name_wnd_option" type="number" min="1" max="50" value="' . count($panes) . '" name="plugin_options_wnd_calc[window][number_of_panes][]" readonly="readonly">'
+                . '<input class="name_wnd_option" type="number" min="0" max="50" value="' . count($panes) . '" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 /*. '<td class="tbl_center">'
@@ -183,31 +191,59 @@ function plugin_wnd_calc_window_func()
                 . '</tr>';
 
 
-            $s .= '<tr style="text-align: right"><td colspan="6">'
-                . '<table style="width:90%">'
-                //. '<thead<tr><th>Название</th></tr><tr><th>Типов</th></tr></thead>'
-                . '<tbody>';
+            $s .= '<tr style="text-align: right"><td colspan="6">';
+
             if ($panes) {
                 foreach ($panes as $keyPane => $pane) {
                     $subtypes = isset($pane['subtypes']) ? $pane['subtypes'] : [];
-                    $s .= '<tr>'
-                        . '<td style="text-align:right">Количество подтипов: '
-                        . '<input type="number" min="1" max="50" value="' . count($subtypes) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][number_of_subtypes]" readonly="readonly">'
+
+                    $s .= '<table style="width:90%">'
+                        . '<thead>'
+                        . '<tr>'
+                        . '<th style="text-align:right">Количество подтипов: '
+                        . '<input type="number" min="0" max="50" value="' . count($subtypes) . '" readonly="readonly">'
                         . '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
-                        . '</td>'
-                        . '</tr>';
+                        . '</th>'
+                        . '</tr>'
+                        . '</thead>';
+
+                    if ($subtypes) {
+                        $s .= '<tbody>';
+                    }
+
+                    foreach ($subtypes as $sbtype) {
+                        $s .= '<tr>'
+                            . '<td>'
+                            . '<input class="name_wnd_option" type="text" value="' . esc_html($sbtype['width']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width][]" readonly="readonly">'
+                            . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                            . '</td>'
+                            . '<td>'
+                            . '<input class="name_wnd_option" type="text" value="' . esc_html($sbtype['width-min']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width-min][]" readonly="readonly">'
+                            . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                            . '</td>'
+                            . '<td>'
+                            . '<input class="name_wnd_option" type="text" value="' . esc_html($sbtype['width-max']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width-max][]" readonly="readonly">'
+                            . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                            . '</td>'
+                            . '</tr>';
+                    }
+
+                    if ($subtypes) {
+                        $s .= '</tbody>';
+                    }
+
+                    $s .= '</table>';
                 }
+            } else {
+                $s .= '&nbsp;';
             }
-            $s .= '</tbody>'
-                . '</table>'
-                . '</td></tr>';
+            $s .= '</td></tr>';
         }
     }
-}
 
-$s .= '</tbody></table><button class="wnd_calc_wnd_option_add_window">Добавить</button>';
+    $s .= '</tbody></table><button class="wnd_calc_wnd_option_add_window">Добавить</button>';
 
-echo $s;
+    echo $s;
 }
 
 function showChangeOptionTable($id)
