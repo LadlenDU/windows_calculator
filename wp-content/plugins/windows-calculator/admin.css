@@ -37,3 +37,7 @@
     max-height: 50px;
     cursor: pointer;
 }
+
+.name_wnd_option_short {
+    width: 60px;
+}

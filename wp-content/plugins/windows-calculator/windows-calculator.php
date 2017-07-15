@@ -151,11 +151,11 @@ function plugin_wnd_calc_window_func()
             $panes = isset($options['window']['panes'][$key]) ? $options['window']['panes'][$key] : [];
             $s .= '<tr>'
                 . '<td>'
-                . '<input class="name_wnd_option" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[window][name][]" readonly="readonly">'
+                . '<input class="name_wnd_option name_wnd_option_short" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[window][name][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
-                . '<input type="text" value="' . esc_html($options['window']['price'][$key]) . '" name="plugin_options_wnd_calc[window][price][]" readonly="readonly">'
+                . '<input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['price'][$key]) . '" name="plugin_options_wnd_calc[window][price][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
                 . '</td>'
                 . '<td class="tbl_center">'
@@ -165,20 +165,20 @@ function plugin_wnd_calc_window_func()
                 . '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button></div>'
                 . '</td>'
                 . '<td>'
-                . '<input class="name_wnd_option" type="text" value="' . esc_html($options['window']['height'][$key]) . '" name="plugin_options_wnd_calc[window][height][]" readonly="readonly">'
+                . '<input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['height'][$key]) . '" name="plugin_options_wnd_calc[window][height][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
-                . '<input class="name_wnd_option" type="text" value="' . esc_html($options['window']['height-min'][$key]) . '" name="plugin_options_wnd_calc[window][height-min][]" readonly="readonly">'
+                . '<input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['height-min'][$key]) . '" name="plugin_options_wnd_calc[window][height-min][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
-                . '<input class="name_wnd_option" type="text" value="' . esc_html($options['window']['height-max'][$key]) . '" name="plugin_options_wnd_calc[window][height-max][]" readonly="readonly">'
+                . '<input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['height-max'][$key]) . '" name="plugin_options_wnd_calc[window][height-max][]" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
                 //. '<input class="name_wnd_option" type="number" min="1" max="50" value="' . esc_html($options['window']['number_of_panes'][$key]) . '" name="plugin_options_wnd_calc[window][number_of_panes][]" readonly="readonly">'
-                . '<input class="name_wnd_option" type="number" min="0" max="50" value="' . count($panes) . '" readonly="readonly">'
+                . '<input class="name_wnd_option_short" type="number" min="0" max="50" value="' . count($panes) . '" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 /*. '<td class="tbl_center">'
@@ -191,7 +191,7 @@ function plugin_wnd_calc_window_func()
                 . '</tr>';
 
 
-            $s .= '<tr style="text-align: right"><td colspan="6">';
+            $s .= '<tr style="text-align: right"><td colspan="8">';
 
             if ($panes) {
                 foreach ($panes as $keyPane => $pane) {
@@ -214,15 +214,15 @@ function plugin_wnd_calc_window_func()
                     foreach ($subtypes as $sbtype) {
                         $s .= '<tr>'
                             . '<td>'
-                            . '<input class="name_wnd_option" type="text" value="' . esc_html($sbtype['width']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width][]" readonly="readonly">'
+                            . '<input type="text" value="' . esc_html($sbtype['width']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width][]" readonly="readonly">'
                             . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                             . '</td>'
                             . '<td>'
-                            . '<input class="name_wnd_option" type="text" value="' . esc_html($sbtype['width-min']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width-min][]" readonly="readonly">'
+                            . '<input type="text" value="' . esc_html($sbtype['width-min']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width-min][]" readonly="readonly">'
                             . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                             . '</td>'
                             . '<td>'
-                            . '<input class="name_wnd_option" type="text" value="' . esc_html($sbtype['width-max']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width-max][]" readonly="readonly">'
+                            . '<input type="text" value="' . esc_html($sbtype['width-max']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][width-max][]" readonly="readonly">'
                             . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                             . '</td>'
                             . '</tr>';
