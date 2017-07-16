@@ -145,7 +145,7 @@ function plugin_wnd_calc_dglazed_func()
 function plugin_wnd_calc_window_func()
 {
     $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
-    $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Частей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
+    $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Панелей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
     if (!empty($options['window'])) {
         foreach ($options['window']['name'] as $key => $pf) {
             $panes = isset($options['window']['panes']['width'][$key]) ? $options['window']['panes']['width'][$key] : [];

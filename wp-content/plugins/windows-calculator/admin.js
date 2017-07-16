@@ -80,7 +80,7 @@ jQuery(function ($) {
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
             + '<th>Количество подтипов:<br>'
-            + '<input type="number" min="1" max="50" value="1">'
+            + '<input class="name_wnd_option_short" type="number" min="1" max="50" value="1">'
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
             + '</th>'
             + '</tr>'
@@ -103,7 +103,7 @@ jQuery(function ($) {
 
         newRow += '</td></tr>';
 
-        $(this).prev().find("tbody").append(newRow);
+        $(this).prev().find("tbody").first().append(newRow);
 
         bindEventsToOptions();
 
