@@ -26,15 +26,15 @@ jQuery(function ($) {
     $(".wnd_calc_wnd_option_add_window").click(function (e) {
         e.preventDefault();
 
-        var oType = $(this).prev().find(".calc_wnd_option_type").val();
+        //var oType = $(this).prev().find(".calc_wnd_option_type").val();   // always 'window'
 
         var newRow = '<tr>'
             + '<td>'
-            + '<input class="name_wnd_option" type="text" value="" name="plugin_options_wnd_calc[' + oType + '][name][]">'
+            + '<input class="name_wnd_option name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][name][]">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td>'
-            + '<input type="text" value="" name="plugin_options_wnd_calc[' + oType + '][price][]">'
+            + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][price][]">'
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td class="tbl_center">'
@@ -43,14 +43,67 @@ jQuery(function ($) {
             + '<img alt="" src="#" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
             + '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button></div>'
             + '</td>'
-            + '<td class="tbl_center">'
-            + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][id_big][]">'
-            + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][src_big][]">'
-            + '<img alt="" src="#" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
-            + '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить большое окно">Бол. окно</button></div>'
+            + '<td>'
+            + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][height][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '</td>'
+            + '<td>'
+            + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][height-min][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '</td>'
+            + '<td>'
+            + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][height-max][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '</td>'
+            + '<td>'
+            + '<input class="name_wnd_option_short" type="number" min="1" max="50" value="1">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
             + '</td>'
             + '<td class="tbl_center"><button class="rem_wnd_option">Удалить</button></td>'
             + '</tr>';
+
+        newRow += '<tr><td colspan="8" style="text-align: right">';
+
+        newRow += '<table style="width:90%">'
+            + '<thead>'
+            + '<tr>'
+            + '<th colspan="3" style="text-align:right">Количество подтипов: '
+            + '<input type="number" min="1" max="50" value="1">'
+            + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
+            + '</th>'
+            + '</tr>'
+            + '</thead>';
+
+        newRow += '<tbody>';
+
+        var key = $('[name="plugin_options_wnd_calc[window][name][]"]').length - 1;
+
+        newRow += '<tr>'
+                + '<td>'
+                + 'Ширина: <input type="text" value="" name="plugin_options_wnd_calc[window][panes][' + key + '][subtypes][0][width][]">'
+                + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                + '</td>'
+                + '<td>'
+                + 'Мин. ширина: <input type="text" value="" name="plugin_options_wnd_calc[window][panes][' + key + '][subtypes][0][width-min][]">'
+                + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                + '</td>'
+                + '<td>'
+                + 'Макс. ширина: <input type="text" value="" name="plugin_options_wnd_calc[window][panes][' + key + '][subtypes][0][width-max][]">'
+                + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                + '</td>'
+                + '<td class="tbl_center">'
+                + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][' + key + '][subtypes][0][id_image][]">'
+                + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][' + key + '][subtypes][0][src_image][]">'
+                + '<img alt="" src="" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
+                + '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить изображение">Изображение</button></div>'
+                + '</td>'
+                + '</tr>';
+
+        newRow += '</tbody>';
+
+        newRow += '</table>';
+
+        newRow += '</td></tr>';
 
         $(this).prev().find("tbody").append(newRow);
 
