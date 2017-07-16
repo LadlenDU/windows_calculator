@@ -71,7 +71,7 @@ $defaultWndCalcOptions = [
 ];
 
 
-delete_option('plugin_options_wnd_calc');
+//delete_option('plugin_options_wnd_calc');
 
 // add the admin settings and such
 add_action('admin_init', 'plugin_admin_init');
@@ -148,7 +148,7 @@ function plugin_wnd_calc_window_func()
     $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Частей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
     if (!empty($options['window'])) {
         foreach ($options['window']['name'] as $key => $pf) {
-            $panes = isset($options['window']['panes'][$key]) ? $options['window']['panes'][$key] : [];
+            $panes = isset($options['window']['panes']['width'][$key]) ? $options['window']['panes']['width'][$key] : [];
             $s .= '<tr>'
                 . '<td>'
                 . '<input class="name_wnd_option name_wnd_option_short" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[window][name][]" readonly="readonly">'
@@ -187,21 +187,21 @@ function plugin_wnd_calc_window_func()
 
             if ($panes) {
                 foreach ($panes as $keyPane => $pane) {
-                    $subtypes = isset($pane['subtypes']) ? $pane['subtypes'] : [];
+                    $subtypes = isset($options['window']['panes']['subtypes']['id_image'][$key][$keyPane]) ? $options['window']['panes']['subtypes']['id_image'][$key][$keyPane] : [];
 
                     $s .= '<table style="width:90%;float:right;">'
                         . '<thead>'
                         . '<tr>'
                         . '<th>'
-                        . 'Ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($pane['width']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][width][]" readonly="readonly">'
+                        . 'Ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($pane) . '" name="plugin_options_wnd_calc[window][panes][width][' . $key . '][]" readonly="readonly">'
                         . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
                         . '<th>'
-                        . 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($pane['width-min']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][width-min][]" readonly="readonly">'
+                        . 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['width-min'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][width-min][' . $key . '][]" readonly="readonly">'
                         . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
                         . '<th>'
-                        . 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($pane['width-max']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][width-max][]" readonly="readonly">'
+                        . 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['width-max'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][width-max][' . $key . '][]" readonly="readonly">'
                         . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
                         . '<th>Количество подтипов:<br>'
@@ -215,12 +215,13 @@ function plugin_wnd_calc_window_func()
                         $s .= '<tbody>';
                     }
 
-                    foreach ($subtypes as $sbtype) {
+                    foreach ($subtypes as $keySubtype => $sbtype) {
+                        $src = $options['window']['panes']['subtypes']['src_image'][$key][$keyPane][$keySubtype];
                         $s .= '<tr>'
                             . '<td class="tbl_center" colspan="4" style="text-align:right">'
-                            . '<input type="hidden" value="' . esc_html($sbtype['id_image']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][id_image][]">'
-                            . '<input type="hidden" value="' . esc_html($sbtype['src_image']) . '" name="plugin_options_wnd_calc[window][panes][' . $key . '][subtypes][' . $keyPane . '][src_image][]">'
-                            . '<img alt="" src="' . esc_html($sbtype['src_image']) . '" class="mod_wnd_option_class_preview_image big" title="Нажмите чтобы увеличить">'
+                            . '<input type="hidden" value="' . esc_html($sbtype) . '" name="plugin_options_wnd_calc[window][panes][subtypes][id_image][' . $key . '][' . $keyPane . '][]">'
+                            . '<input type="hidden" value="' . esc_html($src) . '" name="plugin_options_wnd_calc[window][panes][subtypes][src_image][' . $key . '][' . $keyPane . '][]">'
+                            . '<img alt="" src="' . esc_html($src) . '" class="mod_wnd_option_class_preview_image big" title="Нажмите чтобы увеличить">'
                             . '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить изображение">Изображение</button></div>'
                             . '</td>'
                             . '</tr>';
