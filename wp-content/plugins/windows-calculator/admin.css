@@ -38,6 +38,10 @@
     cursor: pointer;
 }
 
+.mod_wnd_option_class_preview_image.big {
+    max-height: 100px;
+}
+
 .name_wnd_option_short {
     width: 60px;
 }
