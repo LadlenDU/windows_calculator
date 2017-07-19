@@ -26,6 +26,7 @@ jQuery(function ($) {
     $(".wnd_calc_wnd_option_add_window").click(function (e) {
         e.preventDefault();
 
+        //TODO: wrong
         var key = $('[name="plugin_options_wnd_calc[window][name][]"]').length;
 
         var newRow = '<tr>'
@@ -79,6 +80,10 @@ jQuery(function ($) {
             + 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-max][' + key + '][]">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
+            + '<th>'
+            + 'Цена:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][price][' + key + '][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '</th>'
             + '<th>Количество подтипов:<br>'
             + '<input class="name_wnd_option_short" type="number" min="1" max="50" value="1">'
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
@@ -89,7 +94,11 @@ jQuery(function ($) {
         newRow += '<tbody>';
 
         newRow += '<tr>'
-                + '<td class="tbl_center" colspan="4" style="text-align:right">'
+                + '<td colspan="3" style="text-align:right">'
+                + 'Цена: <input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][subtypes][price][' + key + '][0][]">'
+                + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                + '</td>'
+                + '<td colspan="2" style="text-align:right">'
                 + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][id_image][' + key + '][0][]">'
                 + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][src_image][' + key + '][0][]">'
                 + '<img alt="" src="" class="mod_wnd_option_class_preview_image big" title="Нажмите чтобы увеличить">'
@@ -152,21 +161,7 @@ jQuery(function ($) {
                         srcElem.prev().prev().prev().val(attachment.id);
                     })
                     .open();
-            }/* else { //fallback
-                post_id = button.attr('rel');
-
-                tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id=' + post_id + '&type=image&TB_iframe=1');
-
-                window.send_to_editor = function (html) {
-                    img = jQuery('img', html);
-                    imgurl = img.attr('src');
-                    classes = img.attr('class');
-                    id = classes.replace(/(.*?)wp-image-/, '');
-                    image.val(id).trigger('change');
-                    preview.attr('src', imgurl);
-                    tb_remove();
-                }
-            }*/
+            }
 
             return false;
         });
