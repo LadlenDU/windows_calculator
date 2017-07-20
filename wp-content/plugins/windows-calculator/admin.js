@@ -17,24 +17,24 @@ jQuery(function ($) {
         return newRow;
     }
 
-    function htmlWindowPane(key) {
+    function htmlWindowPane(key, index) {
         var newRow = '<table style="width:90%;float:right;">'
             + '<thead>'
             + '<tr>'
             + '<th>'
-            + 'Ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width][' + key + '][]">'
+            + 'Ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width][' + key + '][' + index + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
             + '<th>'
-            + 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-min][' + key + '][]">'
+            + 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-min][' + key + '][' + index + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
             + '<th>'
-            + 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-max][' + key + '][]">'
+            + 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-max][' + key + '][' + index + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
             + '<th>'
-            + 'Цена:<br><input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][panes][price][' + key + '][]">'
+            + 'Цена:<br><input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][panes][price][' + key + '][' + index + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
             + '</th>'
             + '<th>Количество подтипов:<br>'
@@ -128,7 +128,7 @@ jQuery(function ($) {
             + '</tr>';
 
         newRow += '<tr><td colspan="8" style="text-align: right">'
-            + htmlWindowPane(key)
+            + htmlWindowPane(key, 0)
             + '</td></tr>';
 
         $(this).prev().find("tbody").first().append(newRow);
@@ -173,7 +173,7 @@ jQuery(function ($) {
                 var nameAttr = curTr.find(".name_wnd_option").attr('name');
                 var matches = nameAttr.match(/^.*\[(.+)\]$/);
                 for (var i = 0; i < newCount - currCount; ++i) {
-                    var html = htmlWindowPane(matches[1]);
+                    var html = htmlWindowPane(matches[1], currCount + i);
                     paneContainer.append(html);
                 }
             } else if (newCount < currCount) {
@@ -187,15 +187,20 @@ jQuery(function ($) {
 
         $(".wnd_calc_wnd_options .add_window_subpane").unbind('change');
         $(".wnd_calc_wnd_options .add_window_subpane").change(function () {
-            var subpaneContainer = $(this).parents('table').first().children('tbody');
+            var subpane = $(this).parents('table').first();
+            var subpaneContainer = subpane.children('tbody');
             var currCount = subpaneContainer.children('tr').length;
             var newCount = parseInt($(this).val()) || 0;
+
+            var subpaneName = subpane.find('th').first().find('input').attr('name');
+            var subpaneId = subpaneName.match(/^.*\[(.+)\]$/);
+
             if (newCount > currCount) {
                 // add elements
-                var nameAttr = $(this).parents('table.wnd_calc_wnd_options').first().find(".name_wnd_option").attr('name');
+                var nameAttr = $(this).parents('table').first().parents('tr').first().prev().find(".name_wnd_option").attr('name');
                 var matches = nameAttr.match(/^.*\[(.+)\]$/);
                 for (var i = 0; i < newCount - currCount; ++i) {
-                    var html = htmlWindowSubPane(matches[1], i + currCount);
+                    var html = htmlWindowSubPane(matches[1], subpaneId[1]);
                     subpaneContainer.append(html);
                 }
             } else if (newCount < currCount) {
