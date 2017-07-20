@@ -38,7 +38,7 @@ jQuery(function ($) {
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
             + '</th>'
             + '<th>Количество подтипов:<br>'
-            + '<input class="name_wnd_option_short" type="number" min="1" max="50" value="1">'
+            + '<input class="name_wnd_option_short add_window_subpane" type="number" min="1" max="20" value="1">'
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
             + '</th>'
             + '</tr>'
@@ -121,7 +121,7 @@ jQuery(function ($) {
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td>'
-            + '<input class="name_wnd_option_short add_window_pane" type="number" min="1" max="50" value="1">'
+            + '<input class="name_wnd_option_short add_window_pane" type="number" min="1" max="20" value="1">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td class="tbl_center"><button data-type="window" class="rem_wnd_option">Удалить</button></td>'
@@ -165,10 +165,44 @@ jQuery(function ($) {
         $(".wnd_calc_wnd_options .add_window_pane").unbind('change');
         $(".wnd_calc_wnd_options .add_window_pane").change(function () {
             var curTr = $(this).parent().parent();
-            var nameAttr = curTr.find(".name_wnd_option").attr('name');
-            var matches = nameAttr.match(/^.*\[(.+)\]$/);
-            var html = htmlWindowPane(matches[1]);
-            curTr.next().find('td:first-child').first().append(html);
+            var paneContainer = curTr.next().children('td');
+            var currCount = paneContainer.children('table').length;
+            var newCount = parseInt($(this).val()) || 0;
+            if (newCount > currCount) {
+                // add elements
+                var nameAttr = curTr.find(".name_wnd_option").attr('name');
+                var matches = nameAttr.match(/^.*\[(.+)\]$/);
+                for (var i = 0; i < newCount - currCount; ++i) {
+                    var html = htmlWindowPane(matches[1]);
+                    paneContainer.append(html);
+                }
+            } else if (newCount < currCount) {
+                // remove elements
+                for (var i = 0; i < currCount - newCount; ++i) {
+                    paneContainer.children('table:last-child').remove();
+                }
+            }
+        });
+
+        $(".wnd_calc_wnd_options .add_window_subpane").unbind('change');
+        $(".wnd_calc_wnd_options .add_window_subpane").change(function () {
+            var subpaneContainer = $(this).parents('table').first().children('tbody');
+            var currCount = subpaneContainer.children('tr').length;
+            var newCount = parseInt($(this).val()) || 0;
+            if (newCount > currCount) {
+                // add elements
+                var nameAttr = $(this).parents('table.wnd_calc_wnd_options').first().find(".name_wnd_option").attr('name');
+                var matches = nameAttr.match(/^.*\[(.+)\]$/);
+                for (var i = 0; i < newCount - currCount; ++i) {
+                    var html = htmlWindowSubPane(matches[1]);
+                    subpaneContainer.append(html);
+                }
+            } else if (newCount < currCount) {
+                // remove elements
+                for (var i = 0; i < currCount - newCount; ++i) {
+                    subpaneContainer.children('tr:last-child').remove();
+                }
+            }
         });
 
         // window
