@@ -1319,7 +1319,8 @@ a:hover .nav-title,
 }
 
 .navigation-top .wrap {
-	max-width: 1000px;
+	/*max-width: 1000px;*/
+	max-width: 90%;
 	padding: 0;
 }
 
@@ -3324,7 +3325,8 @@ object {
 	/* Layout */
 
 	.wrap {
-		max-width: 1000px;
+      /*max-width: 1000px;*/
+		max-width: 95%;
 		padding-left: 3em;
 		padding-right: 3em;
 	}
@@ -3719,7 +3721,8 @@ object {
 
 	.page-two-column .panel-content .entry-content {
 		float: right;
-		width: 58%;
+		/*width: 58%;*/
+		width: 87%;
 	}
 
 	/* Front Page - Recent Posts */
@@ -3798,7 +3801,8 @@ object {
 	body.page-two-column:not(.archive) #primary .entry-header,
 	body.page-two-column.archive:not(.has-sidebar) #primary .page-header {
 		float: left;
-		width: 36%;
+		/*width: 36%;*/
+		width: 10%;
 	}
 
 	.blog:not(.has-sidebar) #primary article,
@@ -3809,7 +3813,8 @@ object {
 	body.page-two-column:not(.archive) #primary .entry-content,
 	body.page-two-column #comments {
 		float: right;
-		width: 58%;
+/*		width: 58%;*/
+		width: 87%;
 	}
 
 	.blog .site-main > article,

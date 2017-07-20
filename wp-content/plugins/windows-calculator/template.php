@@ -5,13 +5,30 @@ class WndCalc
     public $windowSelect = '';
     public $commonSelect = '';
 
+    protected $options;
+
+    public function __construct()
+    {
+        $this->options = get_option('plugin_options_wnd_calc');
+    }
+
+    public function showWindows($key, $info)
+    {
+        $s = '';
+
+        foreach ($info['src_small'] as $key => $link) {
+            $s .= '<img class="wnd_calc_prev_window" src="' . esc_html($link) . '" alt="" data-id="' . esc_html($key) . '">';
+        }
+
+        $this->windowSelect = $s;
+    }
+
     public function init()
     {
-        $options = get_option('plugin_options_wnd_calc');
-        foreach ($options as $key => $info) {
+        foreach ($this->options as $key => $info) {
             switch ($key) {
                 case 'window':
-                    //showWindows($key, $info);
+                    $this->showWindows($key, $info);
                     break;
                 case 'profile':
                     $this->showDropdown('Профиль', $key, $info);
@@ -59,7 +76,6 @@ $WndCalc = new WndCalc();
 $WndCalc->init();
 
 ?>
-Цена:
 <script>
     jQuery(function ($) {
         function calculatePrice() {
@@ -77,8 +93,11 @@ $WndCalc->init();
 </script>
 
 <div class="wnd_calc_container">
-    <div class="wnd_calc_select">
-        <div class="wnd_calc_window_type"><?php echo $WndCalc->windowSelect ?></div>
+    <div class="wnd_calc_select_wrapper">
+        <div class="wnd_calc_window_type">
+            <div>Тип изделия</div>
+            <div class="wnd_calc_window_type_select"><?php echo $WndCalc->windowSelect ?></div>
+        </div>
         <div class="wnd_calc_characteristic"><?php echo $WndCalc->commonSelect ?></div>
     </div>
     <div class="wnd_calc_result">

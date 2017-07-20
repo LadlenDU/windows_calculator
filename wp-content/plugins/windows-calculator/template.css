@@ -3,15 +3,38 @@
     /*height: auto;*/
 }
 
-.wnd_calc_select,
+.wnd_calc_select_wrapper,
 .wnd_calc_result {
     width: 50%;
 }
 
+.wnd_calc_select {
+    padding: 0 15px;
+    height: 2.4em;
+    width: 270px;
+}
+
 .wnd_calc_window_type {
-    height: 20%;
+    /*height: 20%;*/
+    padding: 15px;
+}
+
+.wnd_calc_window_type_select {
+    overflow-x: auto;
 }
 
 .wnd_calc_characteristic {
     height: 80%;
+}
+
+.wnd_calc_so_label {
+    display: inline-block;
+    width: 170px;
+    font-weight: normal;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.wnd_calc_prev_window {
+    margin-right: 15px;
 }
