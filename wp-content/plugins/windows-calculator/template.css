@@ -1,11 +1,42 @@
+@font-face {
+    font-family: "GOST_A";
+    src: url(fonts_GOST/GOST_A.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "GOST_A_italic";
+    src: url(fonts_GOST/GOST_A_italic.ttf) format("truetype");
+}
+
 .wnd_calc_container {
     width: 100%;
-    /*height: auto;*/
+    border: solid 2px #CCC;
+    position: relative;
 }
 
 .wnd_calc_select_wrapper,
 .wnd_calc_result {
-    width: 50%;
+    width: 400px;
+    font-family: "GOST_A", sans-serif;
+}
+
+.wnd_calc_result {
+    left: 0;
+    padding-left: 400px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wnd_calc_select_wrapper select,
+.wnd_calc_select_wrapper select option {
+    font-family: "GOST_A_italic", sans-serif;
+}
+
+.wnd_calc_select_wrapper {
+    border-right: solid 1px #CCC;
 }
 
 .wnd_calc_select {
@@ -14,13 +45,19 @@
     width: 270px;
 }
 
-.wnd_calc_window_type {
-    /*height: 20%;*/
+.wnd_calc_window_type,
+.wnd_calc_characteristics {
     padding: 15px;
+}
+
+.wnd_calc_window_type {
+    border-bottom: 1px solid #CCC;
 }
 
 .wnd_calc_window_type_select {
     overflow-x: auto;
+    white-space: nowrap;
+    text-align: left;
 }
 
 .wnd_calc_characteristic {
@@ -29,7 +66,7 @@
 
 .wnd_calc_so_label {
     display: inline-block;
-    width: 170px;
+    width: 95px;
     font-weight: normal;
     text-align: right;
     padding-right: 10px;
@@ -37,4 +74,18 @@
 
 .wnd_calc_prev_window {
     margin-right: 15px;
+    vertical-align: top;
+}
+
+.wnd_calc_capt {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.wnd_calc_select_option {
+    margin-bottom: 5px;
+}
+
+.wnd_calc_price {
+    
 }

@@ -5,7 +5,7 @@ class WndCalc
     public $windowSelect = '';
     public $commonSelect = '';
 
-    protected $options;
+    public $options;
 
     public function __construct()
     {
@@ -77,32 +77,24 @@ $WndCalc->init();
 
 ?>
 <script>
-    jQuery(function ($) {
-        function calculatePrice() {
-            var price = parseFloat($("#wnd_calc_select_profile").val()) || 0;
-            price += parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
-            $("#wnd_calc_price").text(price);
-        }
-
-        calculatePrice();
-
-        $(".wnd_calc_select").change(function () {
-            calculatePrice();
-        });
-    });
+    var wndSelVariables =
+    <?php echo json_encode($WndCalc->options) ?>
 </script>
 
 <div class="wnd_calc_container">
     <div class="wnd_calc_select_wrapper">
         <div class="wnd_calc_window_type">
-            <div>Тип изделия</div>
+            <div class="wnd_calc_capt">Тип изделия</div>
             <div class="wnd_calc_window_type_select"><?php echo $WndCalc->windowSelect ?></div>
         </div>
-        <div class="wnd_calc_characteristic"><?php echo $WndCalc->commonSelect ?></div>
+        <div class="wnd_calc_characteristics">
+            <div class="wnd_calc_capt">Характеристики</div>
+            <div class="wnd_calc_characteristic"><?php echo $WndCalc->commonSelect ?></div>
+        </div>
     </div>
     <div class="wnd_calc_result">
         <div id="wnd_calc_window_preview">
-            Чтобы поменять тип открывания кликнете на створку
+            Чтобы поменять тип открывания кликните на створку
         </div>
         <div class="wnd_calc_price">
             <div id="wnd_calc_price"></div>
