@@ -4,7 +4,7 @@ jQuery(function ($) {
         var newRow = '<tr>'
             + '<td colspan="3" style="text-align:right">'
             + 'Цена м^2: <input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][panes][subtypes][price][' + key + '][' + index + '][]">'
-            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td colspan="2" style="text-align:right">'
             + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][id_image][' + key + '][' + index + '][]">'
@@ -182,6 +182,7 @@ jQuery(function ($) {
                     paneContainer.children('table:last-child').remove();
                 }
             }
+            bindEventsToOptions();
         });
 
         $(".wnd_calc_wnd_options .add_window_subpane").unbind('change');
@@ -203,6 +204,7 @@ jQuery(function ($) {
                     subpaneContainer.children('tr:last-child').remove();
                 }
             }
+            bindEventsToOptions();
         });
 
         // window
