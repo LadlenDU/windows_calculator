@@ -93,11 +93,13 @@ $WndCalc->init();
         </div>
     </div>
     <div class="wnd_calc_result">
+        <div class="wnd_calc_capt wnd_calc_capt_sz">Размеры</div>
         <div id="wnd_calc_window_preview">
             Чтобы поменять тип открывания кликните на створку
         </div>
         <div class="wnd_calc_price">
-            <div id="wnd_calc_price"></div>
+            <div class="wnd_calc_total">Всего: <div id="wnd_calc_price"></div> руб.</div>
+            <button>Заказать</button>
         </div>
     </div>
 </div>

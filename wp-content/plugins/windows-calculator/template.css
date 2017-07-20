@@ -23,6 +23,7 @@
 .wnd_calc_result {
     left: 0;
     padding-left: 400px;
+    /*padding: 15px 15px 15px 415px;*/
     position: absolute;
     text-align: center;
     top: 0;
@@ -80,6 +81,7 @@
 .wnd_calc_capt {
     font-size: 1.5em;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .wnd_calc_select_option {
@@ -87,5 +89,47 @@
 }
 
 .wnd_calc_price {
-    
+    position: relative;
+    top: -160px;
+    width: 100%;
+    text-align: left;
+    font-family: "Arial Narrow", "Arial", sans-serif;
+    font-size: 20px;
+    border-top: 1px solid #CCC;
+    padding: 15px 25px;
+    /*display: table-cell;*/
+    vertical-align: middle;
+    height: 85px;
+}
+
+#wnd_calc_price {
+    display: inline-block;
+    font-weight: bold;
+}
+
+#wnd_calc_window_preview {
+    height: 100%;
+    padding-bottom: 70px;
+    font-family: "Arial", sans-serif;
+}
+
+.wnd_calc_capt_sz {
+    padding: 15px;
+}
+
+#wnd_calc_window_preview {
+    padding: 15px 15px 160px;
+}
+
+.wnd_calc_price button {
+    float: right;
+    /*padding-top: 12px;
+    padding-bottom: 12px;*/
+    padding: 10px 35px;
+    margin-top: 3px;
+}
+
+.wnd_calc_total {
+    margin-top: 12px;
+    display: inline-block;
 }
