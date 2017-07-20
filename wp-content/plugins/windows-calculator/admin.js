@@ -168,7 +168,7 @@ jQuery(function ($) {
             var nameAttr = curTr.find(".name_wnd_option").attr('name');
             var matches = nameAttr.match(/^.*\[(.+)\]$/);
             var html = htmlWindowPane(matches[1]);
-            curTr.next().find('td').append(html);
+            curTr.next().find('td:first-child').first().append(html);
         });
 
         // window
