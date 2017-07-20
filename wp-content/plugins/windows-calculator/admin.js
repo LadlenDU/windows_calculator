@@ -44,7 +44,7 @@ jQuery(function ($) {
             + '</tr>'
             + '</thead>'
             + '<tbody>'
-            + htmlWindowSubPane(key, 0)
+            + htmlWindowSubPane(key, index)
             + '</tbody>'
             + '</table>';
 
