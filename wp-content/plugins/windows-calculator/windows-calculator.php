@@ -213,11 +213,8 @@ function plugin_wnd_calc_window_func()
                         . '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
                         . '</th>'
                         . '</tr>'
-                        . '</thead>';
-
-                    if ($subtypes) {
-                        $s .= '<tbody>';
-                    }
+                        . '</thead>'
+                        . '<tbody>';
 
                     foreach ($subtypes as $keySubtype => $sbtype) {
                         $src = $options['window']['panes']['subtypes']['src_image'][$key][$keyPane][$keySubtype];
@@ -236,9 +233,7 @@ function plugin_wnd_calc_window_func()
                             . '</tr>';
                     }
 
-                    if ($subtypes) {
-                        $s .= '</tbody>';
-                    }
+                    $s .= '</tbody>';
 
                     $s .= '</table>';
                 }

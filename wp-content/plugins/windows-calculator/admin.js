@@ -195,7 +195,7 @@ jQuery(function ($) {
                 var nameAttr = $(this).parents('table.wnd_calc_wnd_options').first().find(".name_wnd_option").attr('name');
                 var matches = nameAttr.match(/^.*\[(.+)\]$/);
                 for (var i = 0; i < newCount - currCount; ++i) {
-                    var html = htmlWindowSubPane(matches[1]);
+                    var html = htmlWindowSubPane(matches[1], i + currCount);
                     subpaneContainer.append(html);
                 }
             } else if (newCount < currCount) {
