@@ -1,4 +1,56 @@
 jQuery(function ($) {
+
+    function htmlWindowSubPane(key, index) {
+        var newRow = '<tr>'
+            + '<td colspan="3" style="text-align:right">'
+            + 'Цена м^2: <input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][panes][subtypes][price][' + key + '][' + index + '][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '</td>'
+            + '<td colspan="2" style="text-align:right">'
+            + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][id_image][' + key + '][' + index + '][]">'
+            + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][src_image][' + key + '][' + index + '][]">'
+            + '<img alt="" src="" class="mod_wnd_option_class_preview_image big" title="Нажмите чтобы увеличить">'
+            + '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить изображение">Изображение</button></div>'
+            + '</td>'
+            + '</tr>';
+
+        return newRow;
+    }
+
+    function htmlWindowPane(key) {
+        var newRow = '<table style="width:90%;float:right;">'
+            + '<thead>'
+            + '<tr>'
+            + '<th>'
+            + 'Ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width][' + key + '][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
+            + '</th>'
+            + '<th>'
+            + 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-min][' + key + '][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
+            + '</th>'
+            + '<th>'
+            + 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-max][' + key + '][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
+            + '</th>'
+            + '<th>'
+            + 'Цена:<br><input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][panes][price][' + key + '][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '</th>'
+            + '<th>Количество подтипов:<br>'
+            + '<input class="name_wnd_option_short" type="number" min="1" max="50" value="1">'
+            + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
+            + '</th>'
+            + '</tr>'
+            + '</thead>'
+            + '<tbody>'
+            + htmlWindowSubPane(key, 0)
+            + '</tbody>'
+            + '</table>';
+
+        return newRow;
+    }
+
     $(".wnd_calc_wnd_option_add").click(function (e) {
         e.preventDefault();
 
@@ -27,7 +79,19 @@ jQuery(function ($) {
         e.preventDefault();
 
         //TODO: wrong
-        var key = $('[name="plugin_options_wnd_calc[window][name][]"]').length;
+        //var key = $('[name="plugin_options_wnd_calc[window][name][]"]').length;
+
+        var key = 0;
+
+        var windows = $('[name^="plugin_options_wnd_calc[window][name]"]');
+        windows.each(function () {
+            var name = $(this).attr('name').match(/^.*\[(.+)\]$/);
+            if (key < name[1]) {
+                key = name[1];
+            }
+        });
+
+        ++key;
 
         var newRow = '<tr>'
             + '<td>'
@@ -35,7 +99,7 @@ jQuery(function ($) {
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td>'
-            + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][price][' + key + ']">'
+            + '<input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][price][' + key + ']">'
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td class="tbl_center">'
@@ -57,60 +121,15 @@ jQuery(function ($) {
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td>'
-            + '<input class="name_wnd_option_short" type="number" min="1" max="50" value="1">'
+            + '<input class="name_wnd_option_short add_window_pane" type="number" min="1" max="50" value="1">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
-            + '<td class="tbl_center"><button class="rem_wnd_option">Удалить</button></td>'
+            + '<td class="tbl_center"><button data-type="window" class="rem_wnd_option">Удалить</button></td>'
             + '</tr>';
 
-        newRow += '<tr><td colspan="8" style="text-align: right">';
-
-        newRow += '<table style="width:90%;float:right;">'
-            + '<thead>'
-            + '<tr>'
-            + '<th>'
-            + 'Ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width][' + key + '][]">'
-            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
-            + '</th>'
-            + '<th>'
-            + 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-min][' + key + '][]">'
-            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
-            + '</th>'
-            + '<th>'
-            + 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-max][' + key + '][]">'
-            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
-            + '</th>'
-            + '<th>'
-            + 'Цена:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][price][' + key + '][]">'
-            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
-            + '</th>'
-            + '<th>Количество подтипов:<br>'
-            + '<input class="name_wnd_option_short" type="number" min="1" max="50" value="1">'
-            + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
-            + '</th>'
-            + '</tr>'
-            + '</thead>';
-
-        newRow += '<tbody>';
-
-        newRow += '<tr>'
-                + '<td colspan="3" style="text-align:right">'
-                + 'Цена: <input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][subtypes][price][' + key + '][0][]">'
-                + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
-                + '</td>'
-                + '<td colspan="2" style="text-align:right">'
-                + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][id_image][' + key + '][0][]">'
-                + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][src_image][' + key + '][0][]">'
-                + '<img alt="" src="" class="mod_wnd_option_class_preview_image big" title="Нажмите чтобы увеличить">'
-                + '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить изображение">Изображение</button></div>'
-                + '</td>'
-                + '</tr>';
-
-        newRow += '</tbody>';
-
-        newRow += '</table>';
-
-        newRow += '</td></tr>';
+        newRow += '<tr><td colspan="8" style="text-align: right">'
+            + htmlWindowPane(key)
+            + '</td></tr>';
 
         $(this).prev().find("tbody").first().append(newRow);
 
@@ -128,15 +147,33 @@ jQuery(function ($) {
         $(".wnd_calc_wnd_options .rem_wnd_option").unbind('click');
         $(".wnd_calc_wnd_options .rem_wnd_option").click(function (e) {
             e.preventDefault();
-            var name = $(this).parent().parent().find(".name_wnd_option");
+            var curTr = $(this).parent().parent();
+            var name = curTr.find(".name_wnd_option");
+            var type = $(this).data('type');
             if (confirm('Вы уверены что хотите удалить элемент "' + name.val() + '"?')) {
-                $(this).parent().parent().remove();
+                if (type == 'window') {
+                    var panes = curTr.next();
+                    curTr.remove();
+                    panes.remove();
+                } else {
+                    curTr.remove();
+                }
             }
             return false;
         });
+
+        $(".wnd_calc_wnd_options .add_window_pane").unbind('change');
+        $(".wnd_calc_wnd_options .add_window_pane").change(function () {
+            var curTr = $(this).parent().parent();
+            var nameAttr = curTr.find(".name_wnd_option").attr('name');
+            var matches = nameAttr.match(/^.*\[(.+)\]$/);
+            var html = htmlWindowPane(matches[1]);
+            curTr.next().find('td').append(html);
+        });
+
         // window
         $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").unbind('click');
-        $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").click(function(){
+        $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").click(function () {
             window.open($(this).attr('src'));
         });
         $(".wnd_calc_wnd_options .mod_wnd_option_change_preview_image").unbind('click');

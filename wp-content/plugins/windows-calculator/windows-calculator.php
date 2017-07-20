@@ -177,10 +177,10 @@ function plugin_wnd_calc_window_func()
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'
-                . '<input class="name_wnd_option_short" type="number" min="1" max="50" value="' . count($panes) . '" readonly="readonly">'
+                . '<input class="name_wnd_option_short add_window_pane" type="number" min="1" max="50" value="' . count($panes) . '" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
-                . '<td class="tbl_center"><button class="rem_wnd_option">Удалить</button></td>'
+                . '<td class="tbl_center"><button data-type="window" class="rem_wnd_option">Удалить</button></td>'
                 . '</tr>';
 
             $s .= '<tr><td colspan="8" style="text-align: right">';
@@ -224,7 +224,7 @@ function plugin_wnd_calc_window_func()
                         $price = $options['window']['panes']['subtypes']['price'][$key][$keyPane][$keySubtype];
                         $s .= '<tr>'
                             . '<td colspan="3" style="text-align:right">'
-                            . 'Цена: <input class="name_wnd_option_short" type="text" value="' . esc_html($price) . '" name="plugin_options_wnd_calc[window][panes][subtypes][price][' . $key . '][' . $keyPane . '][]" readonly="readonly">'
+                            . 'Цена м^2: <input class="name_wnd_option_short" type="text" value="' . esc_html($price) . '" name="plugin_options_wnd_calc[window][panes][subtypes][price][' . $key . '][' . $keyPane . '][]" readonly="readonly">'
                             . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                             . '</td>'
                             . '<td colspan="2" style="text-align:right">'
