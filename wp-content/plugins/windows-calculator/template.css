@@ -9,9 +9,11 @@
 }
 
 .wnd_calc_container {
-    width: 100%;
+    /*width: 100%;*/
+    width: 1004px;
     border: solid 2px #CCC;
     position: relative;
+    min-width: 620px;
 }
 
 .wnd_calc_select_wrapper,
@@ -21,13 +23,13 @@
 }
 
 .wnd_calc_result {
-    left: 0;
-    padding-left: 400px;
+    left: 400px;
+    /*padding-left: 400px;*/
     /*padding: 15px 15px 15px 415px;*/
     position: absolute;
     text-align: center;
     top: 0;
-    width: 100%;
+    width: 600px;
     height: 100%;
 }
 
@@ -38,10 +40,11 @@
 
 .wnd_calc_select_wrapper {
     border-right: solid 1px #CCC;
+    /*position: absolute;*/
 }
 
 .wnd_calc_select {
-    padding: 0 15px;
+    padding: 0 0 0 15px;
     height: 2.4em;
     width: 270px;
 }
@@ -57,6 +60,7 @@
 
 .wnd_calc_window_type_select {
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
     text-align: left;
 }
@@ -90,16 +94,16 @@
 
 .wnd_calc_price {
     position: relative;
-    top: -160px;
+    top: -140px;
     width: 100%;
     text-align: left;
     font-family: "Arial Narrow", "Arial", sans-serif;
     font-size: 20px;
     border-top: 1px solid #CCC;
-    padding: 15px 25px;
+    padding: 15px 30px;
     /*display: table-cell;*/
     vertical-align: middle;
-    height: 85px;
+    height: 80px;
 }
 
 #wnd_calc_price {
@@ -109,27 +113,27 @@
 
 #wnd_calc_window_preview {
     height: 100%;
-    padding-bottom: 70px;
+    /*padding-bottom: 70px;*/
     font-family: "Arial", sans-serif;
 }
 
 .wnd_calc_capt_sz {
-    padding: 15px;
+    padding: 15px 15px 0;
 }
 
 #wnd_calc_window_preview {
-    padding: 15px 15px 160px;
+    padding: 0 15px 160px;
 }
 
 .wnd_calc_price button {
     float: right;
     /*padding-top: 12px;
     padding-bottom: 12px;*/
-    padding: 10px 35px;
+    padding: 10px 45px;
     margin-top: 3px;
 }
 
 .wnd_calc_total {
-    margin-top: 12px;
+    margin-top: 11px;
     display: inline-block;
 }
