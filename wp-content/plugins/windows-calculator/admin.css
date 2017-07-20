@@ -47,3 +47,7 @@
 .name_wnd_option_short {
     width: 60px;
 }
+
+.wnd_small {
+    font-size: 0.7em;
+}
