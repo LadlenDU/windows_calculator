@@ -15,12 +15,20 @@ class WndCalc
     public function showWindows($key, $info)
     {
         $s = '';
-
         foreach ($info['src_small'] as $key => $link) {
             $s .= '<img class="wnd_calc_prev_window" src="' . esc_html($link) . '" alt="" data-id="' . esc_html($key) . '">';
         }
-
         $this->windowSelect = $s;
+    }
+
+    public function showAccessories($optKey, $info)
+    {
+        $this->commonSelect .= '<div class="wnd_calc_select_option"><div style="margin-top:10px;margin-bottom:5px;font-size:18px;">Комплектующие:</div>';
+        foreach ($info['name'] as $key => $pf) {
+            $id = "wnd_calc_checkbox_{$optKey}_{$key}";
+            $this->commonSelect .= '<input style="margin-left:96px" type="checkbox" id="' . esc_html($id) . '"><label class="wnd_sel_checkbox_label" for="' . esc_html($id) . '">' . esc_html($pf) . '</label><br>';
+        }
+        $this->commonSelect .= '</div>';
     }
 
     public function init()
@@ -52,7 +60,7 @@ class WndCalc
                     $this->showDropdown('Откосы', $key, $info);
                     break;
                 case 'accessories':
-                    //showCheckboxes($key, $info);
+                    $this->showAccessories($key, $info);
                     break;
                 default:
                     break;

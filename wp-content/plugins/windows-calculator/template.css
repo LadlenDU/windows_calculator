@@ -165,3 +165,7 @@
 .wnd_sel_pane_wnd {
     cursor: pointer;
 }
+
+.wnd_sel_checkbox_label {
+    display: inline-block;
+}
