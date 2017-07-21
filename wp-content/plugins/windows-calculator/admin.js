@@ -197,7 +197,8 @@ jQuery(function ($) {
 
         $(".wnd_calc_wnd_options .add_window_subpane").unbind('change');
         $(".wnd_calc_wnd_options .add_window_subpane").change(function () {
-            var subpane = $(this).parents('table').first();
+            //var subpane = $(this).parents('table').first();
+            var subpane = $(this).closest('table');
             var subpaneContainer = subpane.children('tbody');
             var currCount = subpaneContainer.children('tr').length;
             var newCount = parseInt($(this).val()) || 0;
@@ -207,7 +208,8 @@ jQuery(function ($) {
 
             if (newCount > currCount) {
                 // add elements
-                var nameAttr = $(this).parents('table').first().parents('tr').first().prev().find(".name_wnd_option").attr('name');
+                //var nameAttr = $(this).parents('table').first().parents('tr').first().prev().find(".name_wnd_option").attr('name');
+                var nameAttr = subpane.closest('tr').prev().find(".name_wnd_option").attr('name');
                 var matches = nameAttr.match(/^.*\[(.+)\]$/);
                 for (var i = 0; i < newCount - currCount; ++i) {
                     var html = htmlWindowSubPane(matches[1], subpaneId[1]);
