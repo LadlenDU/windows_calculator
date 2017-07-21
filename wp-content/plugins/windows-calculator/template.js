@@ -33,8 +33,55 @@ jQuery(function ($) {
     }
 
     function calculatePrice() {
-        var price = parseFloat($("#wnd_calc_select_profile").val()) || 0;
-        price += parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
+        var price = 0;
+        var elements = [];
+
+        var tmpPrice = 0;
+
+        // окна
+        tmpPrice = $(".wnd_calc_prev_window.wnd_calc_selected").data('price');
+        elements.push({name: $(".wnd_calc_prev_window.wnd_calc_selected").data('name'), price: tmpPrice});
+        price += tmpPrice;
+
+        // панели
+
+
+        // характеристики
+        tmpPrice = parseFloat($("#wnd_calc_select_profile").val()) || 0;
+        elements.push({name: 'Профиль', price: tmpPrice});
+        price += tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
+        elements.push({name: 'Стеклопакет', price: tmpPrice});
+        price += tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_sill").val()) || 0;
+        elements.push({name: 'Подоконник', price: tmpPrice});
+        price += tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_otliv").val()) || 0;
+        elements.push({name: 'Отлив', price: tmpPrice});
+        price += tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_setting").val()) || 0;
+        elements.push({name: 'Установка', price: tmpPrice});
+        price += tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_furniture").val()) || 0;
+        elements.push({name: 'Фурнитура', price: tmpPrice});
+        price += tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_slopes").val()) || 0;
+        elements.push({name: 'Откосы', price: tmpPrice});
+        price += tmpPrice;
+
+        // комплектующие
+        $(".wnd_calc_setting_checkbox").each(function () {
+            tmpPrice = $(this).data('price');
+            elements.push({name: $(this).data('name'), price: tmpPrice});
+            price += tmpPrice;
+        });
+
         $("#wnd_calc_price").text($.number(price, 2, '.', ' '));
     }
 

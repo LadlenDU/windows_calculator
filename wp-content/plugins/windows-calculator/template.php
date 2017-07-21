@@ -16,7 +16,8 @@ class WndCalc
     {
         $s = '';
         foreach ($info['src_small'] as $key => $link) {
-            $s .= '<img class="wnd_calc_prev_window" src="' . esc_html($link) . '" alt="" data-id="' . esc_html($key) . '">';
+            $s .= '<img class="wnd_calc_prev_window" src="' . esc_html($link) . '" alt="" data-id="' . esc_html($key)
+                . '" data-name="' . $info['name'][$key] . '" data-price="' . $info['price'][$key] . '">';
         }
         $this->windowSelect = $s;
     }
@@ -26,9 +27,20 @@ class WndCalc
         $this->commonSelect .= '<div class="wnd_calc_select_option"><div style="margin-top:10px;margin-bottom:5px;font-size:18px;">Комплектующие:</div>';
         foreach ($info['name'] as $key => $pf) {
             $id = "wnd_calc_checkbox_{$optKey}_{$key}";
-            $this->commonSelect .= '<input style="margin-left:96px" type="checkbox" id="' . esc_html($id) . '"><label class="wnd_sel_checkbox_label" for="' . esc_html($id) . '">' . esc_html($pf) . '</label><br>';
+            $this->commonSelect .= '<input class="wnd_calc_setting_checkbox" data-name="' . esc_html($pf) . '" data-price="' . esc_html($info['price'][$key]) . '" style="margin-left:96px" type="checkbox" id="' . esc_html($id) . '"><label class="wnd_sel_checkbox_label" for="' . esc_html($id) . '">' . esc_html($pf) . '</label><br>';
         }
         $this->commonSelect .= '</div>';
+    }
+
+    protected function showDropdown($name, $optKey, $info)
+    {
+        $selId = "wnd_calc_select_$optKey";
+        $this->commonSelect .= '<div class="wnd_calc_select_option"><label class="wnd_calc_so_label" for="' . $selId . '">' . esc_html($name) . '</label>'
+            . '<select class="wnd_calc_select" id="' . $selId . '">';
+        foreach ($info['name'] as $key => $pf) {
+            $this->commonSelect .= '<option value="' . esc_html($info['price'][$key]) . '">' . esc_html($pf) . '</option>';
+        }
+        $this->commonSelect .= '</select></div>';
     }
 
     public function init()
@@ -66,17 +78,6 @@ class WndCalc
                     break;
             }
         }
-    }
-
-    protected function showDropdown($name, $optKey, $info)
-    {
-        $selId = "wnd_calc_select_$optKey";
-        $this->commonSelect .= '<div class="wnd_calc_select_option"><label class="wnd_calc_so_label" for="' . $selId . '">' . esc_html($name) . '</label>'
-            . '<select class="wnd_calc_select" id="' . $selId . '">';
-        foreach ($info['name'] as $key => $pf) {
-            $this->commonSelect .= '<option value="' . esc_html($info['price'][$key]) . '">' . esc_html($pf) . '</option>';
-        }
-        $this->commonSelect .= '</select></div>';
     }
 }
 
