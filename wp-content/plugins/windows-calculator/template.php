@@ -77,8 +77,8 @@ $WndCalc->init();
 
 ?>
 <script>
-    var wndSelVariables =
-    <?php echo json_encode($WndCalc->options) ?>
+    var wndSelVariables = <?php echo json_encode($WndCalc->options) ?>;
+    var wndSelPluginPath = <?php echo json_encode(plugins_url('', __FILE__)) ?>;
 </script>
 
 <div class="wnd_calc_container">
@@ -99,7 +99,10 @@ $WndCalc->init();
             <div class="wnd_calc_window_item"></div>
         </div>
         <div class="wnd_calc_price">
-            <div class="wnd_calc_total">Всего: <div id="wnd_calc_price"></div> руб.</div>
+            <div class="wnd_calc_total">Всего:
+                <div id="wnd_calc_price"></div>
+                руб.
+            </div>
             <button>Заказать</button>
         </div>
     </div>

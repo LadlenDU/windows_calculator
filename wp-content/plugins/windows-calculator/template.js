@@ -33,7 +33,16 @@ jQuery(function ($) {
         var info = wndSelVariables.window.panes.subtypes.src_image[number];
         for (var key in info) {
             if (info[key][0]) {
-                html += '<img src="' + $("<div>").text(info[key][0]).html() + '" alt="">';
+                var lw = wndSelPluginPath + '/img/width-left.png';
+                var rw = wndSelPluginPath + '/img/width-right.png';
+                html += '<div style="position: relative; display: inline-block; line-height: 0">'
+                    + '<img src="' + $("<div>").text(info[key][0]).html() + '" alt="">'
+                    + '<div style="height:50px;width:100%;position:relative;">'
+                    + '<img style="position:absolute;left:0;top:0" src="' + lw + '" alt="">'
+                    + '<img style="position:absolute;right:0;top:0" src="' + rw + '" alt="">'
+                        + '<div style="width:100%;height:1px;background-color:#d7d7d7;position:absolute;left:0;top:34px;"></div>'
+                    + '</div>'
+                    + '</div>';
             }
         }
 
