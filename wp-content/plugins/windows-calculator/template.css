@@ -161,3 +161,7 @@
 .wnd_calc_container_tr {
     display: table-row;
 }
+
+.wnd_sel_pane_wnd {
+    cursor: pointer;
+}
