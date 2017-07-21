@@ -10,6 +10,7 @@ function wnd_calc_scripts()
 {
     wp_enqueue_style('wnd_calc_style', plugins_url('', __FILE__) . '/template.css');
     wp_enqueue_script('wnd_calc_script', plugins_url('', __FILE__) . '/template.js', ['jquery']);
+    wp_enqueue_script('number_format_script', plugins_url('', __FILE__) . '/jquery.number.min.js', ['jquery']);
 }
 
 add_action('admin_menu', 'plugin_admin_add_wnd_calc_page');

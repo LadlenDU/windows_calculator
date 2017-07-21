@@ -80,6 +80,8 @@
 .wnd_calc_prev_window {
     margin-right: 15px;
     vertical-align: top;
+    cursor: pointer;
+    border: 3px solid transparent;
 }
 
 .wnd_calc_capt {
@@ -136,4 +138,12 @@
 .wnd_calc_total {
     margin-top: 11px;
     display: inline-block;
+}
+
+.wnd_calc_window_item {
+    margin-top: 15px;
+}
+
+.wnd_calc_selected {
+    border: 3px solid #FF4500;
 }
