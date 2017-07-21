@@ -82,28 +82,30 @@ $WndCalc->init();
 </script>
 
 <div class="wnd_calc_container">
-    <div class="wnd_calc_select_wrapper">
-        <div class="wnd_calc_window_type">
-            <div class="wnd_calc_capt">Тип изделия</div>
-            <div class="wnd_calc_window_type_select"><?php echo $WndCalc->windowSelect ?></div>
-        </div>
-        <div class="wnd_calc_characteristics">
-            <div class="wnd_calc_capt">Характеристики</div>
-            <div class="wnd_calc_characteristic"><?php echo $WndCalc->commonSelect ?></div>
-        </div>
-    </div>
-    <div class="wnd_calc_result">
-        <div class="wnd_calc_capt wnd_calc_capt_sz">Размеры</div>
-        <div id="wnd_calc_window_preview">
-            Чтобы поменять тип открывания кликните на створку
-            <div class="wnd_calc_window_item"></div>
-        </div>
-        <div class="wnd_calc_price">
-            <div class="wnd_calc_total">Всего:
-                <div id="wnd_calc_price"></div>
-                руб.
+    <div class="wnd_calc_container_tr">
+        <div class="wnd_calc_select_wrapper">
+            <div class="wnd_calc_window_type">
+                <div class="wnd_calc_capt">Тип изделия</div>
+                <div class="wnd_calc_window_type_select"><?php echo $WndCalc->windowSelect ?></div>
             </div>
-            <button>Заказать</button>
+            <div class="wnd_calc_characteristics">
+                <div class="wnd_calc_capt">Характеристики</div>
+                <div class="wnd_calc_characteristic"><?php echo $WndCalc->commonSelect ?></div>
+            </div>
+        </div>
+        <div class="wnd_calc_result">
+            <div class="wnd_calc_capt wnd_calc_capt_sz">Размеры</div>
+            <div id="wnd_calc_window_preview">
+                Чтобы поменять тип открывания кликните на створку
+                <div class="wnd_calc_window_item"></div>
+            </div>
+            <div class="wnd_calc_price">
+                <div class="wnd_calc_total">Всего:
+                    <div id="wnd_calc_price"></div>
+                    руб.
+                </div>
+                <button>Заказать</button>
+            </div>
         </div>
     </div>
 </div>
