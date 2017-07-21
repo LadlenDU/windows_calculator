@@ -2,11 +2,15 @@ jQuery(function ($) {
 
     function htmlWindowSubPane(key, index) {
         var newRow = '<tr>'
-            + '<td colspan="3" style="text-align:right">'
-            + 'Цена м^2: <input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][panes][subtypes][price][' + key + '][' + index + '][]">'
+            + '<td colspan="2" style="text-align:right">'
+            + 'Имя: <input type="text" value="" name="plugin_options_wnd_calc[window][panes][subtypes][name][' + key + '][' + index + '][]">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td colspan="2" style="text-align:right">'
+            + 'Цена м^2: <input type="text" value="0" name="plugin_options_wnd_calc[window][panes][subtypes][price][' + key + '][' + index + '][]">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
+            + '</td>'
+            + '<td style="text-align:right">'
             + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][id_image][' + key + '][' + index + '][]">'
             + '<input type="hidden" value="" name="plugin_options_wnd_calc[window][panes][subtypes][src_image][' + key + '][' + index + '][]">'
             + '<img alt="" src="" class="mod_wnd_option_class_preview_image big" title="Нажмите чтобы увеличить">'

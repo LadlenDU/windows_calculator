@@ -226,12 +226,17 @@ function plugin_wnd_calc_window_func()
                     foreach ($subtypes as $keySubtype => $sbtype) {
                         $src = $options['window']['panes']['subtypes']['src_image'][$key][$keyPane][$keySubtype];
                         $price = $options['window']['panes']['subtypes']['price'][$key][$keyPane][$keySubtype];
+                        $name = $options['window']['panes']['subtypes']['name'][$key][$keyPane][$keySubtype];
                         $s .= '<tr>'
-                            . '<td colspan="3" style="text-align:right">'
-                            . 'Цена м^2: <input class="name_wnd_option_short" type="text" value="' . esc_html($price) . '" name="plugin_options_wnd_calc[window][panes][subtypes][price][' . $key . '][' . $keyPane . '][]" readonly="readonly">'
+                            . '<td colspan="2" style="text-align:right">'
+                            . 'Имя: <input type="text" value="' . esc_html($name) . '" name="plugin_options_wnd_calc[window][panes][subtypes][name][' . $key . '][' . $keyPane . '][]" readonly="readonly">'
                             . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                             . '</td>'
                             . '<td colspan="2" style="text-align:right">'
+                            . 'Цена м^2: <input type="text" value="' . esc_html($price) . '" name="plugin_options_wnd_calc[window][panes][subtypes][price][' . $key . '][' . $keyPane . '][]" readonly="readonly">'
+                            . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                            . '</td>'
+                            . '<td style="text-align:right">'
                             . '<input type="hidden" value="' . esc_html($sbtype) . '" name="plugin_options_wnd_calc[window][panes][subtypes][id_image][' . $key . '][' . $keyPane . '][]">'
                             . '<input type="hidden" value="' . esc_html($src) . '" name="plugin_options_wnd_calc[window][panes][subtypes][src_image][' . $key . '][' . $keyPane . '][]">'
                             . '<img alt="" src="' . esc_html($src) . '" class="mod_wnd_option_class_preview_image big" title="Нажмите чтобы увеличить">'
