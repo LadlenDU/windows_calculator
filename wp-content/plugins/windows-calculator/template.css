@@ -15,6 +15,7 @@
     position: relative;
     min-width: 620px;
     display: table;
+    background-color: #EEE;
 }
 
 .wnd_calc_select_wrapper,
@@ -149,6 +150,8 @@
 
 .wnd_calc_window_item {
     margin-top: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .wnd_calc_selected {
