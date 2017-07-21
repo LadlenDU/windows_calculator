@@ -50,8 +50,13 @@ jQuery(function ($) {
         price += tmpPrice;
 
         // высота
-        var heightElement = $(this).closest(".wnd_calc_window_item").find(".wnd_sel_wnd_height");
+        var heightElement = $(".wnd_calc_window_item").find(".wnd_sel_wnd_height");
         var heHeight = parseFloat(heightElement.val()) || 0;
+        if (!heHeight) {
+            // скорее всего высота не подгрузилась
+            return;
+        }
+        console.log('height: ' + heHeight);
         var heHeightMin = parseFloat(heightElement.data('height-min')) || 0;
         var heHeightMax = parseFloat(heightElement.data('height-max')) || 0;
         if (heHeight < heHeightMin) {
@@ -67,7 +72,7 @@ jQuery(function ($) {
         // ширина
         panel.each(function () {
             var widthElement = $(this).parent().find('input');
-            widthElement.val(trim(widthElement.val()));
+            widthElement.val($.trim(widthElement.val()));
             var weWidth = parseFloat(widthElement.val()) || 0;
             var weWidthMin = parseFloat(widthElement.data('width-min')) || 0;
             var weWidthMax = parseFloat(widthElement.data('width-max')) || 0;
@@ -184,6 +189,7 @@ jQuery(function ($) {
 
                 $(".wnd_calc_window_item").append(html);
                 //setSubpaneSelectEvents();
+                calculatePrice();
             });
         }
     }
