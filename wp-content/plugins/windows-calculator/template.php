@@ -113,8 +113,36 @@ $WndCalc->init();
                     <div id="wnd_calc_price"></div>
                     руб.
                 </div>
-                <button>Заказать</button>
+                <button class="wnd_calc_order">Заказать</button>
             </div>
         </div>
     </div>
 </div>
+
+<!--<div id="contact_popup">-->
+<!--<div style="position:fixed;top:0;left:0;width:100%;height:0;">-->
+    <div id="wnd_calc_order_popup">
+        <span class="b-close"><span>X</span></span>
+
+        <form id="wnd_calc_order_form">
+            Заказать
+            <div class="form-group">
+                <label for="order_name">Имя <span class="required">*</span></label>
+                <input type="text" class="form-control" id="order_name" name="name" placeholder="Имя">
+                <small class="help-block" style="display:none">Это поле необходимо заполнить</small>
+            </div>
+            <div class="form-group">
+                <label for="order_email">E-mail <span class="required">*</span></label>
+                <input type="email" class="form-control" id="order_email" name="email" placeholder="E-mail">
+                <small class="help-block" style="display:none"></small>
+            </div>
+            <div class="form-group">
+                <label for="order_info">Окно</label>
+                <textarea class="form-control" id="order_info" rows="5" readonly="readonly"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="order_send" name="order_send" value="order_send">
+                Отправить
+            </button>
+        </form>
+    </div>
+<!--</div>-->

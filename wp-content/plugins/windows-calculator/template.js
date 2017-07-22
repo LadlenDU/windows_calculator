@@ -14,8 +14,25 @@ jQuery(function ($) {
         calculatePrice();
     });
 
+    $(".wnd_calc_setting_checkbox").change(function () {
+        calculatePrice();
+    });
+
+    $(".wnd_calc_order").click(function (e) {
+        e.preventDefault();
+        $('#wnd_calc_order_popup').bPopup({
+            easing: 'easeOutBack',
+            speed: 450,
+            transition: 'slideDown'
+        });
+        return false;
+    });
 
     function setSubpaneSelectEvents() {
+        $(".wnd_calc_size_wh").unbind('change');
+        $(".wnd_calc_size_wh").change(function () {
+            calculatePrice();
+        });
         $(".wnd_sel_pane_wnd").unbind('click');
         $(".wnd_sel_pane_wnd").click(function () {
             var wndNum = $(this).data('wnd-id'),
@@ -29,6 +46,7 @@ jQuery(function ($) {
             var html = generatePane(wndNum, paneNum, index);
             $(this).parent().replaceWith(html);
             setSubpaneSelectEvents();
+            calculatePrice();
         });
     }
 
@@ -56,7 +74,6 @@ jQuery(function ($) {
             // скорее всего высота не подгрузилась
             return;
         }
-        console.log('height: ' + heHeight);
         var heHeightMin = parseFloat(heightElement.data('height-min')) || 0;
         var heHeightMax = parseFloat(heightElement.data('height-max')) || 0;
         if (heHeight < heHeightMin) {
@@ -124,7 +141,11 @@ jQuery(function ($) {
 
         // комплектующие
         $(".wnd_calc_setting_checkbox").each(function () {
-            tmpPrice = $(this).data('price');
+            if ($(this).prop('checked')) {
+                tmpPrice = $(this).data('price');
+            } else {
+                tmpPrice = 0;
+            }
             elements.push({name: $(this).data('name'), price: tmpPrice});
             price += tmpPrice;
         });
@@ -146,7 +167,7 @@ jQuery(function ($) {
             + '<img style="position:absolute;left:0;top:0" src="' + lw + '" alt="">'
             + '<img style="position:absolute;right:0;top:0" src="' + rw + '" alt="">'
             + '<div style="width:100%;height:1px;background-color:#d7d7d7;position:absolute;left:0;top:34px;"></div>'
-            + '<input type="text" value="' + wndSelVariables.window.panes['width'][wndNum][paneNum] + '" '
+            + '<input class="wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.panes['width'][wndNum][paneNum] + '" '
             + 'style="width:60px;height:23px;position:absolute;left:50%;top:22px;transform:translate(-50%, 0);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
             + 'data-width-min="' + wndSelVariables.window.panes['width-min'][wndNum][paneNum] + '" data-width-max="' + wndSelVariables.window.panes['width-max'][wndNum][paneNum] + '">'
             + '</div>'
@@ -182,13 +203,13 @@ jQuery(function ($) {
                     + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
                     + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
                     + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
-                    + '<input class="wnd_sel_wnd_height" type="text" value="' + wndSelVariables.window.height[number] + '" '
+                    + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
                     + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
                     + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
                     + '</div>';
 
                 $(".wnd_calc_window_item").append(html);
-                //setSubpaneSelectEvents();
+                setSubpaneSelectEvents();
                 calculatePrice();
             });
         }
