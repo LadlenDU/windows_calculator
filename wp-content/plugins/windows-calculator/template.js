@@ -28,6 +28,18 @@ jQuery(function ($) {
         return false;
     });
 
+    $("#wnd_calc_order_form").submit(function (e) {
+        e.preventDefault();
+
+        $.post(wndSelPluginPath + '/ajax.php', $(this).serialize(), function (res1, res2, res3) {
+            console.log("res1:" + res1 + "res2:" + res2 + "res3:" + res3);
+        }).error(function () {
+            alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
+        });
+
+        return false;
+    });
+
     function setSubpaneSelectEvents() {
         $(".wnd_calc_size_wh").unbind('change');
         $(".wnd_calc_size_wh").change(function () {
