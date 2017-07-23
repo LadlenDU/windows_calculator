@@ -25,18 +25,18 @@ jQuery(function ($) {
         var priceInfo = calculatePrice();
         var textPriceInfo = "Окно:\n";
 
-        textPriceInfo += "    " + priceInfo.elements.window_type[0].name + ": " + formPrice(priceInfo.elements.window_type[0].price) + "\n\n"
+        textPriceInfo += "    " + priceInfo.elements.window_type[0].name + " - " + formPrice(priceInfo.elements.window_type[0].price) + "\n\n"
             + "Панели:\n";
 
         var pane = priceInfo.elements.window_panes;
         for (var key in pane) {
             textPriceInfo += "    " + pane[key].name;
             if (pane[key].price) {
-                textPriceInfo += ": " + formPrice(pane[key].price);
+                textPriceInfo += " - " + formPrice(pane[key].price);
             }
             textPriceInfo += "\n";
 
-            textPriceInfo += "        Размер: " + pane[key].width + "x" + pane[key].height + " м\n";
+            textPriceInfo += "        Размер: " + pane[key].width + "x" + pane[key].height + " мм\n";
             textPriceInfo += "        Цена по площади: " + formPrice(pane[key].price_square) + "\n";
         }
 
@@ -45,7 +45,7 @@ jQuery(function ($) {
         var characteristics = priceInfo.elements.characteristics;
         for (var key in characteristics) {
             if (characteristics[key].price) {
-                textPriceInfo += "    " + characteristics[key].name + ": " + formPrice(characteristics[key].price) + "\n";
+                textPriceInfo += "    " + characteristics[key].name + ": " + characteristics[key].item_name + " - " + formPrice(characteristics[key].price) + "\n";
             }
         }
 
@@ -55,14 +55,14 @@ jQuery(function ($) {
             textPriceInfo += "Комплектующие:\n";
             var accessories = priceInfo.elements.accessories;
             for (var key in accessories) {
-                if (accessories.price) {
-                    textPriceInfo += "    " + accessories[key].name + ": " + formPrice(accessories[key].price) + "\n";
+                if (accessories[key].price) {
+                    textPriceInfo += "    " + accessories[key].name + " - " + formPrice(accessories[key].price) + "\n";
                 }
             }
             textPriceInfo += "\n";
         }
 
-        textPriceInfo += "\nИтого: " + formPrice(priceInfo.price);
+        textPriceInfo += "--\nИтого: " + formPrice(priceInfo.price);
         windowEl.text(textPriceInfo);
 
         $('#wnd_calc_order_popup').bPopup({
@@ -236,27 +236,27 @@ jQuery(function ($) {
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
-        elements.characteristics.push({name: 'Стеклопакет', price: tmpPrice, item_name: $("#wnd_calc_select_profile option:selected").text()});
+        elements.characteristics.push({name: 'Стеклопакет', price: tmpPrice, item_name: $("#wnd_calc_select_dglazed option:selected").text()});
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_sill").val()) || 0;
-        elements.characteristics.push({name: 'Подоконник', price: tmpPrice, item_name: $("#wnd_calc_select_profile option:selected").text()});
+        elements.characteristics.push({name: 'Подоконник', price: tmpPrice, item_name: $("#wnd_calc_select_sill option:selected").text()});
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_otliv").val()) || 0;
-        elements.characteristics.push({name: 'Отлив', price: tmpPrice, item_name: $("#wnd_calc_select_profile option:selected").text()});
+        elements.characteristics.push({name: 'Отлив', price: tmpPrice, item_name: $("#wnd_calc_select_otliv option:selected").text()});
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_setting").val()) || 0;
-        elements.characteristics.push({name: 'Установка', price: tmpPrice, item_name: $("#wnd_calc_select_profile option:selected").text()});
+        elements.characteristics.push({name: 'Установка', price: tmpPrice, item_name: $("#wnd_calc_select_setting option:selected").text()});
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_furniture").val()) || 0;
-        elements.characteristics.push({name: 'Фурнитура', price: tmpPrice, item_name: $("#wnd_calc_select_profile option:selected").text()});
+        elements.characteristics.push({name: 'Фурнитура', price: tmpPrice, item_name: $("#wnd_calc_select_furniture option:selected").text()});
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_slopes").val()) || 0;
-        elements.characteristics.push({name: 'Откосы', price: tmpPrice, item_name: $("#wnd_calc_select_profile option:selected").text()});
+        elements.characteristics.push({name: 'Откосы', price: tmpPrice, item_name: $("#wnd_calc_select_slopes option:selected").text()});
         price += tmpPrice;
 
         // комплектующие
