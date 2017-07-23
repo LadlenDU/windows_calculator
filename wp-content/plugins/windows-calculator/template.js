@@ -163,7 +163,7 @@ jQuery(function ($) {
         var tmpPrice = 0;
 
         // окна
-        tmpPrice = $(".wnd_calc_prev_window.wnd_calc_selected").data('price');
+        tmpPrice = parseFloat($(".wnd_calc_prev_window.wnd_calc_selected").data('price')) || 0;
         elements.window_type.push({name: $(".wnd_calc_prev_window.wnd_calc_selected").data('name'), price: tmpPrice});
         price += tmpPrice;
 
@@ -193,7 +193,7 @@ jQuery(function ($) {
             var panel = $(this);
 
             // цена
-            tmpPrice = panel.data('pane-price');
+            tmpPrice = parseFloat(panel.data('pane-price')) || 0;
             //elements.window_panes.push({name: 'Оконная панель ' + (index + 1), price: tmpPrice});
             //var paneInfo = {name: 'Оконная панель ' + (index + 1), price: tmpPrice, height: heHeight};
             var paneInfo = {price: tmpPrice, height: heHeight};
@@ -218,7 +218,7 @@ jQuery(function ($) {
 
             paneInfo.width = weWidth;
 
-            var squarePrice = $(this).data('subpane-price');
+            var squarePrice = parseFloat($(this).data('subpane-price')) || 0;
             var square = (heHeight / 1000) * (weWidth / 1000);
             tmpPrice = squarePrice * square;
             //elements.push({name: $(this).data('subpane-name'), price: tmpPrice});
@@ -262,7 +262,7 @@ jQuery(function ($) {
         // комплектующие
         $(".wnd_calc_setting_checkbox").each(function () {
             if ($(this).prop('checked')) {
-                tmpPrice = $(this).data('price');
+                tmpPrice = parseFloat($(this).data('price')) || 0;
             } else {
                 tmpPrice = 0;
             }
