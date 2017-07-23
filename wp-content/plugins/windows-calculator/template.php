@@ -143,7 +143,7 @@ $WndCalc->init();
         </div>
         <br>
         <div class="form-group">
-            <label for="order_info">Окно</label>
+            <label for="order_info">Параметры заказа</label>
             <textarea class="form-control" id="order_info" name="window" rows="5" readonly="readonly"></textarea>
         </div>
         <br>

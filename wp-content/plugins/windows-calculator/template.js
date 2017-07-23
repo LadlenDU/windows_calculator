@@ -20,6 +20,17 @@ jQuery(function ($) {
 
     $(".wnd_calc_order").click(function (e) {
         e.preventDefault();
+
+        var windowEl = $("#wnd_calc_order_form [name=window]");
+        var priceInfo = calculatePrice();
+        var textPriceInfo = '';
+        for (var key in priceInfo.elements) {
+            var priceInfoText = priceInfo.elements;
+            textPriceInfo += priceInfo.elements[key].name + ": " + $.number(priceInfo.elements[key].price, 2, '.', ' ') + " руб.\n";
+        }
+        textPriceInfo += "\nИтого: " + $.number(priceInfo.price, 2, '.', ' ') + " руб.";
+        windowEl.text(textPriceInfo);
+
         $('#wnd_calc_order_popup').bPopup({
             easing: 'easeOutBack',
             speed: 450,
@@ -35,7 +46,6 @@ jQuery(function ($) {
 
         var nameEl = $("#wnd_calc_order_form [name=name]");
         var emailEl = $("#wnd_calc_order_form [name=email]");
-
 
         var name = nameEl.val($.trim(nameEl.val())).val();
         var email = emailEl.val($.trim(emailEl.val())).val();
@@ -203,6 +213,8 @@ jQuery(function ($) {
         });
 
         $("#wnd_calc_price").text($.number(price, 2, '.', ' '));
+
+        return {price:price, elements:elements};
     }
 
     function generatePane(wndNum, paneNum, subpaneNum) {
