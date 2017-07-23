@@ -31,11 +31,51 @@ jQuery(function ($) {
     $("#wnd_calc_order_form").submit(function (e) {
         e.preventDefault();
 
-        $.post(wndSelPluginPath + '/ajax.php', $(this).serialize(), function (res1, res2, res3) {
-            console.log("res1:" + res1 + "res2:" + res2 + "res3:" + res3);
-        }).error(function () {
-            alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
-        });
+        var ok = true;
+
+        var nameEl = $("#wnd_calc_order_form [name=name]");
+        var emailEl = $("#wnd_calc_order_form [name=email]");
+
+
+        var name = nameEl.val($.trim(nameEl.val())).val();
+        var email = emailEl.val($.trim(emailEl.val())).val();
+
+        $("#wnd_calc_order_form .help-block").hide();
+
+        if (!name) {
+            $("#wnd_calc_order_form .help-block.no_name").show();
+            ok = false;
+        }
+        if (!email) {
+            $("#wnd_calc_order_form .help-block.email").text('Это поле необходимо заполнить');
+            $("#wnd_calc_order_form .help-block.email").show();
+            ok = false;
+        } else {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(email)) {
+                $("#wnd_calc_order_form .help-block.email").text('Неправильный формат адреса');
+                $("#wnd_calc_order_form .help-block.email").show();
+                ok = false;
+            }
+        }
+
+        if (ok) {
+            $.post(wndSelPluginPath + '/ajax.php', $(this).serialize(), function (res) {
+                if (res.status == 'success') {
+                    $("#wnd_calc_order_popup").bPopup().close();
+                    alert('Заказ успешно создан');
+                    $("#wnd_calc_order_form").get(0).reset();
+                } else if (res.status == 'error') {
+                    alert(res.msg);
+                } else if (res.status == 'captcha_error') {
+                    $("#wnd_calc_order_form .help-block.captcha").show();
+                }
+                cptch_reload($('#wnd_calc_order_form .cptch_reload_button'));
+            }).error(function () {
+                alert('Произошла ошибка. Пожалуйста, повторите попытку позже.');
+                cptch_reload($('#wnd_calc_order_form .cptch_reload_button'));
+            });
+        }
 
         return false;
     });

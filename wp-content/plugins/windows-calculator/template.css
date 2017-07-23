@@ -39,7 +39,7 @@
 
 .wnd_calc_select_wrapper select,
 .wnd_calc_select_wrapper select option {
-    font-family: "GOST_A_italic", sans-serif;
+    font-family: "GOST_A_italic", sans-serif !important;
 }
 
 .wnd_calc_select_wrapper {
@@ -168,4 +168,17 @@
 
 .wnd_sel_checkbox_label {
     display: inline-block;
+}
+
+#wnd_calc_order_form h2 {
+    padding: 0;
+    margin: 0;
+}
+
+#wnd_calc_order_form .cptch_block {
+    margin-bottom: 0 !important;
+}
+
+#wnd_calc_order_form label {
+    font-weight: normal;
 }

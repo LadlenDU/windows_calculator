@@ -1,5 +1,7 @@
 <?php
 
+//TODO: nonce
+
 class WndCalc
 {
     public $windowSelect = '';
@@ -125,23 +127,29 @@ $WndCalc->init();
     <span class="b-close"><span>X</span></span>
 
     <form id="wnd_calc_order_form" method="post">
-        Заказать
         <input type="hidden" name="action" value="make_order">
+        <h2>Заказать</h2>
+        <br>
         <div class="form-group">
             <label for="order_name">Имя <span class="required">*</span></label>
             <input type="text" class="form-control" id="order_name" name="name" placeholder="Имя">
-            <small class="help-block" style="display:none">Это поле необходимо заполнить</small>
+            <small class="help-block no_name" style="display:none">Это поле необходимо заполнить</small>
         </div>
+        <br>
         <div class="form-group">
             <label for="order_email">E-mail <span class="required">*</span></label>
             <input type="email" class="form-control" id="order_email" name="email" placeholder="E-mail">
-            <small class="help-block" style="display:none"></small>
+            <small class="help-block email" style="display:none"></small>
         </div>
+        <br>
         <div class="form-group">
             <label for="order_info">Окно</label>
-            <textarea class="form-control" id="order_info" rows="5" readonly="readonly"></textarea>
+            <textarea class="form-control" id="order_info" name="window" rows="5" readonly="readonly"></textarea>
         </div>
-        <?php echo apply_filters('cptch_display', ''); ?>
+        <br>
+        <span class="wnd_calc_captcha"><?php echo apply_filters('cptch_display', ''); ?></span>
+        <small class="help-block captcha" style="display:none">Неправильное значение<br></small>
+        <br>
         <button type="submit" class="btn btn-primary" id="order_send" name="order_send" value="order_send">
             Отправить
         </button>

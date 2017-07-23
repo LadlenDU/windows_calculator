@@ -4,7 +4,7 @@
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0 0 25px 5px #999;
     color: #111;
-    max-width: 450px;
+    max-width: 550px;
     width: 100%;
     padding: 25px;
 }
@@ -50,3 +50,17 @@
     padding: 0.5em;
 }
 
+/* Help blocks */
+
+#wnd_calc_order_popup .help-block {
+    font-size: smaller;
+    color: red;
+}
+
+#wnd_calc_order_popup .required {
+    color: red;
+}
+
+#wnd_calc_order_popup .form-group {
+    font-weight: normal;
+}

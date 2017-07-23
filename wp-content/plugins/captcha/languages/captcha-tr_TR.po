@@ -1,0 +1,1554 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: captcha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-23 09:30+0300\n"
+"PO-Revision-Date: 2017-06-23 09:30+0300\n"
+"Last-Translator: BestWebSoft team <wp@bestwebsoft.com>\n"
+"Language-Team: Can Atasever <webmaster@canatasever.com>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: captcha.php:34 captcha.php:36 captcha.php:445
+#: includes/class-cptch-settings-tabs.php:358
+msgid "Captcha Settings"
+msgstr "Captcha Ayarları"
+
+#: captcha.php:36 captcha.php:1675 captcha.php:1688
+#: includes/class-cptch-settings-tabs.php:25
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: captcha.php:38 includes/class-cptch-package-list.php:91
+msgid "Captcha Packages"
+msgstr ""
+
+#: captcha.php:38
+msgid "Packages"
+msgstr ""
+
+#: captcha.php:40 includes/class-cptch-whitelist.php:89
+msgid "Captcha Whitelist"
+msgstr ""
+
+#: captcha.php:40 includes/class-cptch-settings-tabs.php:317
+msgid "Whitelist"
+msgstr ""
+
+#: captcha.php:47 includes/class-cptch-package-list.php:118
+#: includes/pro_banners.php:26
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: captcha.php:528 captcha.php:534 captcha.php:550 captcha.php:552
+#: captcha.php:561 captcha.php:615 captcha.php:619 captcha.php:628
+#: captcha.php:651 captcha.php:661 captcha.php:686 captcha.php:689
+#: captcha.php:697
+msgid "ERROR"
+msgstr "HATA"
+
+#: captcha.php:753 captcha.php:759
+msgid "Error"
+msgstr ""
+
+#: captcha.php:753 captcha.php:759
+#, fuzzy
+msgid "Click the BACK button on your browser, and try again."
+msgstr ""
+"HATA: Yanlış CAPTCHA değeri girdiniz. Tarayıcınızın GERİ butonuna basın ve "
+"tekrar deneyin."
+
+#: captcha.php:979
+msgid "In order to pass the CAPTCHA please enable JavaScript"
+msgstr ""
+
+#: captcha.php:1354
+msgid "zero"
+msgstr "sıfır"
+
+#: captcha.php:1355
+msgid "one"
+msgstr "bir"
+
+#: captcha.php:1356
+msgid "two"
+msgstr "iki"
+
+#: captcha.php:1357
+msgid "three"
+msgstr "üç"
+
+#: captcha.php:1358
+msgid "four"
+msgstr "dört"
+
+#: captcha.php:1359
+msgid "five"
+msgstr "beş"
+
+#: captcha.php:1360
+msgid "six"
+msgstr "altı"
+
+#: captcha.php:1361
+msgid "seven"
+msgstr "yedi"
+
+#: captcha.php:1362
+msgid "eight"
+msgstr "sekiz"
+
+#: captcha.php:1363
+msgid "nine"
+msgstr "dokuz"
+
+#: captcha.php:1365
+msgid "ten"
+msgstr "on"
+
+#: captcha.php:1366
+msgid "eleven"
+msgstr "onbir"
+
+#: captcha.php:1367
+msgid "twelve"
+msgstr "oniki"
+
+#: captcha.php:1368
+msgid "thirteen"
+msgstr "onüç"
+
+#: captcha.php:1369
+msgid "fourteen"
+msgstr "ondört"
+
+#: captcha.php:1370
+msgid "fifteen"
+msgstr "onbeş"
+
+#: captcha.php:1371
+msgid "sixteen"
+msgstr "onaltı"
+
+#: captcha.php:1372
+msgid "seventeen"
+msgstr "onyedi"
+
+#: captcha.php:1373
+msgid "eighteen"
+msgstr "onsekiz"
+
+#: captcha.php:1374
+msgid "nineteen"
+msgstr "ondokuz"
+
+#: captcha.php:1376
+msgid "twenty"
+msgstr "yirmi"
+
+#: captcha.php:1377
+#, fuzzy
+msgid "twenty one"
+msgstr "yirmi"
+
+#: captcha.php:1378
+#, fuzzy
+msgid "twenty two"
+msgstr "yirmi"
+
+#: captcha.php:1379
+#, fuzzy
+msgid "twenty three"
+msgstr "yirmi"
+
+#: captcha.php:1380
+#, fuzzy
+msgid "twenty four"
+msgstr "yirmi"
+
+#: captcha.php:1381
+#, fuzzy
+msgid "twenty five"
+msgstr "yirmi"
+
+#: captcha.php:1382
+#, fuzzy
+msgid "twenty six"
+msgstr "yirmi"
+
+#: captcha.php:1383
+#, fuzzy
+msgid "twenty seven"
+msgstr "yirmi"
+
+#: captcha.php:1384
+#, fuzzy
+msgid "twenty eight"
+msgstr "yirmi"
+
+#: captcha.php:1385
+#, fuzzy
+msgid "twenty nine"
+msgstr "yirmi"
+
+#: captcha.php:1387
+msgid "thirty"
+msgstr "otuz"
+
+#: captcha.php:1388
+#, fuzzy
+msgid "thirty one"
+msgstr "otuz"
+
+#: captcha.php:1389
+#, fuzzy
+msgid "thirty two"
+msgstr "otuz"
+
+#: captcha.php:1390
+#, fuzzy
+msgid "thirty three"
+msgstr "onüç"
+
+#: captcha.php:1391
+#, fuzzy
+msgid "thirty four"
+msgstr "otuz"
+
+#: captcha.php:1392
+#, fuzzy
+msgid "thirty five"
+msgstr "otuz"
+
+#: captcha.php:1393
+#, fuzzy
+msgid "thirty six"
+msgstr "otuz"
+
+#: captcha.php:1394
+#, fuzzy
+msgid "thirty seven"
+msgstr "onüç"
+
+#: captcha.php:1395
+#, fuzzy
+msgid "thirty eight"
+msgstr "otuz"
+
+#: captcha.php:1396
+#, fuzzy
+msgid "thirty nine"
+msgstr "otuz"
+
+#: captcha.php:1398
+msgid "forty"
+msgstr "kırk"
+
+#: captcha.php:1399
+#, fuzzy
+msgid "forty one"
+msgstr "kırk"
+
+#: captcha.php:1400
+#, fuzzy
+msgid "forty two"
+msgstr "kırk"
+
+#: captcha.php:1401
+#, fuzzy
+msgid "forty three"
+msgstr "üç"
+
+#: captcha.php:1402
+#, fuzzy
+msgid "forty four"
+msgstr "kırk"
+
+#: captcha.php:1403
+#, fuzzy
+msgid "forty five"
+msgstr "kırk"
+
+#: captcha.php:1404
+#, fuzzy
+msgid "forty six"
+msgstr "kırk"
+
+#: captcha.php:1405
+#, fuzzy
+msgid "forty seven"
+msgstr "yedi"
+
+#: captcha.php:1406
+#, fuzzy
+msgid "forty eight"
+msgstr "sekiz"
+
+#: captcha.php:1407
+#, fuzzy
+msgid "forty nine"
+msgstr "kırk"
+
+#: captcha.php:1409
+msgid "fifty"
+msgstr "elli"
+
+#: captcha.php:1410
+#, fuzzy
+msgid "fifty one"
+msgstr "elli"
+
+#: captcha.php:1411
+#, fuzzy
+msgid "fifty two"
+msgstr "elli"
+
+#: captcha.php:1412
+#, fuzzy
+msgid "fifty three"
+msgstr "onbeş"
+
+#: captcha.php:1413
+#, fuzzy
+msgid "fifty four"
+msgstr "elli"
+
+#: captcha.php:1414
+#, fuzzy
+msgid "fifty five"
+msgstr "elli"
+
+#: captcha.php:1415
+#, fuzzy
+msgid "fifty six"
+msgstr "elli"
+
+#: captcha.php:1416
+#, fuzzy
+msgid "fifty seven"
+msgstr "onbeş"
+
+#: captcha.php:1417
+#, fuzzy
+msgid "fifty eight"
+msgstr "sekiz"
+
+#: captcha.php:1418
+#, fuzzy
+msgid "fifty nine"
+msgstr "elli"
+
+#: captcha.php:1420
+msgid "sixty"
+msgstr "altmış"
+
+#: captcha.php:1421
+#, fuzzy
+msgid "sixty one"
+msgstr "altmış"
+
+#: captcha.php:1422
+#, fuzzy
+msgid "sixty two"
+msgstr "altmış"
+
+#: captcha.php:1423
+#, fuzzy
+msgid "sixty three"
+msgstr "onaltı"
+
+#: captcha.php:1424
+#, fuzzy
+msgid "sixty four"
+msgstr "altmış"
+
+#: captcha.php:1425
+#, fuzzy
+msgid "sixty five"
+msgstr "altmış"
+
+#: captcha.php:1426
+#, fuzzy
+msgid "sixty six"
+msgstr "altmış"
+
+#: captcha.php:1427
+#, fuzzy
+msgid "sixty seven"
+msgstr "onaltı"
+
+#: captcha.php:1428
+#, fuzzy
+msgid "sixty eight"
+msgstr "sekiz"
+
+#: captcha.php:1429
+#, fuzzy
+msgid "sixty nine"
+msgstr "altmış"
+
+#: captcha.php:1431
+msgid "seventy"
+msgstr "yetmiş"
+
+#: captcha.php:1432
+#, fuzzy
+msgid "seventy one"
+msgstr "yetmiş"
+
+#: captcha.php:1433
+#, fuzzy
+msgid "seventy two"
+msgstr "yetmiş"
+
+#: captcha.php:1434
+#, fuzzy
+msgid "seventy three"
+msgstr "onyedi"
+
+#: captcha.php:1435
+#, fuzzy
+msgid "seventy four"
+msgstr "yetmiş"
+
+#: captcha.php:1436
+#, fuzzy
+msgid "seventy five"
+msgstr "yetmiş"
+
+#: captcha.php:1437
+#, fuzzy
+msgid "seventy six"
+msgstr "yetmiş"
+
+#: captcha.php:1438
+#, fuzzy
+msgid "seventy seven"
+msgstr "onyedi"
+
+#: captcha.php:1439
+#, fuzzy
+msgid "seventy eight"
+msgstr "yetmiş"
+
+#: captcha.php:1440
+#, fuzzy
+msgid "seventy nine"
+msgstr "yetmiş"
+
+#: captcha.php:1442
+msgid "eighty"
+msgstr "seksen"
+
+#: captcha.php:1443
+#, fuzzy
+msgid "eighty one"
+msgstr "seksen"
+
+#: captcha.php:1444
+#, fuzzy
+msgid "eighty two"
+msgstr "seksen"
+
+#: captcha.php:1445
+#, fuzzy
+msgid "eighty three"
+msgstr "onsekiz"
+
+#: captcha.php:1446
+#, fuzzy
+msgid "eighty four"
+msgstr "seksen"
+
+#: captcha.php:1447
+#, fuzzy
+msgid "eighty five"
+msgstr "seksen"
+
+#: captcha.php:1448
+#, fuzzy
+msgid "eighty six"
+msgstr "seksen"
+
+#: captcha.php:1449
+#, fuzzy
+msgid "eighty seven"
+msgstr "onsekiz"
+
+#: captcha.php:1450
+#, fuzzy
+msgid "eighty eight"
+msgstr "seksen"
+
+#: captcha.php:1451
+#, fuzzy
+msgid "eighty nine"
+msgstr "seksen"
+
+#: captcha.php:1453
+msgid "ninety"
+msgstr "doksan"
+
+#: captcha.php:1454
+#, fuzzy
+msgid "ninety one"
+msgstr "doksan"
+
+#: captcha.php:1455
+#, fuzzy
+msgid "ninety two"
+msgstr "doksan"
+
+#: captcha.php:1456
+#, fuzzy
+msgid "ninety three"
+msgstr "ondokuz"
+
+#: captcha.php:1457
+#, fuzzy
+msgid "ninety four"
+msgstr "doksan"
+
+#: captcha.php:1458
+#, fuzzy
+msgid "ninety five"
+msgstr "doksan"
+
+#: captcha.php:1459
+#, fuzzy
+msgid "ninety six"
+msgstr "doksan"
+
+#: captcha.php:1460
+#, fuzzy
+msgid "ninety seven"
+msgstr "ondokuz"
+
+#: captcha.php:1461
+#, fuzzy
+msgid "ninety eight"
+msgstr "doksan"
+
+#: captcha.php:1462
+#, fuzzy
+msgid "ninety nine"
+msgstr "doksan"
+
+#: captcha.php:1527
+msgid "Encryption password is not set"
+msgstr "Şifreleme parolası ayarlanmadı"
+
+#: captcha.php:1548
+msgid "Decryption password is not set"
+msgstr "Şifre çözme parolası ayarlanmadı"
+
+#: captcha.php:1689
+msgid "FAQ"
+msgstr "SSS"
+
+#: captcha.php:1690
+msgid "Support"
+msgstr "Destek"
+
+#: captcha.php:1731
+#, fuzzy
+msgid "settings page"
+msgstr "ayarlar sayfası"
+
+#: captcha.php:1734
+#, php-format
+msgid ""
+"You're using W3 Total Cache plugin. If %1$s doesn't work properly, please "
+"clear the cache in W3 Total Cache plugin and turn on '%2$s' option on the "
+"plugin %3$s."
+msgstr ""
+
+#: captcha.php:1736
+msgid "Show CAPTCHA after the end of the page loading"
+msgstr ""
+
+#: captcha.php:1886
+msgid "Warning"
+msgstr ""
+
+#: captcha.php:1890
+msgid "plugin contains deprecated functionality that will be removed"
+msgstr ""
+
+#: captcha.php:1891
+msgid "in the future"
+msgstr ""
+
+#: captcha.php:1891
+msgid "after"
+msgstr ""
+
+#: captcha.php:1894
+msgid "has old version"
+msgstr ""
+
+#: captcha.php:1897
+msgid "has compatibility problems with"
+msgstr ""
+
+#: captcha.php:1904
+msgid "You need to update this plugin for correct work with"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:38
+msgid "package"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:39
+msgid "packages"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:95
+#: includes/class-cptch-whitelist.php:92
+msgid "Add New"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:96 includes/pro_banners.php:17
+msgid "This options is available in Pro version of plugin"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:104
+msgid "If the package already exists"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:106
+msgid "Skip it"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:107
+msgid "Update the existed one"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:108
+#, fuzzy
+msgid "Save it as new"
+msgstr "Değişiklikleri Kaydet"
+
+#: includes/class-cptch-package-list.php:111
+#: includes/class-cptch-settings-tabs.php:849
+msgid "Install Now"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:112
+msgid "Browse packages"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:130
+msgid "Search"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:152
+msgid "No packages found"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:162
+msgid "Package"
+msgstr ""
+
+#: includes/class-cptch-package-list.php:163
+#: includes/class-cptch-whitelist.php:236
+msgid "Date Added"
+msgstr ""
+
+#: includes/class-cptch-package-loader.php:43
+msgid ""
+"Can not load images in to the \"uploads\" folder. Please, check your "
+"permissions."
+msgstr ""
+
+#: includes/class-cptch-package-loader.php:130
+#, php-format
+msgid "One package has been updated or added to the database."
+msgid_plural "%s packages have been updated or added to the database."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-cptch-package-loader.php:131
+#, php-format
+msgid "One image has been updated or added to the database."
+msgid_plural "%s images have been updated or added to the database."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-cptch-package-loader.php:239
+msgid "Archive is empty"
+msgstr ""
+
+#: includes/class-cptch-package-loader.php:585
+#, php-format
+msgid ""
+"Some settings of the package %s were set incorrectly. They have been skipped."
+msgstr ""
+
+#: includes/class-cptch-package-loader.php:588
+msgid "Wrong data"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:26
+msgid "Messages"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:27
+msgid "Misc"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:28
+msgid "Custom Code"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:30
+msgid "License Key"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:57
+#: includes/class-cptch-settings-tabs.php:68
+msgid "Login form"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:58
+#: includes/class-cptch-settings-tabs.php:65
+#: includes/class-cptch-settings-tabs.php:69
+msgid "Registration form"
+msgstr "Kayıt Formu"
+
+#: includes/class-cptch-settings-tabs.php:59
+#: includes/class-cptch-settings-tabs.php:70
+msgid "Forgot password form"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:60
+#: includes/class-cptch-settings-tabs.php:66
+msgid "Comments form"
+msgstr "Yorum Formu"
+
+#: includes/class-cptch-settings-tabs.php:67
+msgid "Create a Group form"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:71
+msgid "Checkout form"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:108
+msgid "WordPress default"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:117
+#: includes/class-cptch-settings-tabs.php:125
+msgid "External plugins"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:132
+msgid "BuddyPress"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:140
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:193
+#: includes/class-cptch-settings-tabs.php:289
+msgid "Arithmetic Actions"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:194
+#: includes/class-cptch-settings-tabs.php:299
+msgid "Complexity"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:195
+#: includes/class-cptch-settings-tabs.php:326 includes/pro_banners.php:62
+msgid "Image Packages"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:213
+msgid "Text fields in the \"Messages\" tab must not be empty."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:224
+#, php-format
+msgid "\"%s\" option must not be fully disabled."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:252
+msgid ""
+"In order to use \"Optical Character Recognition\" type, please select at "
+"least one of the items in the option \"Image Packages\"."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:255
+msgid ""
+"In order to use images in the CAPTCHA, please select at least one of the "
+"items in the option \"Image Packages\". The \"Images\" checkbox in "
+"\"Complexity\" option has been disabled."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:266
+msgid "Settings saved."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:281
+msgid "Captcha Type"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:283
+#, fuzzy
+msgid "Arithmetic actions"
+msgstr "CAPTCHA için Aritmetik Hareketler"
+
+#: includes/class-cptch-settings-tabs.php:284
+msgid "Optical Character Recognition (OCR)"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:291
+msgid "Addition"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:292
+msgid "Subtruction"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:293
+#, fuzzy
+msgid "Multiplication"
+msgstr "Çarpma (&times;)"
+
+#: includes/class-cptch-settings-tabs.php:301
+msgid "Numbers (1, 2, 3, etc.)"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:302
+msgid "Words (one, two, three, etc.)"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:303
+msgid "Images"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:309
+msgid "Number of Images"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:312
+msgid "Set a number of images to display simultaneously as a captcha question."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:318
+msgid ""
+"With a whitelist you can hide captcha field for your personal and trusted IP "
+"addresses."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:320
+msgid "Default"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:321
+msgid "Limit Attempts"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:332
+msgid "Use several image packages at the same time"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:338
+msgid "Enlarge Images"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:339
+msgid "Enable to enlarge captcha images on mouseover."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:344
+msgid "Reload Button"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:345
+msgid "Enable to display reload button for captcha."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:348
+msgid "Captcha Title"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:351
+msgid "Required Symbol"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:354
+msgid "Advanced Protection"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:355
+msgid "Enable to display captcha when the website page is loaded."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:361
+msgid "General"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:364
+msgid "Enable Captcha for"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:393
+msgid "Check off for adding the CAPTCHA to forms on their settings pages."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:409
+#: includes/class-cptch-settings-tabs.php:444
+#: includes/class-cptch-settings-tabs.php:584
+#: includes/class-cptch-settings-tabs.php:596 includes/pro_banners.php:20
+msgid "Close"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:514 includes/pro_banners.php:91
+msgid "Enable to activate a time limit requeired to complete captcha."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:525 includes/pro_banners.php:88
+msgid "Time Limit"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:532
+msgid "Time Limit Thershold"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:535
+msgid "sec"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:568
+msgid "This option is available only for network or for main blog"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:575
+msgid "Hide from Registered Users"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:607
+msgid "update"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:608
+msgid "to the current version"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:615
+msgid "install"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:620
+#: includes/class-cptch-whitelist.php:556
+msgid "activate"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:632
+msgid "You should"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:635
+msgid "to use this functionality."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:658
+msgid "Messages Settings"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:664
+msgid "Captcha Field is Empty"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:665 includes/helpers.php:31
+msgid "Please complete the captcha."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:668
+msgid "Captcha is Incorrect"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:669 includes/helpers.php:32
+msgid "Please enter correct captcha value."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:672
+#: includes/class-cptch-settings-tabs.php:676
+msgid "Time Limit Exceeded"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:673
+#: includes/class-cptch-settings-tabs.php:677 includes/helpers.php:33
+#: includes/helpers.php:34
+msgid "Time limit exceeded. Please complete the captcha once again."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:678
+msgid "This message will be displayed above the captcha field."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:681
+msgid "Whitelisted IP"
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:682
+msgid "Your IP address is Whitelisted."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:683
+msgid "This message will be displayed instead of the captcha field."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:799
+msgid ""
+"The image packages list is empty. Please restore default settings or re-"
+"install the plugin to fix this error."
+msgstr ""
+
+#: includes/class-cptch-settings-tabs.php:847
+msgid "Activate"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:46
+msgid "All dates"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:47
+msgid "Last 24 hours"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:48
+msgid "Last week"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:49
+msgid "Last month"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:50
+msgid "Last year"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:122
+msgid "Limit Attempts whitelist is activated."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:123
+msgid "View the whitelist"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:124
+msgid "or"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:125
+msgid "Enable default captcha whitelist"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:128
+msgid "Load IP Address(-es)"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:131
+#, fuzzy
+msgid "Save changes"
+msgstr "Değişiklikleri Kaydet"
+
+#: includes/class-cptch-whitelist.php:136
+msgid "Load IP addresses from the \"Limit Attempts\" whitelist."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:144
+msgid "IP to whitelist"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:151
+msgid "My IP"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:156 includes/pro_banners.php:37
+msgid "Allowed formats"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:158
+msgid "Allowed diapason"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:165
+msgid "Add IP to whitelist"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:172
+msgid "Search item"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:228
+msgid "Nothing found"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:228
+msgid "No IP in the whitelist"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:235
+msgid "IP Address"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:290
+#: includes/class-cptch-whitelist.php:299
+msgid "Delete"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:401
+msgid "Filter"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:450
+msgid "IP added to the whitelist successfully."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:452
+msgid "Some errors occurred."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:454
+msgid "IP is already in the whitelist."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:457
+msgid "Invalid IP. See allowed formats."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:468
+#, php-format
+msgid "%s IP was deleted successfully"
+msgid_plural "%s IPs were deleted successfully"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-cptch-whitelist.php:474
+#: includes/class-cptch-whitelist.php:486
+msgid "Some errors occurred"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:480
+msgid "One IP was deleted successfully"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:489
+msgid "You have not entered any value."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:492
+msgid "You have not entered any value in to the search form."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:494
+msgid "Search results for"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:524
+msgid "IP-address(es) successfully copied to the whitelist."
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:547
+msgid "use"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:547
+msgid "the whitelist of"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:555
+#: includes/class-cptch-whitelist.php:563
+#, php-format
+msgid "use the whitelist of %s"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:556
+#, php-format
+msgid "you should %s to use this functionality"
+msgstr ""
+
+#: includes/class-cptch-whitelist.php:564
+#, php-format
+msgid "you should install %s to use this functionality"
+msgstr ""
+
+#: includes/helpers.php:35
+msgid "Your IP addresse is Whitelisted."
+msgstr ""
+
+#: includes/pro_banners.php:38
+msgid "Allowed separators for IPs: a comma"
+msgstr ""
+
+#: includes/pro_banners.php:38 includes/pro_banners.php:41
+msgid "semicolon"
+msgstr ""
+
+#: includes/pro_banners.php:38
+msgid "ordinary space, tab, new line or carriage return"
+msgstr ""
+
+#: includes/pro_banners.php:39
+msgid "Reason"
+msgstr ""
+
+#: includes/pro_banners.php:41
+msgid "Allowed separators for reasons: a comma"
+msgstr ""
+
+#: includes/pro_banners.php:41
+msgid "tab, new line or carriage return"
+msgstr ""
+
+#: includes/pro_banners.php:55
+msgid "General Settings"
+msgstr ""
+
+#: includes/pro_banners.php:58
+msgid "Enable to use general captcha settings."
+msgstr ""
+
+#: includes/pro_banners.php:106
+msgid "Use Several Image Packages at The Same Time"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Settings saved"
+#~ msgstr "Ayarlar kaydedildi."
+
+#, fuzzy
+#~ msgid "Hide from registered users"
+#~ msgstr "Kayıtlı kullanıcılar için CAPTCHA&#39;yı gizle"
+
+#, fuzzy
+#~ msgid "WordPress Login form"
+#~ msgstr "Giriş Formu"
+
+#, fuzzy
+#~ msgid "WordPress Registration form"
+#~ msgstr "Kayıt Formu"
+
+#, fuzzy
+#~ msgid "WordPress Reset Password form"
+#~ msgstr "Parola sıfırlama formu"
+
+#, fuzzy
+#~ msgid "WordPress Comments form"
+#~ msgstr "Yorum Formu"
+
+#, fuzzy
+#~ msgid "Buddypress Registration form"
+#~ msgstr "Kayıt Formu"
+
+#, fuzzy
+#~ msgid "Buddypress Comments form"
+#~ msgstr "Yorum Formu"
+
+#, fuzzy
+#~ msgid "Buddypress \"Create a Group\" form"
+#~ msgstr "\"Grup Oluştur\" formu"
+
+#, fuzzy
+#~ msgid "WooCommerce Login form"
+#~ msgstr "Yorum Formu"
+
+#, fuzzy
+#~ msgid "WooCommerce Register form"
+#~ msgstr "Kayıt Formu"
+
+#, fuzzy
+#~ msgid "WooCommerce Lost Password form"
+#~ msgstr "Kayıp Parola Formu"
+
+#, fuzzy
+#~ msgid "Please enter a CAPTCHA value."
+#~ msgstr "Lütfen geçerli bir CAPTCHA değeri girin."
+
+#~ msgid "Please enter a valid CAPTCHA value."
+#~ msgstr "Lütfen geçerli bir CAPTCHA değeri girin."
+
+#, fuzzy
+#~ msgid "Time limit is exhausted. Please enter a CAPTCHA value again."
+#~ msgstr "Lütfen geçerli bir CAPTCHA değeri girin."
+
+#, fuzzy
+#~ msgid "Time limit is exhausted. Please reload the CAPTCHA."
+#~ msgstr "Lütfen geçerli bir CAPTCHA değeri girin."
+
+#, fuzzy
+#~ msgid "for"
+#~ msgstr "dört"
+
+#, fuzzy
+#~ msgid "Enable"
+#~ msgstr "CAPTCHA&#39;yı aktifleştir:"
+
+#~ msgid "Captcha"
+#~ msgstr "Captcha"
+
+#~ msgid "Go PRO"
+#~ msgstr "Yükseltin"
+
+#, fuzzy
+#~ msgid "Enable the CAPTCHA for"
+#~ msgstr "CAPTCHA&#39;yı şunlar için aktifleştir:"
+
+#, fuzzy
+#~ msgid "Unlock premium options by upgrading to Pro version"
+#~ msgstr "Aboneliğinizi yükseltin ve premium özelliklere erişin."
+
+#~ msgid "Learn More"
+#~ msgstr "Detaylı Bilgi"
+
+#~ msgid "Save Changes"
+#~ msgstr "Değişiklikleri Kaydet"
+
+#, fuzzy
+#~ msgid "CAPTCHA title"
+#~ msgstr "CAPTCHA Karışıklık Seviyesi"
+
+#~ msgid "Required symbol"
+#~ msgstr "Gerekli sembol"
+
+#~ msgid "Plus"
+#~ msgstr "Artı"
+
+#~ msgid "Minus"
+#~ msgstr "Eksi"
+
+#~ msgid "Numbers"
+#~ msgstr "Sayılar"
+
+#~ msgid "Words"
+#~ msgstr "Kelimeler"
+
+#, fuzzy
+#~ msgid "If the CAPTCHA field is empty"
+#~ msgstr "Girdiğiniz CAPTCHA kodu yanlış."
+
+#, fuzzy
+#~ msgid "If the CAPTCHA is incorrect"
+#~ msgstr "Girdiğiniz CAPTCHA kodu yanlış."
+
+#, fuzzy
+#~ msgid ""
+#~ "If the time limit is exhausted (this message will be displayed above the "
+#~ "CAPTCHA)"
+#~ msgstr "Lütfen geçerli bir CAPTCHA değeri girin."
+
+#, fuzzy
+#~ msgid "These messages will be displayed inside of the CAPTCHA"
+#~ msgstr "Lütfen geçerli bir CAPTCHA değeri girin."
+
+#~ msgid "Plus (&#43;)"
+#~ msgstr "Artı (&#43;)"
+
+#~ msgid "Minus (&minus;)"
+#~ msgstr "Eksi (&minus;)"
+
+#~ msgid "Multiply"
+#~ msgstr "Çarp (&times;)"
+
+#~ msgid ""
+#~ "Please select one item in the block Arithmetic and Complexity for CAPTCHA"
+#~ msgstr ""
+#~ "Lütfen, Aritmetik Hareketler ve CAPTCHA İçin Zorluk bölümünden bir öge "
+#~ "seçin."
+
+#, fuzzy
+#~ msgid "Please select one item in the block Enable image packages"
+#~ msgstr ""
+#~ "Lütfen, Aritmetik Hareketler ve CAPTCHA İçin Zorluk bölümünden bir öge "
+#~ "seçin."
+
+#, fuzzy
+#~ msgid "Plugins"
+#~ msgstr "Eklentiler sayfası"
+
+#~ msgid "If you would like to add Captcha to a custom form, please see"
+#~ msgstr ""
+#~ "Eğer eklentiyi, özelleştirilmiş bir form için kişiselleştirmek isterseniz "
+#~ "şuraya göz atın "
+
+#, fuzzy
+#~ msgid "Hide CAPTCHA"
+#~ msgstr "CAPTCHA&#39;yı aktifleştir:"
+
+#~ msgid "Arithmetic actions for CAPTCHA"
+#~ msgstr "CAPTCHA için Aritmetik Hareketler"
+
+#~ msgid "If you upgrade to Pro version all your settings will be saved."
+#~ msgstr "Eğer hesabınızı yükseltirseniz tüm değişiklikleriniz kaydedilecek."
+
+#~ msgid "and"
+#~ msgstr "ve"
+
+#~ msgid "Notice:"
+#~ msgstr "Uyarı:"
+
+#~ msgid ""
+#~ "The plugin's settings have been changed. In order to save them please "
+#~ "don't forget to click the 'Save Changes' button."
+#~ msgstr ""
+#~ "Eklentinin ayarları değişti, değişiklikleri kaydetmek için &#39;"
+#~ "Değişiklikleri Kaydet&#39; butonuna basmayı unutmayın."
+
+#~ msgid "Title for CAPTCHA in the form"
+#~ msgstr "Formdaki CAPTCHA Başlığı"
+
+#~ msgid "Go"
+#~ msgstr "Git"
+
+#, fuzzy
+#~ msgid "Contact Form"
+#~ msgstr "İletişim Formu"
+
+#~ msgid "Activate contact form"
+#~ msgstr "İletişim formunu etkinleştir"
+
+#~ msgid "Download contact form"
+#~ msgstr "İletişim formunu indir"
+
+#~ msgid "requires"
+#~ msgstr "eklentisi"
+
+#~ msgid ""
+#~ "or higher, that is why it has been deactivated! Please upgrade WordPress "
+#~ "and try again."
+#~ msgstr ""
+#~ "ya da daha üst versiyon gerektirir, eklenti bu yüzden etkisizleştirildi! "
+#~ "Lütfen Wordpress&#39;i güncelleyin ve tekrar deneyin."
+
+#~ msgid "Back to the WordPress"
+#~ msgstr "Wordpress&#39;e geri dön"
+
+#~ msgid "Wrong license key"
+#~ msgstr "Hatalı lisans anahtarı"
+
+#~ msgid ""
+#~ "Something went wrong. Try again later. If the error will appear again, "
+#~ "please, contact us <a href=https://support.bestwebsoft.com>BestWebSoft</"
+#~ "a>. We are sorry for inconvenience."
+#~ msgstr ""
+#~ "Bir şeyler ters gitti, daha sonra tekrar deneyin. Eğer hata mesajı tekrar "
+#~ "görünürse, lütfen <a href=https://support.bestwebsoft.com>buraya</a> "
+#~ "tıklayın ve bizimle iletişime geçin. Yaşadığınız rahatsızlık için üzgünüz."
+
+#~ msgid "This license key is bind to another site"
+#~ msgstr "Bu lisans anahtarı başka bir siteyle ilişkilendirilmiş."
+
+#~ msgid ""
+#~ "Unfortunately, you have exceeded the number of available tries per day. "
+#~ "Please, upload the plugin manually."
+#~ msgstr ""
+#~ "Üzgünüz, günlük deneme limitini aştınız. Lütfen eklentiyi manuel olarak "
+#~ "yükleyin."
+
+#~ msgid ""
+#~ "Failed to download the zip archive. Please, upload the plugin manually"
+#~ msgstr "ZIP arşivi indirilemedi. Lütfen eklentiyi manuel olarak yükleyin."
+
+#~ msgid "Failed to open the zip archive. Please, upload the plugin manually"
+#~ msgstr "ZIP arşivi açılamadı. Lütfen eklentiyi manuel olarak yükleyin."
+
+#~ msgid ""
+#~ "Your server does not support either ZipArchive or Phar. Please, upload "
+#~ "the plugin manually"
+#~ msgstr ""
+#~ "Sunucunuz ZipArchive ya da Phar desteklemiyor. Lütfen eklentiyi manuel "
+#~ "olarak yükleyin."
+
+#, fuzzy
+#~ msgid "UploadDir is not writable. Please, upload the plugin manually"
+#~ msgstr "ZIP arşivi açılamadı. Lütfen eklentiyi manuel olarak yükleyin."
+
+#~ msgid ""
+#~ "Something went wrong. Try again later or upload the plugin manually. We "
+#~ "are sorry for inconvenience."
+#~ msgstr ""
+#~ "Bir şeyler ters gitti. Daha sonra tekrar deneyin ya da eklentiyi manuel "
+#~ "olarak yükleyin. Yaşadığınız rahatsızlık için üzgünüz."
+
+#~ msgid "Please, enter Your license key"
+#~ msgstr "Lütfen lisans anahtarınızı girin"
+
+#~ msgid "powered by"
+#~ msgstr "tarafından:"
+
+#~ msgid "Subscriber"
+#~ msgstr "Abone"
+
+#~ msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+#~ msgstr "Eklentimizi beğenirseniz lütfen Wordpress&#39;te 5 yıldız verin"
+
+#~ msgid "Rate the plugin"
+#~ msgstr "Eklentiyi değerlendirin"
+
+#~ msgid "If there is something wrong about it, please contact us"
+#~ msgstr "Eğer hatalı bir durum görürseniz lütfen bizimle iletişime geçin."
+
+#~ msgid ""
+#~ "Congratulations! The PRO version of the plugin is successfully download "
+#~ "and activated."
+#~ msgstr ""
+#~ "Tebrikler! Eklentinin PRO versiyonu başarıyla indirildi ve yüklendi."
+
+#~ msgid "Please, go to"
+#~ msgstr "Lütfen şuraya gidin:"
+
+#~ msgid "You will be redirected automatically in 5 seconds."
+#~ msgstr "5 saniye içinde otomatik olarak yönlendirileceksiniz."
+
+#~ msgid "You can download and activate"
+#~ msgstr "Eklentinin"
+
+#~ msgid "version of this plugin by entering Your license key."
+#~ msgstr ""
+#~ "versiyonunu lisans anahtarınızı girerek yükleyebilir ve "
+#~ "aktifleştirebilirsiniz."
+
+#~ msgid ""
+#~ "You can find your license key on your personal page Client area, by "
+#~ "clicking on the link"
+#~ msgstr ""
+#~ "Lisans anahtarınızı kişisel müşteri sayfanızda bulabilirsiniz, tıklayın"
+
+#~ msgid ""
+#~ "(your username is the email you specify when purchasing the product)."
+#~ msgstr ""
+#~ "(kullanıcı adınız, ürün için ödeme yaparken belirttiğiniz e-posta "
+#~ "adresinizdir)"
+
+#~ msgid "Go!"
+#~ msgstr "Git!"
+
+#, fuzzy
+#~ msgid "ERROR:"
+#~ msgstr "HATA"
+
+#~ msgid ""
+#~ "It's time to upgrade your <strong>Captcha plugin</strong> to <strong>PRO</"
+#~ "strong> version"
+#~ msgstr ""
+#~ "<strong>Captcha eklentisini</strong> <strong>PRO</strong> versiyonuna "
+#~ "yükseltmenizin zamanı geldi!"
+
+#~ msgid "Extend standard plugin functionality with new great options"
+#~ msgstr ""
+#~ "Eklentinin standart özelliklerini yeni ve harika özelliklerle "
+#~ "zenginleştirin."
