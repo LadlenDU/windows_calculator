@@ -242,7 +242,7 @@ function plugin_wnd_calc_window_func()
                             . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                             . '</td>'
                             . '<td colspan="2" style="text-align:right">'
-                            . 'Цена м^2: <input type="text" value="' . esc_html($price) . '" name="plugin_options_wnd_calc[window][panes][subtypes][price][' . $key . '][' . $keyPane . '][]" readonly="readonly">'
+                            . 'Цена м<sup>2</sup>: <input type="text" value="' . esc_html($price) . '" name="plugin_options_wnd_calc[window][panes][subtypes][price][' . $key . '][' . $keyPane . '][]" readonly="readonly">'
                             . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                             . '</td>'
                             . '<td style="text-align:right">'
