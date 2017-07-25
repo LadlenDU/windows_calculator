@@ -39,7 +39,7 @@ jQuery(function ($) {
             + '</th>'
             + '<th>'
             + 'Цена:<br><input class="name_wnd_option_short" type="text" value="0" name="plugin_options_wnd_calc[window][panes][price][' + key + '][' + index + ']">'
-            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+            + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
             + '<th>Количество подтипов:<br>'
             + '<input class="name_wnd_option_short add_window_subpane" type="number" min="1" max="20" value="1">'
