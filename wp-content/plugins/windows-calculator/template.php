@@ -1,6 +1,7 @@
 <?php
 
 //TODO: nonce
+//TODO: preload image
 
 class WndCalc
 {
@@ -55,6 +56,9 @@ class WndCalc
                 case 'profile':
                     $this->showDropdown('Профиль', $key, $info);
                     break;
+                case 'furniture':
+                    $this->showDropdown('Фурнитура', $key, $info);
+                    break;
                 case 'dglazed':
                     $this->showDropdown('Стеклопакет', $key, $info);
                     break;
@@ -66,9 +70,6 @@ class WndCalc
                     break;
                 case 'setting':
                     $this->showDropdown('Установка', $key, $info);
-                    break;
-                case 'furniture':
-                    $this->showDropdown('Фурнитура', $key, $info);
                     break;
                 case 'slopes':
                     $this->showDropdown('Откосы', $key, $info);

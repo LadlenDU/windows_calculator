@@ -48,6 +48,10 @@ $defaultWndCalcOptions = [
         'name' => ['REHAU BLITZ', 'REHAU INTELIO', 'REHAU BRILLANT', 'REHAU DELIGHT', 'REHAU SIB', 'REHAU GENEO'],
         'price' => [100.3, 102, 110, 120, 140.40, 30],
     ],
+    'furniture' => [
+        'name' => ['Нет', 'ROTO', 'VORNE', 'SIGENIA'],
+        'price' => [0, 500, 600, 700],
+    ],
     'dglazed' => [
         'name' => ['Стандартный', 'Энергосберегающий'],
         'price' => [1000, 2000],
@@ -63,10 +67,6 @@ $defaultWndCalcOptions = [
     'setting' => [
         'name' => ['Нет', 'Стандарт', 'ГОСТ'],
         'price' => [0, 2000, 3000],
-    ],
-    'furniture' => [
-        'name' => ['Нет', 'ROTO', 'VORNE', 'SIGENIA'],
-        'price' => [0, 500, 600, 700],
     ],
     'slopes' => [
         'name' => ['Нет', '200 мм', '250 мм', '300 мм', '350 мм', '400 мм', '500 мм'],
@@ -90,11 +90,11 @@ function plugin_admin_init()
 
     add_settings_field('plugin_wnd_calc_window', 'Тип окон', 'plugin_wnd_calc_window_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_profile', 'Профиль', 'plugin_wnd_calc_profile_func', 'windows_calculator', 'plugin_main_wnd_calc');
+    add_settings_field('plugin_wnd_calc_furniture', 'Фурнитура', 'plugin_wnd_calc_furniture_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_dglazed', 'Стеклопакет', 'plugin_wnd_calc_dglazed_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_sill', 'Подоконник', 'plugin_wnd_calc_sill_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_otliv', 'Отлив', 'plugin_wnd_calc_otliv_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_setting', 'Установка', 'plugin_wnd_calc_setting_func', 'windows_calculator', 'plugin_main_wnd_calc');
-    add_settings_field('plugin_wnd_calc_furniture', 'Фурнитура', 'plugin_wnd_calc_furniture_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_slopes', 'Откосы', 'plugin_wnd_calc_slopes_func', 'windows_calculator', 'plugin_main_wnd_calc');
     add_settings_field('plugin_wnd_calc_accessories', 'Комплектующие', 'plugin_wnd_calc_accessories_func', 'windows_calculator', 'plugin_main_wnd_calc');
 
