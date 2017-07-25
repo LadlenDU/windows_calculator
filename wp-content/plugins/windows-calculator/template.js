@@ -143,7 +143,11 @@ jQuery(function ($) {
                 index = 0;
             }
 
-            var html = generatePane(wndNum, paneNum, index);
+            var par = $(this).parent().attr('style');
+            var matches = par.match(/top:\s*(.+?);/);
+            var top = matches[1] || 0;
+
+            var html = generatePane(wndNum, paneNum, index, top);
             $(this).parent().replaceWith(html);
             setSubpaneSelectEvents();
             calculatePrice();
@@ -232,31 +236,59 @@ jQuery(function ($) {
 
         // характеристики
         tmpPrice = parseFloat($("#wnd_calc_select_profile").val()) || 0;
-        elements.characteristics.push({name: 'Профиль', price: tmpPrice, item_name: $("#wnd_calc_select_profile option:selected").text()});
+        elements.characteristics.push({
+            name: 'Профиль',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_profile option:selected").text()
+        });
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
-        elements.characteristics.push({name: 'Стеклопакет', price: tmpPrice, item_name: $("#wnd_calc_select_dglazed option:selected").text()});
+        elements.characteristics.push({
+            name: 'Стеклопакет',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_dglazed option:selected").text()
+        });
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_sill").val()) || 0;
-        elements.characteristics.push({name: 'Подоконник', price: tmpPrice, item_name: $("#wnd_calc_select_sill option:selected").text()});
+        elements.characteristics.push({
+            name: 'Подоконник',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_sill option:selected").text()
+        });
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_otliv").val()) || 0;
-        elements.characteristics.push({name: 'Отлив', price: tmpPrice, item_name: $("#wnd_calc_select_otliv option:selected").text()});
+        elements.characteristics.push({
+            name: 'Отлив',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_otliv option:selected").text()
+        });
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_setting").val()) || 0;
-        elements.characteristics.push({name: 'Установка', price: tmpPrice, item_name: $("#wnd_calc_select_setting option:selected").text()});
+        elements.characteristics.push({
+            name: 'Установка',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_setting option:selected").text()
+        });
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_furniture").val()) || 0;
-        elements.characteristics.push({name: 'Фурнитура', price: tmpPrice, item_name: $("#wnd_calc_select_furniture option:selected").text()});
+        elements.characteristics.push({
+            name: 'Фурнитура',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_furniture option:selected").text()
+        });
         price += tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_slopes").val()) || 0;
-        elements.characteristics.push({name: 'Откосы', price: tmpPrice, item_name: $("#wnd_calc_select_slopes option:selected").text()});
+        elements.characteristics.push({
+            name: 'Откосы',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_slopes option:selected").text()
+        });
         price += tmpPrice;
 
         // комплектующие
@@ -275,12 +307,12 @@ jQuery(function ($) {
         return {price: price, elements: elements};
     }
 
-    function generatePane(wndNum, paneNum, subpaneNum) {
+    function generatePane(wndNum, paneNum, subpaneNum, top) {
         var src = wndSelVariables.window.panes.subtypes.src_image[wndNum][paneNum][subpaneNum];
         var panePrice = wndSelVariables.window.panes.price[wndNum][paneNum];
         var subPaneName = wndSelVariables.window.panes.subtypes.name[wndNum][paneNum][subpaneNum];
         var subPanePrice = wndSelVariables.window.panes.subtypes.price[wndNum][paneNum][subpaneNum];
-        var html = '<div style="position: relative; display: inline-block; line-height: 0">'
+        var html = '<div style="position: relative; display: inline-block; line-height: 0; top: ' + (top || 0) + ';">'
             + '<img class="wnd_sel_pane_wnd" src="' + $("<div>").text(src).html()
             + '" alt="" data-wnd-id="' + wndNum + '" data-pane-id="' + paneNum + '" data-subpane-id="' + subpaneNum
             + '" data-pane-price="' + panePrice + '" data-subpane-name="' + subPaneName
@@ -319,21 +351,38 @@ jQuery(function ($) {
         setSubpaneSelectEvents();
 
         if (currUrl) {
-            $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
-                var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
-                var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
-                    + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
-                    + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
-                    + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
-                    + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
-                    + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
-                    + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
-                    + '</div>';
+            //$(".wnd_calc_window_item .wnd_sel_pane_wnd").first().load(function () {
+                $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
 
-                $(".wnd_calc_window_item").append(html);
-                setSubpaneSelectEvents();
-                calculatePrice();
-            });
+                    var offset = '0px';
+
+                    var heightLast = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
+                    var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").first().height();
+                    //console.log("heightLast: " + heightLast + "height: " + height);
+                    if (heightLast > height) {
+                        $(".wnd_calc_window_item .wnd_sel_pane_wnd").each(function () {
+                            var el = $(this);
+                            if (el.height() != heightLast) {
+                                offset = "-" + (heightLast - el.height()) + "px";
+                                $(this).parent().css("top", offset);
+                            }
+                        });
+                    }
+                    var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;top:' + offset + ';">'
+                    //var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
+                        + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
+                        + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
+                        + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
+                        + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
+                        + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
+                        + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
+                        + '</div>';
+
+                    $(".wnd_calc_window_item").append(html);
+                    setSubpaneSelectEvents();
+                    calculatePrice();
+                });
+            //});
         }
     }
 
