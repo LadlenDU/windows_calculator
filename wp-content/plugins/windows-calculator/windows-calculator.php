@@ -118,38 +118,38 @@ function plugin_wnd_calc_accessories_func()
 
 function plugin_wnd_calc_slopes_func()
 {
-    showChangeOptionTable('slopes');
+    showChangeOptionTable('slopes', 'price_for_window_width_height');
 }
 
 function plugin_wnd_calc_furniture_func()
 {
-    showChangeOptionTable('furniture');
+    showChangeOptionTable('furniture', 'koeff_window_price');
+}
+
+function plugin_wnd_calc_dglazed_func()
+{
+    showChangeOptionTable('dglazed', 'koeff_window_price');
 }
 
 function plugin_wnd_calc_setting_func()
 {
-    showChangeOptionTable('setting');
+    showChangeOptionTable('setting', 'price_for_window_square');
 }
 
 function plugin_wnd_calc_otliv_func()
 {
-    showChangeOptionTable('otliv');
+    showChangeOptionTable('otliv', 'price_for_window_width');
 }
 
 function plugin_wnd_calc_sill_func()
 {
-    showChangeOptionTable('sill');
+    showChangeOptionTable('sill', 'price_for_window_width');
 }
 
 
 function plugin_wnd_calc_profile_func()
 {
-    showChangeOptionTable('profile');
-}
-
-function plugin_wnd_calc_dglazed_func()
-{
-    showChangeOptionTable('dglazed');
+    showChangeOptionTable('profile', 'koeff_window_price');
 }
 
 function plugin_wnd_calc_window_func()
@@ -270,11 +270,44 @@ function plugin_wnd_calc_window_func()
     echo $s;
 }
 
-function showChangeOptionTable($id)
+/**
+ * @param $id
+ * @param string $priceType тип цены: [
+ *      'koeff_window_price', - коэффициент удорожания от стоимости окна
+ *      'price_for_window_square', - цена за площадь окна (кв. м.)
+ *      'price_for_window_width', - цена за ширину окна (п. м.)
+ *      'price_for_window_width_height', - цена за ширину окна + высота блоков (п. м.)
+ *      'price_for_item' - цена за штуку
+ *  ]
+ */
+function showChangeOptionTable($id, $priceType = 'price_for_item')
 {
     $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
+
+    switch ($priceType)
+    {
+        case 'koeff_window_price':
+            $priceCaption = 'Коэфф. от ст-сти окна';
+            break;
+        case 'price_for_window_square':
+            //, - цена за площадь окна (кв. м.)
+            $priceCaption = 'Цена за площадь окна';
+            break;
+        case 'price_for_window_width':
+            //, - цена за ширину окна (п. м.)
+            $priceCaption = 'Цена за п.м. окна';
+            break;
+        case 'price_for_window_width_height':
+            //, - цена за ширину окна + высота блоков (п. м.)
+            $priceCaption = 'Цена за ширину и высоту окна';
+            break;
+        default:
+            $priceCaption = 'Цена за шт.';
+            break;
+    }
+
     //echo "<input id='plugin_wnd_calc_profile' name='plugin_options_wnd_calc[text_string]' size='40' type='text' value='{$options['text_string']}' />";
-    $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th><input class="calc_wnd_option_type" type="hidden" value="' . $id . '"></th></tr></thead><tbody>';
+    $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>' . $priceCaption . '</th><th><input class="calc_wnd_option_type" type="hidden" value="' . $id . '"></th></tr></thead><tbody>';
     if (!empty($options[$id])) {
         foreach ($options[$id]['name'] as $key => $pf) {
             $s .= '<tr>'

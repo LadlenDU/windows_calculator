@@ -173,6 +173,11 @@ jQuery(function ($) {
 
         // панели
 
+        var windowPrice = 0;    // стоимость окна (исключительно по площади) - руб.
+        var windowSquare = 0;   // площадь окна (сумма площади всех панелей) - кв.м.
+        var windowWidth = 0;    // общая ширина окна - п.м.
+        var windowPanesHeight = 0;    // суммарная высота отдельных блоков
+
         // высота
         var heightElement = $(".wnd_calc_window_item").find(".wnd_sel_wnd_height");
         var heHeight = parseFloat(heightElement.val()) || 0;
@@ -204,7 +209,6 @@ jQuery(function ($) {
             price += tmpPrice;
 
             // ширина
-            //panel.each(function () {
             var widthElement = $(this).parent().find('input');
             widthElement.val($.trim(widthElement.val()));
             var weWidth = parseFloat(widthElement.val()) || 0;
@@ -221,15 +225,18 @@ jQuery(function ($) {
             }
 
             paneInfo.width = weWidth;
+            windowWidth += weWidth;
+            windowPanesHeight += heHeight;
 
             var squarePrice = parseFloat($(this).data('subpane-price')) || 0;
             var square = (heHeight / 1000) * (weWidth / 1000);
+            windowSquare += square;
             tmpPrice = squarePrice * square;
             //elements.push({name: $(this).data('subpane-name'), price: tmpPrice});
             paneInfo.name = $(this).data('subpane-name');
             paneInfo.price_square = tmpPrice;
             price += tmpPrice;
-            //});
+            windowPrice += tmpPrice;
 
             elements.window_panes.push(paneInfo);
         });
@@ -241,39 +248,8 @@ jQuery(function ($) {
             price: tmpPrice,
             item_name: $("#wnd_calc_select_profile option:selected").text()
         });
-        price += tmpPrice;
-
-        tmpPrice = parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
-        elements.characteristics.push({
-            name: 'Стеклопакет',
-            price: tmpPrice,
-            item_name: $("#wnd_calc_select_dglazed option:selected").text()
-        });
-        price += tmpPrice;
-
-        tmpPrice = parseFloat($("#wnd_calc_select_sill").val()) || 0;
-        elements.characteristics.push({
-            name: 'Подоконник',
-            price: tmpPrice,
-            item_name: $("#wnd_calc_select_sill option:selected").text()
-        });
-        price += tmpPrice;
-
-        tmpPrice = parseFloat($("#wnd_calc_select_otliv").val()) || 0;
-        elements.characteristics.push({
-            name: 'Отлив',
-            price: tmpPrice,
-            item_name: $("#wnd_calc_select_otliv option:selected").text()
-        });
-        price += tmpPrice;
-
-        tmpPrice = parseFloat($("#wnd_calc_select_setting").val()) || 0;
-        elements.characteristics.push({
-            name: 'Установка',
-            price: tmpPrice,
-            item_name: $("#wnd_calc_select_setting option:selected").text()
-        });
-        price += tmpPrice;
+        //price += tmpPrice;
+        price += windowPrice * tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_furniture").val()) || 0;
         elements.characteristics.push({
@@ -281,7 +257,44 @@ jQuery(function ($) {
             price: tmpPrice,
             item_name: $("#wnd_calc_select_furniture option:selected").text()
         });
-        price += tmpPrice;
+        //price += tmpPrice;
+        price += windowPrice * tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
+        elements.characteristics.push({
+            name: 'Стеклопакет',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_dglazed option:selected").text()
+        });
+        //price += tmpPrice;
+        price += windowPrice * tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_setting").val()) || 0;
+        elements.characteristics.push({
+            name: 'Установка',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_setting option:selected").text()
+        });
+        //price += tmpPrice;
+        price += windowSquare * tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_sill").val()) || 0;
+        elements.characteristics.push({
+            name: 'Подоконник',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_sill option:selected").text()
+        });
+        //price += tmpPrice;
+        price += (windowWidth + (200 / 1000)) * tmpPrice;
+
+        tmpPrice = parseFloat($("#wnd_calc_select_otliv").val()) || 0;
+        elements.characteristics.push({
+            name: 'Отлив',
+            price: tmpPrice,
+            item_name: $("#wnd_calc_select_otliv option:selected").text()
+        });
+        //price += tmpPrice;
+        price += (windowWidth + (100 / 1000)) * tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_slopes").val()) || 0;
         elements.characteristics.push({
@@ -289,7 +302,8 @@ jQuery(function ($) {
             price: tmpPrice,
             item_name: $("#wnd_calc_select_slopes option:selected").text()
         });
-        price += tmpPrice;
+        //price += tmpPrice;
+        price += (windowPanesHeight + windowWidth + (200 / 1000)) * tmpPrice;
 
         // комплектующие
         $(".wnd_calc_setting_checkbox").each(function () {
