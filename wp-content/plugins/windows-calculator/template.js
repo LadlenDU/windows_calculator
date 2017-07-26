@@ -295,7 +295,7 @@ jQuery(function ($) {
             item_name: $("#wnd_calc_select_sill option:selected").text()
         });
         //price += tmpPrice;
-        price += (windowWidth + (200 / 1000)) * tmpPrice;
+        price += (windowWidth + 200) / 1000 * tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_otliv").val()) || 0;
         elements.characteristics.push({
@@ -304,7 +304,7 @@ jQuery(function ($) {
             item_name: $("#wnd_calc_select_otliv option:selected").text()
         });
         //price += tmpPrice;
-        price += (windowWidth + (100 / 1000)) * tmpPrice;
+        price += (windowWidth + 100) / 1000 * tmpPrice;
 
         tmpPrice = parseFloat($("#wnd_calc_select_slopes").val()) || 0;
         elements.characteristics.push({
@@ -313,7 +313,7 @@ jQuery(function ($) {
             item_name: $("#wnd_calc_select_slopes option:selected").text()
         });
         //price += tmpPrice;
-        price += (windowPanesHeight + windowWidth + (200 / 1000)) * tmpPrice;
+        price += (windowPanesHeight + windowWidth + 200) / 1000 * tmpPrice;
 
         // комплектующие
         $(".wnd_calc_setting_checkbox").each(function () {
