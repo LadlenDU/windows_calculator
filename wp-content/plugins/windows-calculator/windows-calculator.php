@@ -46,15 +46,15 @@ function plugin_options_page()
 $defaultWndCalcOptions = [
     'profile' => [
         'name' => ['REHAU BLITZ', 'REHAU INTELIO', 'REHAU BRILLANT', 'REHAU DELIGHT', 'REHAU SIB', 'REHAU GENEO'],
-        'price' => [100.3, 102, 110, 120, 140.40, 30],
+        'price' => [1.3, 1.4, 1.5, 1.6, 1.7, 1.8],
     ],
     'furniture' => [
         'name' => ['Нет', 'ROTO', 'VORNE', 'SIGENIA'],
-        'price' => [0, 500, 600, 700],
+        'price' => [1, 1.1, 1.2, 1.3],
     ],
     'dglazed' => [
         'name' => ['Стандартный', 'Энергосберегающий'],
-        'price' => [1000, 2000],
+        'price' => [2, 2.3],
     ],
     'sill' => [
         'name' => ['Нет', '200 мм', '250 мм', '300 мм', '350 мм', '400 мм', '500 мм'],
