@@ -256,7 +256,8 @@ jQuery(function ($) {
             item_name: $("#wnd_calc_select_profile option:selected").text()
         });
         //price += tmpPrice;
-        price += windowPrice * tmpPrice;
+        var p2 = windowPrice * tmpPrice;
+        price += p2;
 
         tmpPrice = parseFloat($("#wnd_calc_select_furniture").val()) || 0;
         elements.characteristics.push({
@@ -265,7 +266,8 @@ jQuery(function ($) {
             item_name: $("#wnd_calc_select_furniture option:selected").text()
         });
         //price += tmpPrice;
-        price += windowPrice * tmpPrice;
+        var p3 = p2 * tmpPrice;
+        price += p3;
 
         tmpPrice = parseFloat($("#wnd_calc_select_dglazed").val()) || 0;
         elements.characteristics.push({
@@ -274,7 +276,8 @@ jQuery(function ($) {
             item_name: $("#wnd_calc_select_dglazed option:selected").text()
         });
         //price += tmpPrice;
-        price += windowPrice * tmpPrice;
+        var p4 = p3 * tmpPrice;
+        price += p4;
 
         tmpPrice = parseFloat($("#wnd_calc_select_setting").val()) || 0;
         elements.characteristics.push({
