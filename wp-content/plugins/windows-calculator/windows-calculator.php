@@ -291,7 +291,7 @@ function showChangeOptionTable($id, $priceType = 'price_for_item')
             break;
         case 'price_for_window_square':
             //, - цена за площадь окна (кв. м.)
-            $priceCaption = 'Цена за площадь окна';
+            $priceCaption = 'Цена за кв.м. окна';
             break;
         case 'price_for_window_width':
             //, - цена за ширину окна (п. м.)
