@@ -25,8 +25,11 @@ jQuery(function ($) {
         var priceInfo = calculatePrice();
         var textPriceInfo = "Окно:\n";
 
-        textPriceInfo += "    " + priceInfo.elements.window_type[0].name + " - " + formPrice(priceInfo.elements.window_type[0].price) + "\n\n"
-            + "Панели:\n";
+        textPriceInfo += "    " + priceInfo.elements.window_type[0].name;
+        if (priceInfo.elements.window_type[0].price) {
+            textPriceInfo += " - " + formPrice(priceInfo.elements.window_type[0].price);
+        }
+        textPriceInfo += "\n\n" + "Панели:\n";
 
         var pane = priceInfo.elements.window_panes;
         for (var key in pane) {
@@ -45,7 +48,9 @@ jQuery(function ($) {
         var characteristics = priceInfo.elements.characteristics;
         for (var key in characteristics) {
             if (characteristics[key].price) {
-                textPriceInfo += "    " + characteristics[key].name + ": " + characteristics[key].item_name + " - " + formPrice(characteristics[key].price) + "\n";
+                //textPriceInfo += "    " + characteristics[key].name + ": " + characteristics[key].item_name + " - " + formPrice(characteristics[key].price) + "\n";
+                // Временно уберем цену
+                textPriceInfo += "    " + characteristics[key].name + ": " + characteristics[key].item_name + "\n";
             }
         }
 
@@ -166,17 +171,18 @@ jQuery(function ($) {
 
         var tmpPrice = 0;
 
+        var windowPrice = 0;    // стоимость окна (по площади + доп. цены) - руб.
+        var windowSquare = 0;   // площадь окна (сумма площади всех панелей) - кв.м.
+        var windowWidth = 0;    // общая ширина окна - п.м.
+        var windowPanesHeight = 0;    // суммарная высота отдельных блоков
+
         // окна
         tmpPrice = parseFloat($(".wnd_calc_prev_window.wnd_calc_selected").data('price')) || 0;
         elements.window_type.push({name: $(".wnd_calc_prev_window.wnd_calc_selected").data('name'), price: tmpPrice});
         price += tmpPrice;
+        windowPrice += tmpPrice;
 
         // панели
-
-        var windowPrice = 0;    // стоимость окна (исключительно по площади) - руб.
-        var windowSquare = 0;   // площадь окна (сумма площади всех панелей) - кв.м.
-        var windowWidth = 0;    // общая ширина окна - п.м.
-        var windowPanesHeight = 0;    // суммарная высота отдельных блоков
 
         // высота
         var heightElement = $(".wnd_calc_window_item").find(".wnd_sel_wnd_height");
@@ -207,6 +213,7 @@ jQuery(function ($) {
             //var paneInfo = {name: 'Оконная панель ' + (index + 1), price: tmpPrice, height: heHeight};
             var paneInfo = {price: tmpPrice, height: heHeight};
             price += tmpPrice;
+            windowPrice += tmpPrice;
 
             // ширина
             var widthElement = $(this).parent().find('input');
@@ -309,11 +316,11 @@ jQuery(function ($) {
         $(".wnd_calc_setting_checkbox").each(function () {
             if ($(this).prop('checked')) {
                 tmpPrice = parseFloat($(this).data('price')) || 0;
+                elements.accessories.push({name: $(this).data('name'), price: tmpPrice});
+                price += tmpPrice;
             } else {
                 tmpPrice = 0;
             }
-            elements.accessories.push({name: $(this).data('name'), price: tmpPrice});
-            price += tmpPrice;
         });
 
         $("#wnd_calc_price").text($.number(price, 2, '.', ' '));
