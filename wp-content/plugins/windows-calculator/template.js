@@ -233,7 +233,7 @@ jQuery(function ($) {
 
             paneInfo.width = weWidth;
             windowWidth += weWidth;
-            windowPanesHeight += heHeight;
+            windowPanesHeight += heHeight * 2;
 
             var squarePrice = parseFloat($(this).data('subpane-price')) || 0;
             var square = (heHeight / 1000) * (weWidth / 1000);
