@@ -182,3 +182,11 @@
 #wnd_calc_order_form label {
     font-weight: normal;
 }
+
+.wnd_calc_container {
+    box-sizing: border-box !important;
+}
+
+.wnd_calc_characteristic {
+    font-size: 16px !important;
+}
