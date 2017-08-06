@@ -190,3 +190,7 @@
 .wnd_calc_characteristic {
     font-size: 16px !important;
 }
+
+.wnd_calc_window_item > div {
+    vertical-align: top;
+}

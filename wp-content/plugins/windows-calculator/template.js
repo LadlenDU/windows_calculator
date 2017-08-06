@@ -148,11 +148,12 @@ jQuery(function ($) {
                 index = 0;
             }
 
-            var par = $(this).parent().attr('style');
-            var matches = par.match(/top:\s*(.+?);/);
-            var top = matches[1] || 0;
+            // var par = $(this).parent().attr('style');
+            // var matches = par.match(/top:\s*(.+?);/);
+            // var top = matches[1] || 0;
 
-            var html = generatePane(wndNum, paneNum, index, top);
+            //var html = generatePane(wndNum, paneNum, index, top);
+            var html = generatePane(wndNum, paneNum, index);
             $(this).parent().replaceWith(html);
             setSubpaneSelectEvents();
             calculatePrice();
@@ -341,12 +342,14 @@ jQuery(function ($) {
         return {price: price, elements: elements};
     }
 
-    function generatePane(wndNum, paneNum, subpaneNum, top) {
+    //function generatePane(wndNum, paneNum, subpaneNum, top) {
+    function generatePane(wndNum, paneNum, subpaneNum) {
         var src = wndSelVariables.window.panes.subtypes.src_image[wndNum][paneNum][subpaneNum];
         var panePrice = wndSelVariables.window.panes.price[wndNum][paneNum];
         var subPaneName = wndSelVariables.window.panes.subtypes.name[wndNum][paneNum][subpaneNum];
         var subPanePrice = wndSelVariables.window.panes.subtypes.price[wndNum][paneNum][subpaneNum];
-        var html = '<div style="position: relative; display: inline-block; line-height: 0; top: ' + (top || 0) + ';">'
+        //var html = '<div style="position: relative; display: inline-block; line-height: 0; top: ' + (top || 0) + ';">'
+        var html = '<div style="position: relative; display: inline-block; line-height: 0">'
             + '<img class="wnd_sel_pane_wnd" src="' + $("<div>").text(src).html()
             + '" alt="" data-wnd-id="' + wndNum + '" data-pane-id="' + paneNum + '" data-subpane-id="' + subpaneNum
             + '" data-pane-price="' + panePrice + '" data-subpane-name="' + subPaneName
@@ -385,7 +388,22 @@ jQuery(function ($) {
         setSubpaneSelectEvents();
 
         if (currUrl) {
-            //$(".wnd_calc_window_item .wnd_sel_pane_wnd").first().load(function () {
+            $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
+                var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
+                var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
+                    + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
+                    + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
+                    + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
+                    + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
+                    + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
+                    + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
+                    + '</div>';
+
+                $(".wnd_calc_window_item").append(html);
+                setSubpaneSelectEvents();
+                calculatePrice();
+            });
+            /*//$(".wnd_calc_window_item .wnd_sel_pane_wnd").first().load(function () {
             $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
 
                 var offset = '0px';
@@ -416,7 +434,7 @@ jQuery(function ($) {
                 setSubpaneSelectEvents();
                 calculatePrice();
             });
-            //});
+            //});*/
         }
     }
 
