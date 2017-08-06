@@ -23,11 +23,13 @@ if ($_REQUEST['action'] == 'make_order') {
     if (true === $error) { /* the CAPTCHA answer is right */
         $email = trim($_POST['email']);
         $name = trim($_POST['name']);
+        $phone = trim($_POST['phone']);
         $mailMessage = <<<ORDER
 Сделан заказ окна.
 
 Имя пользователя: $name
 E-mail: $email
+Телефон: $phone
 
 Информация о заказе:
 $_POST[window]

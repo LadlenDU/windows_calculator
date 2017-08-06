@@ -64,3 +64,7 @@
 #wnd_calc_order_popup .form-group {
     font-weight: normal;
 }
+
+#wnd_calc_order_popup input {
+    width: 100%;
+}
