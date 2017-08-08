@@ -5,8 +5,7 @@
  * Version: 1.0
  */
 
-add_action('wp_enqueue_scripts', 'wnd_calc_scripts');
-function wnd_calc_scripts()
+/*function wnd_calc_scripts()
 {
     wp_enqueue_script('jquery');
     //wp_enqueue_script('jquery-ui-core');
@@ -14,12 +13,20 @@ function wnd_calc_scripts()
     wp_enqueue_style('wnd_calc_style', plugins_url('', __FILE__) . '/template.css');
     wp_enqueue_style('wnd_calc_bpopup', plugins_url('', __FILE__) . '/bpopup.css');
 
-    //wp_enqueue_script('wnd_calc_effects-core', plugins_url('', __FILE__) . '/jquery-ui-effects-core/jquery-ui.min.js', ['jquery']);
     wp_enqueue_script("jquery-effects-core");
     wp_enqueue_script('wnd_calc_script', plugins_url('', __FILE__) . '/template.js', ['jquery']);
     wp_enqueue_script('wnd_calc_number_format_script', plugins_url('', __FILE__) . '/jquery.number.min.js', ['jquery']);
     wp_enqueue_script('wnd_calc_order_popup_script', plugins_url('', __FILE__) . '/jquery.bpopup.min.js', ['jquery']);
 }
+add_action('wp_enqueue_scripts', 'wnd_calc_scripts');*/
+
+function wnd_calc_scripts()
+{
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('jquery-effects-core');
+}
+add_action('wp_enqueue_scripts', 'wnd_calc_scripts');
+
 
 add_action('admin_menu', 'plugin_admin_add_wnd_calc_page');
 function plugin_admin_add_wnd_calc_page()
@@ -338,11 +345,28 @@ function showChangeOptionTable($id, $priceType = 'price_for_item')
 }*/
 
 
-// ---------
+
+//wp_enqueue_script('jquery');
+
+wp_register_style('wnd_calc_style', plugins_url('', __FILE__) . '/template.css');
+wp_register_style('wnd_calc_bpopup', plugins_url('', __FILE__) . '/bpopup.css');
+
+//wp_register_script('jquery-effects-core');    // wrong params
+wp_register_script('wnd_calc_script', plugins_url('', __FILE__) . '/template.js', ['jquery']);
+wp_register_script('wnd_calc_number_format_script', plugins_url('', __FILE__) . '/jquery.number.min.js', ['jquery']);
+wp_register_script('wnd_calc_order_popup_script', plugins_url('', __FILE__) . '/jquery.bpopup.min.js', ['jquery']);
+
 function shortcode_wnd_calc()
 {
+    wp_enqueue_style('wnd_calc_style');
+    wp_enqueue_style('wnd_calc_bpopup');
+
+    wp_enqueue_script('wnd_calc_script');
+    wp_enqueue_script('wnd_calc_number_format_script');
+    wp_enqueue_script('wnd_calc_order_popup_script');
+
     ob_start();
-    include 'template.php';
+    require_once 'template.php';
     $content = ob_get_contents();
     ob_end_clean();
     return $content;
