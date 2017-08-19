@@ -7,6 +7,7 @@ jQuery(function ($) {
 
     $(".wnd_calc_prev_window").click(function () {
         selectWindow($(this).data('id'));
+        $(".wnd_calc_hide_sizes").prop('checked', true);
         calculatePrice();
     });
 
@@ -33,6 +34,9 @@ jQuery(function ($) {
 
         var pane = priceInfo.elements.window_panes;
         for (var key in pane) {
+            if (!pane.hasOwnProperty(key)) {
+                continue;
+            }
             textPriceInfo += "    " + pane[key].name;
             if (pane[key].price) {
                 textPriceInfo += " - " + formPrice(pane[key].price);
@@ -47,6 +51,9 @@ jQuery(function ($) {
 
         var characteristics = priceInfo.elements.characteristics;
         for (var key in characteristics) {
+            if (!characteristics.hasOwnProperty(key)) {
+                continue;
+            }
             if (characteristics[key].price) {
                 //textPriceInfo += "    " + characteristics[key].name + ": " + characteristics[key].item_name + " - " + formPrice(characteristics[key].price) + "\n";
                 // Временно уберем цену
@@ -60,6 +67,9 @@ jQuery(function ($) {
             textPriceInfo += "Комплектующие:\n";
             var accessories = priceInfo.elements.accessories;
             for (var key in accessories) {
+                if (!accessories.hasOwnProperty(key)) {
+                    continue;
+                }
                 if (accessories[key].price) {
                     textPriceInfo += "    " + accessories[key].name + " - " + formPrice(accessories[key].price) + "\n";
                 }
@@ -354,7 +364,7 @@ jQuery(function ($) {
             + '" alt="" data-wnd-id="' + wndNum + '" data-pane-id="' + paneNum + '" data-subpane-id="' + subpaneNum
             + '" data-pane-price="' + panePrice + '" data-subpane-name="' + subPaneName
             + '" data-subpane-price="' + subPanePrice + '">'
-            + '<div style="height:50px;width:100%;position:relative;">'
+            + '<div class="wnd_calc_size_element" style="height:50px;width:100%;position:relative;">'
             + '<img style="position:absolute;left:0;top:0" src="' + lw + '" alt="">'
             + '<img style="position:absolute;right:0;top:0" src="' + rw + '" alt="">'
             + '<div style="width:100%;height:1px;background-color:#d7d7d7;position:absolute;left:0;top:34px;"></div>'
@@ -378,6 +388,9 @@ jQuery(function ($) {
         var info = wndSelVariables.window.panes.subtypes.src_image[number];
         //wndSelVariables.window.panes['width-max'][number][key]
         for (var key in info) {
+            if (!info.hasOwnProperty(key)) {
+                continue;
+            }
             if (info[key][0]) {
                 currUrl = info[key][0];
                 html += generatePane(number, key, 0);
@@ -390,7 +403,7 @@ jQuery(function ($) {
         if (currUrl) {
             $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
                 var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
-                var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
+                var html = '<div class="wnd_calc_size_element" style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
                     + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
                     + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
                     + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
@@ -437,6 +450,14 @@ jQuery(function ($) {
             //});*/
         }
     }
+
+    $(".wnd_calc_hide_sizes").change(function () {
+        if ($(this).prop('checked')) {
+            $(".wnd_calc_size_element").fadeIn();
+        } else {
+            $(".wnd_calc_size_element").fadeOut();
+        }
+    });
 
     var id = $(".wnd_calc_window_type_select .wnd_calc_prev_window:first-child").data('id');
     selectWindow(id);

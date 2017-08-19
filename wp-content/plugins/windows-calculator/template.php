@@ -110,6 +110,9 @@ $WndCalc->init();
             <div id="wnd_calc_window_preview">
                 Чтобы поменять тип открывания кликните на створку
                 <div class="wnd_calc_window_item"></div>
+                <div class="wnd_calc_hide_sizes_wrapper">
+                    <label><input type="checkbox" class="wnd_calc_hide_sizes" checked="checked">Показывать размеры</label>
+                </div>
             </div>
             <div class="wnd_calc_price">
                 <div class="wnd_calc_total">Всего:

@@ -203,3 +203,12 @@
 .wnd_calc_window_item > div {
     vertical-align: top;
 }
+
+#wnd_calc_order_popup button:after {
+    content: none !important;
+}
+
+.wnd_calc_hide_sizes_wrapper {
+    margin-top: 1em;
+    text-align: left;
+}
