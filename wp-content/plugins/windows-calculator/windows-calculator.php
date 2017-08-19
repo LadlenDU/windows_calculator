@@ -344,12 +344,14 @@ function showChangeOptionTable($id, $priceType = 'price_for_item')
     return $newInput;
 }*/
 
-
-
 //wp_enqueue_script('jquery');
 
 wp_register_style('wnd_calc_style', plugins_url('', __FILE__) . '/template.css');
 wp_register_style('wnd_calc_bpopup', plugins_url('', __FILE__) . '/bpopup.css');
+
+// for the http://экоклимат40.рф customer
+//wp_register_style('wnd_calc_style_tmp', plugins_url('', __FILE__) . '/css/main.min.css');
+//wp_register_style('wnd_calc_bpopup_tmp', plugins_url('', __FILE__) . '/css/custom-9a953460ba.css');
 
 //wp_register_script('jquery-effects-core');    // wrong params
 wp_register_script('wnd_calc_script', plugins_url('', __FILE__) . '/template.js', ['jquery']);
@@ -360,6 +362,10 @@ function shortcode_wnd_calc()
 {
     wp_enqueue_style('wnd_calc_style');
     wp_enqueue_style('wnd_calc_bpopup');
+
+    // for the http://экоклимат40.рф customer
+    //wp_enqueue_style('wnd_calc_style_tmp');
+    //wp_enqueue_style('wnd_calc_bpopup_tmp');
 
     wp_enqueue_script('wnd_calc_script');
     wp_enqueue_script('wnd_calc_number_format_script');
