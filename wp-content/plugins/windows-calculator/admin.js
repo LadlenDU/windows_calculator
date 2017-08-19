@@ -100,7 +100,7 @@ jQuery(function ($) {
         var newRow = '<tr>'
             + '<td>'
             + '<span class="wnd_small">Название</span><br>'
-            + '<input class="name_wnd_option name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][name][' + key + ']">'
+            + '<input class="name_wnd_option name_wnd_option_not_short" type="text" value="" name="plugin_options_wnd_calc[window][name][' + key + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
             + '<td>'

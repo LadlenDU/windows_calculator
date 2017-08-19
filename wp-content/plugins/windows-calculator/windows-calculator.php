@@ -163,14 +163,14 @@ function plugin_wnd_calc_profile_func()
 function plugin_wnd_calc_window_func()
 {
     $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
-    $s = '<table class="wnd_calc_wnd_options"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Панелей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
+    $s = '<table class="wnd_calc_wnd_options wnd_calc_wnd_options_wnd"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Панелей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
     if (!empty($options['window'])) {
         foreach ($options['window']['name'] as $key => $pf) {
             $panes = isset($options['window']['panes']['width'][$key]) ? $options['window']['panes']['width'][$key] : [];
             $s .= '<tr>'
                 . '<td>'
                 . '<span class="wnd_small">Название</span><br>'
-                . '<input class="name_wnd_option name_wnd_option_short" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[window][name][' . $key . ']" readonly="readonly">'
+                . '<input class="name_wnd_option name_wnd_option_not_short" type="text" value="' . esc_html($pf) . '" name="plugin_options_wnd_calc[window][name][' . $key . ']" readonly="readonly">'
                 . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                 . '</td>'
                 . '<td>'

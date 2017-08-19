@@ -1,7 +1,22 @@
+.wnd_calc_wnd_options {
+    width: 100%;
+}
+
 .wnd_calc_wnd_options th {
     padding: 5px 10px 10px;
     background-color: #222;
     color: white;
+}
+
+.wnd_calc_wnd_options_wnd > tbody > tr > th,
+.wnd_calc_wnd_options_wnd > tbody > tr > td {
+    min-width: 90px;
+}
+
+.wnd_calc_wnd_options_wnd > tbody > tr > th:first-child,
+.wnd_calc_wnd_options_wnd > tbody > tr > td:first-child {
+    width: 100%;
+    min-width: 90px;
 }
 
 .wnd_calc_wnd_options td {
@@ -48,6 +63,15 @@
     width: 60px;
 }
 
+.name_wnd_option_not_short {
+    width: 80%;
+}
+
 .wnd_small {
     font-size: 0.7em;
 }
+
+.form-table > tbody > tr > th {
+    width: 110px;
+}
+
