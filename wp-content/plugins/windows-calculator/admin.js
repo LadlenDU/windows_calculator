@@ -125,17 +125,17 @@ jQuery(function ($) {
             + '<input type="checkbox" class="mod_wnd_option_name" name="plugin_options_wnd_calc[window][height-different][' + key + ']" title="Разные высоты панелей">'
             + '</td>'
 
-            + '<td>'
+            + '<td class="wnd_calc_height_rel_cell">'
             + '<span class="wnd_small">Мин. высота</span><br>'
             + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][height-min][' + key + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
-            + '<td>'
+            + '<td class="wnd_calc_height_rel_cell">'
             + '<span class="wnd_small">Макс. высота</span><br>'
             + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][height-max][' + key + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
-            + '<td>'
+            + '<td class="wnd_calc_height_rel_cell">'
             + '<span class="wnd_small">Панелей</span><br>'
             + '<input class="name_wnd_option_short add_window_pane" type="number" min="1" max="20" value="1">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
@@ -257,7 +257,7 @@ jQuery(function ($) {
         });
 
         $(".wnd_calc_diff_heights_cell input").unbind('change').change(function () {
-
+            $(this).closest('tr').find('.wnd_calc_height_rel_cell input').prop('disabled', $(this).prop('checked'));
         });
 
     }
