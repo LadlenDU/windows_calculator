@@ -10,7 +10,17 @@
 
 .wnd_calc_wnd_options_wnd > tbody > tr > th,
 .wnd_calc_wnd_options_wnd > tbody > tr > td {
-    min-width: 90px;
+    min-width: 85px;
+}
+
+.wnd_calc_wnd_options_wnd > tbody > tr > th:last-child,
+.wnd_calc_wnd_options_wnd > tbody > tr > td:last-child {
+    min-width: 65px;
+}
+
+.wnd_calc_wnd_options_wnd > tbody > tr > th.wnd_calc_diff_heights_cell,
+.wnd_calc_wnd_options_wnd > tbody > tr > td.wnd_calc_diff_heights_cell {
+    min-width: 51px;
 }
 
 .wnd_calc_wnd_options_wnd > tbody > tr > th:first-child,

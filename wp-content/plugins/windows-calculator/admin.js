@@ -119,6 +119,12 @@ jQuery(function ($) {
             + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][height][' + key + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</td>'
+
+            + '<td class="wnd_calc_diff_heights_cell">'
+            + '<span class="wnd_small">Разные высоты</span><br>'
+            + '<input type="checkbox" class="mod_wnd_option_name" name="plugin_options_wnd_calc[window][height-different][' + key + ']" title="Разные высоты панелей">'
+            + '</td>'
+
             + '<td>'
             + '<span class="wnd_small">Мин. высота</span><br>'
             + '<input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][height-min][' + key + ']">'
@@ -137,7 +143,7 @@ jQuery(function ($) {
             + '<td class="tbl_center"><button data-type="window" class="rem_wnd_option">Удалить</button></td>'
             + '</tr>';
 
-        newRow += '<tr><td colspan="8" style="text-align: right">'
+        newRow += '<tr><td colspan="9" style="text-align: right">'
             + htmlWindowPane(key, 0)
             + '</td></tr>';
 
@@ -150,12 +156,10 @@ jQuery(function ($) {
 
 
     function bindEventsToOptions() {
-        $(".wnd_calc_wnd_options .mod_wnd_option_name, .wnd_calc_wnd_options .mod_wnd_option_price").unbind('change');
-        $(".wnd_calc_wnd_options .mod_wnd_option_name, .wnd_calc_wnd_options .mod_wnd_option_price").change(function () {
+        $(".wnd_calc_wnd_options .mod_wnd_option_name, .wnd_calc_wnd_options .mod_wnd_option_price").unbind('change').change(function () {
             $(this).prev().prop('readonly', !$(this).prop('checked'));
         });
-        $(".wnd_calc_wnd_options .rem_wnd_option").unbind('click');
-        $(".wnd_calc_wnd_options .rem_wnd_option").click(function (e) {
+        $(".wnd_calc_wnd_options .rem_wnd_option").unbind('click').click(function (e) {
             e.preventDefault();
             var curTr = $(this).parent().parent();
             var name = curTr.find(".name_wnd_option");
@@ -172,8 +176,7 @@ jQuery(function ($) {
             return false;
         });
 
-        $(".wnd_calc_wnd_options .add_window_pane").unbind('change');
-        $(".wnd_calc_wnd_options .add_window_pane").change(function () {
+        $(".wnd_calc_wnd_options .add_window_pane").unbind('change').change(function () {
             var curTr = $(this).parent().parent();
             var paneContainer = curTr.next().children('td');
             var currCount = paneContainer.children('table').length;
@@ -195,8 +198,7 @@ jQuery(function ($) {
             bindEventsToOptions();
         });
 
-        $(".wnd_calc_wnd_options .add_window_subpane").unbind('change');
-        $(".wnd_calc_wnd_options .add_window_subpane").change(function () {
+        $(".wnd_calc_wnd_options .add_window_subpane").unbind('change').change(function () {
             //var subpane = $(this).parents('table').first();
             var subpane = $(this).closest('table');
             var subpaneContainer = subpane.children('tbody');
@@ -225,12 +227,10 @@ jQuery(function ($) {
         });
 
         // window
-        $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").unbind('click');
-        $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").click(function () {
+        $(".wnd_calc_wnd_options .mod_wnd_option_class_preview_image").unbind('click').click(function () {
             window.open($(this).attr('src'));
         });
-        $(".wnd_calc_wnd_options .mod_wnd_option_change_preview_image").unbind('click');
-        $(".wnd_calc_wnd_options .mod_wnd_option_change_preview_image").click(function (e) {
+        $(".wnd_calc_wnd_options .mod_wnd_option_change_preview_image").unbind('click').click(function (e) {
             e.preventDefault();
 
             var button = $(this);
@@ -254,6 +254,10 @@ jQuery(function ($) {
             }
 
             return false;
+        });
+
+        $(".wnd_calc_diff_heights_cell input").unbind('change').change(function () {
+
         });
 
     }

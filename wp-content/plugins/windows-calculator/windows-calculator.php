@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Калькулятор окон
  * Description: Вычисляет цены на окна.
- * Version: 1.0
+ * Version: 1.1
  */
 
 /*function wnd_calc_scripts()
@@ -25,6 +25,7 @@ function wnd_calc_scripts()
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-effects-core');
 }
+
 add_action('wp_enqueue_scripts', 'wnd_calc_scripts');
 
 
@@ -163,10 +164,12 @@ function plugin_wnd_calc_profile_func()
 function plugin_wnd_calc_window_func()
 {
     $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
-    $s = '<table class="wnd_calc_wnd_options wnd_calc_wnd_options_wnd"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Панелей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
+    $s = '<table class="wnd_calc_wnd_options wnd_calc_wnd_options_wnd"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th class="wnd_calc_diff_heights_cell">Разные высоты</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Панелей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
     if (!empty($options['window'])) {
         foreach ($options['window']['name'] as $key => $pf) {
             $panes = isset($options['window']['panes']['width'][$key]) ? $options['window']['panes']['width'][$key] : [];
+            $differentHeights = empty($options['window']['height-different'][$key]) ? '' : ' checked="checked" ';
+            //$diffHeightsDisabled = empty($options['window']['height-different'][$key]) ? '' : ' checked="checked" ';
             $s .= '<tr>'
                 . '<td>'
                 . '<span class="wnd_small">Название</span><br>'
@@ -184,6 +187,12 @@ function plugin_wnd_calc_window_func()
                 . '<img alt="" src="' . esc_html($options['window']['src_small'][$key]) . '" class="mod_wnd_option_class_preview_image" title="Нажмите чтобы увеличить">'
                 . '<div><button class="mod_wnd_option_change_preview_image" title="Добавить/изменить маленькое окно">Мал. окно</button></div>'
                 . '</td>'
+
+                . '<td class="wnd_calc_diff_heights_cell">'
+                . '<span class="wnd_small">Разные высоты</span><br>'
+                . '<input type="checkbox" class="mod_wnd_option_name" ' . $differentHeights . ' name="plugin_options_wnd_calc[window][height-different][' . $key . ']" title="Разные высоты панелей">'
+                . '</td>'
+
                 . '<td>'
                 . '<span class="wnd_small">Высота</span><br>'
                 . '<input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['height'][$key]) . '" name="plugin_options_wnd_calc[window][height][' . $key . ']" readonly="readonly">'
@@ -207,7 +216,7 @@ function plugin_wnd_calc_window_func()
                 . '<td class="tbl_center"><button data-type="window" class="rem_wnd_option">Удалить</button></td>'
                 . '</tr>';
 
-            $s .= '<tr><td colspan="8" style="text-align: right">';
+            $s .= '<tr><td colspan="9" style="text-align: right">';
 
             if ($panes) {
                 foreach ($panes as $keyPane => $pane) {
@@ -292,8 +301,7 @@ function showChangeOptionTable($id, $priceType = 'price_for_item')
 {
     $options = get_option('plugin_options_wnd_calc', $GLOBALS['defaultWndCalcOptions']);
 
-    switch ($priceType)
-    {
+    switch ($priceType) {
         case 'koeff_window_price':
             $priceCaption = 'Коэфф. от ст-сти окна';
             break;
