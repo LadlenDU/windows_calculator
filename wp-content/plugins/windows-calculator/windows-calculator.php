@@ -170,6 +170,7 @@ function plugin_wnd_calc_window_func()
             $panes = isset($options['window']['panes']['width'][$key]) ? $options['window']['panes']['width'][$key] : [];
             $differentHeights = empty($options['window']['height-different'][$key]) ? '' : ' checked="checked" ';
             $diffHeightsDisabled = empty($options['window']['height-different'][$key]) ? '' : ' disabled="disabled" ';
+            $diffHeightsEnabled = empty($options['window']['height-different'][$key]) ? ' disabled="disabled" ' : '';
             $s .= '<tr>'
                 . '<td>'
                 . '<span class="wnd_small">Название</span><br>'
@@ -246,6 +247,23 @@ function plugin_wnd_calc_window_func()
                         . '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать">'
                         . '</th>'
                         . '</tr>'
+
+                        . '<tr>'
+                        . '<th class="wnd_calc_diff_heights_sub_cell">'
+                        . 'Высота:<br><input ' . $diffHeightsEnabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['height'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][height][' . $key . '][' . $keyPane . ']" readonly="readonly">'
+                        . '<input type="checkbox" ' . $diffHeightsEnabled . ' class="mod_wnd_option_name" title="Редактировать">'
+                        . '</th>'
+                        . '<th class="wnd_calc_diff_heights_sub_cell">'
+                        . 'Мин. высота:<br><input ' . $diffHeightsEnabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['height-min'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][height-min][' . $key . '][' . $keyPane . ']" readonly="readonly">'
+                        . '<input type="checkbox" ' . $diffHeightsEnabled . ' class="mod_wnd_option_name" title="Редактировать">'
+                        . '</th>'
+                        . '<th class="wnd_calc_diff_heights_sub_cell">'
+                        . 'Макс. высота:<br><input ' . $diffHeightsEnabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['height-max'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][height-max][' . $key . '][' . $keyPane . ']" readonly="readonly">'
+                        . '<input type="checkbox" ' . $diffHeightsEnabled . ' class="mod_wnd_option_name" title="Редактировать">'
+                        . '</th>'
+                        . '<th colspan="2">&nbsp;</th>'
+                        . '</tr>'
+
                         . '</thead>'
                         . '<tbody>';
 

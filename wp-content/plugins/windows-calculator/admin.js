@@ -46,6 +46,23 @@ jQuery(function ($) {
             + '<input type="checkbox" class="mod_wnd_option_price" title="Редактировать" checked="checked">'
             + '</th>'
             + '</tr>'
+
+            + '<tr>'
+            + '<th class="wnd_calc_diff_heights_sub_cell">'
+            + 'Высота:<br><input disabled="disabled" class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][height][' + key + '][' + index + ']">'
+            + '<input type="checkbox" disabled="disabled" class="mod_wnd_option_name" title="Редактировать">'
+            + '</th>'
+            + '<th class="wnd_calc_diff_heights_sub_cell">'
+            + 'Мин. высота:<br><input disabled="disabled" class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][height-min][' + key + '][' + index + ']">'
+            + '<input type="checkbox" disabled="disabled" class="mod_wnd_option_name" title="Редактировать">'
+            + '</th>'
+            + '<th class="wnd_calc_diff_heights_sub_cell">'
+            + 'Макс. высота:<br><input disabled="disabled" class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][height-max][' + key + '][' + index + ']">'
+            + '<input type="checkbox" disabled="disabled" class="mod_wnd_option_name" title="Редактировать">'
+            + '</th>'
+            + '<th colspan="2">&nbsp;</th>'
+            + '</tr>'
+
             + '</thead>'
             + '<tbody>'
             + htmlWindowSubPane(key, index)
@@ -257,7 +274,9 @@ jQuery(function ($) {
         });
 
         $(".wnd_calc_diff_heights_cell input").unbind('change').change(function () {
-            $(this).closest('tr').find('.wnd_calc_height_rel_cell input').prop('disabled', $(this).prop('checked'));
+            var tr = $(this).closest('tr');
+            tr.find('.wnd_calc_height_rel_cell input').prop('disabled', $(this).prop('checked'));
+            tr.next('tr').find('td > table .wnd_calc_diff_heights_sub_cell input').prop('disabled', !$(this).prop('checked'));
         });
 
     }
