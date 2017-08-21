@@ -25,15 +25,15 @@ jQuery(function ($) {
         var newRow = '<table style="width:90%;float:right;" class="wnd_calc_panes_list">'
             + '<thead>'
             + '<tr>'
-            + '<th>'
+            + '<th class="wnd_calc_diff_widths_sub_cell">'
             + 'Ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width][' + key + '][' + index + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
-            + '<th>'
+            + '<th class="wnd_calc_diff_widths_sub_cell">'
             + 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-min][' + key + '][' + index + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
-            + '<th>'
+            + '<th class="wnd_calc_diff_widths_sub_cell">'
             + 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][width-max][' + key + '][' + index + ']">'
             + '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать" checked="checked">'
             + '</th>'
@@ -288,6 +288,7 @@ jQuery(function ($) {
 
         $('.wnd_calc_whether_top_panel input[type="checkbox"]').unbind('change').change(function () {
             var tr = $(this).closest('tr');
+            tr.prev().find('.wnd_calc_diff_widths_sub_cell input').prop('disabled', $(this).prop('checked'));
             if ($(this).prop('checked')) {
                 tr.find('.wnd_calc_diff_heights_sub_cell input').prop('disabled', false);
             } else {

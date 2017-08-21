@@ -224,6 +224,7 @@ function plugin_wnd_calc_window_func()
                     $subtypes = isset($options['window']['panes']['subtypes']['id_image'][$key][$keyPane]) ? $options['window']['panes']['subtypes']['id_image'][$key][$keyPane] : [];
 
                     $diffHeightsEnabledSub = $diffHeightsEnabled;
+                    $topPanelDisabled = '';
 
                     //$topPanelChecked = empty($options['window']['panes']['whether-top-panel'][$key][$keyPane]) ? '' : ' checked="checked" ';
                     if (empty($options['window']['panes']['whether-top-panel'][$key][$keyPane])) {
@@ -231,22 +232,23 @@ function plugin_wnd_calc_window_func()
                     } else {
                         $diffHeightsEnabledSub = '';
                         $topPanelChecked = ' checked="checked" ';
+                        $topPanelDisabled = ' disabled="disabled" ';
                     }
 
                     $s .= '<table style="width:90%;float:right;" class="wnd_calc_panes_list">'
                         . '<thead>'
                         . '<tr>'
-                        . '<th>'
-                        . 'Ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($pane) . '" name="plugin_options_wnd_calc[window][panes][width][' . $key . '][' . $keyPane . ']" readonly="readonly">'
-                        . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                        . '<th class="wnd_calc_diff_widths_sub_cell">'
+                        . 'Ширина:<br><input ' . $topPanelDisabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($pane) . '" name="plugin_options_wnd_calc[window][panes][width][' . $key . '][' . $keyPane . ']" readonly="readonly">'
+                        . '<input ' . $topPanelDisabled . ' type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
-                        . '<th>'
-                        . 'Мин. ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['width-min'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][width-min][' . $key . '][' . $keyPane . ']" readonly="readonly">'
-                        . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                        . '<th class="wnd_calc_diff_widths_sub_cell">'
+                        . 'Мин. ширина:<br><input ' . $topPanelDisabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['width-min'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][width-min][' . $key . '][' . $keyPane . ']" readonly="readonly">'
+                        . '<input ' . $topPanelDisabled . ' type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
-                        . '<th>'
-                        . 'Макс. ширина:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['width-max'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][width-max][' . $key . '][' . $keyPane . ']" readonly="readonly">'
-                        . '<input type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
+                        . '<th class="wnd_calc_diff_widths_sub_cell">'
+                        . 'Макс. ширина:<br><input ' . $topPanelDisabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['width-max'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][width-max][' . $key . '][' . $keyPane . ']" readonly="readonly">'
+                        . '<input ' . $topPanelDisabled . ' type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
                         . '<th>'
                         . 'Цена:<br><input class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['price'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][price][' . $key . '][' . $keyPane . ']" readonly="readonly">'
