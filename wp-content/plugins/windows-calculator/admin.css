@@ -85,3 +85,10 @@
     width: 110px;
 }
 
+td .wnd_calc_panes_list .wnd_calc_whether_top_panel {
+    display: none;
+}
+
+td .wnd_calc_panes_list:first-child .wnd_calc_whether_top_panel {
+    display: block;
+}
