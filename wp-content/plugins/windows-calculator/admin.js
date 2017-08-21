@@ -274,13 +274,15 @@ jQuery(function ($) {
         });
 
         $(".wnd_calc_diff_heights_cell input").unbind('change').change(function () {
+            var checked = $(this).prop('checked');
             var tr = $(this).closest('tr');
-            tr.find('.wnd_calc_height_rel_cell input').prop('disabled', $(this).prop('checked'));
+            tr.find('.wnd_calc_height_rel_cell input').prop('disabled', checked);
 
-            tr.next('tr').find('td > table .wnd_calc_diff_heights_sub_cell input').prop('disabled', !$(this).prop('checked'));
-            if (!$(this).prop('checked')) {
-                var wtp = tr.next().find('> td > .wnd_calc_panes_list:first-child .wnd_calc_whether_top_panel input[type="checkbox"]');
-                tr.next('tr').find('td > table .wnd_calc_diff_heights_sub_cell input').prop('disabled', !wtp.prop('checked'));
+            tr.next('tr').find('td > table .wnd_calc_diff_heights_sub_cell input').prop('disabled', !checked);
+            if (!checked) {
+                var fp = tr.next().find('> td > .wnd_calc_panes_list:first-child');
+                var wtp = fp.find('.wnd_calc_whether_top_panel input[type="checkbox"]');
+                fp.find('.wnd_calc_diff_heights_sub_cell input').prop('disabled', !wtp.prop('checked'));
             }
         });
 
