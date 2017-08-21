@@ -223,6 +223,14 @@ function plugin_wnd_calc_window_func()
                 foreach ($panes as $keyPane => $pane) {
                     $subtypes = isset($options['window']['panes']['subtypes']['id_image'][$key][$keyPane]) ? $options['window']['panes']['subtypes']['id_image'][$key][$keyPane] : [];
 
+                    //$topPanelChecked = empty($options['window']['panes']['whether-top-panel'][$key][$keyPane]) ? '' : ' checked="checked" ';
+                    if (empty($options['window']['panes']['whether-top-panel'][$key][$keyPane])) {
+                        $topPanelChecked = '';
+                    } else {
+                        $diffHeightsEnabled = '';
+                        $topPanelChecked = ' checked="checked" ';
+                    }
+
                     $s .= '<table style="width:90%;float:right;" class="wnd_calc_panes_list">'
                         . '<thead>'
                         . '<tr>'
@@ -261,7 +269,7 @@ function plugin_wnd_calc_window_func()
                         . 'Макс. высота:<br><input ' . $diffHeightsEnabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['height-max'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][height-max][' . $key . '][' . $keyPane . ']" readonly="readonly">'
                         . '<input type="checkbox" ' . $diffHeightsEnabled . ' class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
-                        . '<th colspan="2" style="vertical-align: middle;text-align: center" title="Верхняя панель (сталинский тип)"><label class="wnd_calc_whether_top_panel"><input type="checkbox" class="mod_wnd_option_name" name="plugin_options_wnd_calc[window][panes][whether-top-panel][' . $key . '][' . $keyPane . ']">Верхняя панель</label></th>'
+                        . '<th colspan="2" style="vertical-align: middle;text-align: center" title="Верхняя панель (сталинский тип)"><label class="wnd_calc_whether_top_panel"><input type="checkbox" class="mod_wnd_option_name" ' . $topPanelChecked . ' name="plugin_options_wnd_calc[window][panes][whether-top-panel][' . $key . '][' . $keyPane . ']">Верхняя панель</label></th>'
                         . '</tr>'
 
                         . '</thead>'
