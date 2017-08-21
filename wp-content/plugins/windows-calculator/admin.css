@@ -92,3 +92,7 @@ td .wnd_calc_panes_list .wnd_calc_whether_top_panel {
 td .wnd_calc_panes_list:first-child .wnd_calc_whether_top_panel {
     display: block;
 }
+
+.wnd_calc_whether_top_panel input[type="checkbox"] {
+    margin-right: 5px;
+}
