@@ -60,7 +60,7 @@ jQuery(function ($) {
             + 'Макс. высота:<br><input disabled="disabled" class="name_wnd_option_short" type="text" value="" name="plugin_options_wnd_calc[window][panes][height-max][' + key + '][' + index + ']">'
             + '<input type="checkbox" disabled="disabled" class="mod_wnd_option_name" title="Редактировать">'
             + '</th>'
-            + '<th colspan="2" style="vertical-align: middle;text-align: center" title="Верхняя панель (сталинский тип)"><label class="wnd_calc_whether_top_panel"><input type="checkbox" class="mod_wnd_option_name">Верхняя панель</label></th>'
+            + '<th colspan="2" style="vertical-align: middle;text-align: center" title="Верхняя панель (сталинский тип)"><label class="wnd_calc_whether_top_panel"><input type="checkbox" class="mod_wnd_option_name" name="plugin_options_wnd_calc[window][panes][whether-top-panel][' + key + '][' + index + ']">Верхняя панель</label></th>'
             + '</tr>'
 
             + '</thead>'
