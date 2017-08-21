@@ -167,7 +167,8 @@ function plugin_wnd_calc_window_func()
     $s = '<table class="wnd_calc_wnd_options wnd_calc_wnd_options_wnd"><thead><tr><th>Название</th><th>Цена</th><th>&nbsp;</th><th class="wnd_calc_diff_heights_cell">Разные высоты</th><th>Высота</th><th>Мин. высота</th><th>Макс. высота</th><th>Панелей</th><th><input class="calc_wnd_option_type" type="hidden" value="window"></th></tr></thead><tbody>';
     if (!empty($options['window'])) {
         foreach ($options['window']['name'] as $key => $pf) {
-            $panes = isset($options['window']['panes']['width'][$key]) ? $options['window']['panes']['width'][$key] : [];
+            //$panes = isset($options['window']['panes']['width'][$key]) ? $options['window']['panes']['width'][$key] : [];
+            $panes = isset($options['window']['panes']['price'][$key]) ? $options['window']['panes']['price'][$key] : [];
             $differentHeights = empty($options['window']['height-different'][$key]) ? '' : ' checked="checked" ';
             $diffHeightsDisabled = empty($options['window']['height-different'][$key]) ? '' : ' disabled="disabled" ';
             $diffHeightsEnabled = empty($options['window']['height-different'][$key]) ? ' disabled="disabled" ' : '';
@@ -239,7 +240,7 @@ function plugin_wnd_calc_window_func()
                         . '<thead>'
                         . '<tr>'
                         . '<th class="wnd_calc_diff_widths_sub_cell">'
-                        . 'Ширина:<br><input ' . $topPanelDisabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($pane) . '" name="plugin_options_wnd_calc[window][panes][width][' . $key . '][' . $keyPane . ']" readonly="readonly">'
+                        . 'Ширина:<br><input ' . $topPanelDisabled . ' class="name_wnd_option_short" type="text" value="' . esc_html($options['window']['panes']['width'][$key][$keyPane]) . '" name="plugin_options_wnd_calc[window][panes][width][' . $key . '][' . $keyPane . ']" readonly="readonly">'
                         . '<input ' . $topPanelDisabled . ' type="checkbox" class="mod_wnd_option_name" title="Редактировать">'
                         . '</th>'
                         . '<th class="wnd_calc_diff_widths_sub_cell">'
