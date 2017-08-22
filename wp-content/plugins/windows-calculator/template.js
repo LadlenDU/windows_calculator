@@ -360,6 +360,7 @@ jQuery(function ($) {
         var subPanePrice = wndSelVariables.window.panes.subtypes.price[wndNum][paneNum][subpaneNum];
         //var html = '<div style="position: relative; display: inline-block; line-height: 0; top: ' + (top || 0) + ';">'
         var html = '<div style="position: relative; display: inline-block; line-height: 0">'
+            + '<div style="display: inline-block; float: left">'
             + '<img class="wnd_sel_pane_wnd" src="' + $("<div>").text(src).html()
             + '" alt="" data-wnd-id="' + wndNum + '" data-pane-id="' + paneNum + '" data-subpane-id="' + subpaneNum
             + '" data-pane-price="' + panePrice + '" data-subpane-name="' + subPaneName
@@ -371,6 +372,7 @@ jQuery(function ($) {
             + '<input class="wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.panes['width'][wndNum][paneNum] + '" '
             + 'style="width:60px;height:23px;position:absolute;left:50%;top:22px;transform:translate(-50%, 0);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
             + 'data-width-min="' + wndSelVariables.window.panes['width-min'][wndNum][paneNum] + '" data-width-max="' + wndSelVariables.window.panes['width-max'][wndNum][paneNum] + '">'
+            + '</div>'
             + '</div>'
             + '</div>';
 
@@ -401,53 +403,74 @@ jQuery(function ($) {
         setSubpaneSelectEvents();
 
         if (currUrl) {
-            $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
-                var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
-                var html = '<div class="wnd_calc_size_element" style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
-                    + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
-                    + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
-                    + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
-                    + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
-                    + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
-                    + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
-                    + '</div>';
+            if (wndSelVariables.window['height-different'][number]) {
+                $(".wnd_calc_window_item .wnd_sel_pane_wnd").load(function () {
+                    var height = $(this).height();
+                    var paneId = $(this).data('pane-id');
+                    var html = '<div class="wnd_calc_size_element" style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
+                        + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
+                        + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
+                        + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
+                        + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.panes.height[number][paneId] + '" '
+                        + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
+                        + 'data-height-min="' + wndSelVariables.window.panes['height-min'][number][paneId] + '" data-height-max="' + wndSelVariables.window.panes['height-max'][number][paneId] + '">'
+                        + '</div>';
 
-                $(".wnd_calc_window_item").append(html);
-                setSubpaneSelectEvents();
-                calculatePrice();
-            });
+                    //plugin_options_wnd_calc[window][panes][height][1][0]
+                    //$(".wnd_calc_window_item").append(html);
+                    $('.wnd_sel_pane_wnd[data-wnd-id="' + number + '"][data-pane-id="' + paneId + '"]').parent().after(html);
+                    setSubpaneSelectEvents();
+                    calculatePrice();
+                });
+            } else {
+                $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
+                    var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
+                    var html = '<div class="wnd_calc_size_element" style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
+                        + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
+                        + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
+                        + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
+                        + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
+                        + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
+                        + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
+                        + '</div>';
+
+                    $(".wnd_calc_window_item").append(html);
+                    setSubpaneSelectEvents();
+                    calculatePrice();
+                });
+            }
             /*//$(".wnd_calc_window_item .wnd_sel_pane_wnd").first().load(function () {
-            $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
+             $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
 
-                var offset = '0px';
+             var offset = '0px';
 
-                var heightLast = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
-                var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").first().height();
-                //console.log("heightLast: " + heightLast + "height: " + height);
-                if (heightLast > height) {
-                    $(".wnd_calc_window_item .wnd_sel_pane_wnd").each(function () {
-                        var el = $(this);
-                        if (el.height() != heightLast) {
-                            offset = "-" + (heightLast - el.height()) + "px";
-                            $(this).parent().css("top", offset);
-                        }
-                    });
-                }
-                var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;top:' + offset + ';">'
-                        //var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
-                    + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
-                    + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
-                    + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
-                    + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
-                    + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
-                    + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
-                    + '</div>';
+             var heightLast = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
+             var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").first().height();
+             //console.log("heightLast: " + heightLast + "height: " + height);
+             if (heightLast > height) {
+             $(".wnd_calc_window_item .wnd_sel_pane_wnd").each(function () {
+             var el = $(this);
+             if (el.height() != heightLast) {
+             offset = "-" + (heightLast - el.height()) + "px";
+             $(this).parent().css("top", offset);
+             }
+             });
+             }
+             var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;top:' + offset + ';">'
+             //var html = '<div style="display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
+             + '<img style="position:absolute;left:0;top:0" src="' + th + '" alt="">'
+             + '<img style="position:absolute;left:0;bottom:0" src="' + bh + '" alt="">'
+             + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
+             + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.height[number] + '" '
+             + 'style="width:60px;height:23px;position:absolute;left:5px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
+             + 'data-height-min="' + wndSelVariables.window['height-min'][number] + '" data-height-max="' + wndSelVariables.window['height-max'][number] + '">'
+             + '</div>';
 
-                $(".wnd_calc_window_item").append(html);
-                setSubpaneSelectEvents();
-                calculatePrice();
-            });
-            //});*/
+             $(".wnd_calc_window_item").append(html);
+             setSubpaneSelectEvents();
+             calculatePrice();
+             });
+             //});*/
         }
     }
 

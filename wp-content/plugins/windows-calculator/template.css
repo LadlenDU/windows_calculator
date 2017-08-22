@@ -164,6 +164,7 @@
 
 .wnd_sel_pane_wnd {
     cursor: pointer;
+    /*float: left;*/
 }
 
 .wnd_sel_checkbox_label {
