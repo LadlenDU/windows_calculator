@@ -96,3 +96,7 @@ td .wnd_calc_panes_list:first-child .wnd_calc_whether_top_panel {
 .wnd_calc_whether_top_panel input[type="checkbox"] {
     margin-right: 5px;
 }
+
+.wnd_calc_panes_list th input[readonly] {
+    background-color: #ccc !important;
+}
