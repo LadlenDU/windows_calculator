@@ -20,13 +20,13 @@
 }
 add_action('wp_enqueue_scripts', 'wnd_calc_scripts');*/
 
-function wnd_calc_scripts()
+/*function wnd_calc_scripts()
 {
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-effects-core');
 }
 
-add_action('wp_enqueue_scripts', 'wnd_calc_scripts');
+add_action('wp_enqueue_scripts', 'wnd_calc_scripts');*/
 
 
 add_action('admin_menu', 'plugin_admin_add_wnd_calc_page');
