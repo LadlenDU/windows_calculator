@@ -395,6 +395,8 @@ wp_register_script('wnd_calc_order_popup_script', plugins_url('', __FILE__) . '/
 
 function shortcode_wnd_calc()
 {
+    wp_enqueue_script('jquery-effects-core');
+
     wp_enqueue_style('wnd_calc_style');
     wp_enqueue_style('wnd_calc_bpopup');
 
