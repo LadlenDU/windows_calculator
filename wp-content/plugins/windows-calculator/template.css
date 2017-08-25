@@ -216,7 +216,8 @@
 
 .wnd_calc_left_pane_elem {
     display: inline-block;
-    float: left
+    float: left;
+    position: relative;
 }
 
 .wnd_calc_right_pane_elem {

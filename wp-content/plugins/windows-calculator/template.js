@@ -542,13 +542,16 @@ jQuery(function ($) {
         var thReal = (paneId == 0) ? thl : th;
         var bhReal = (paneId == 0) ? bhl : bh;
 
+        var vLineLeft = (paneId == 0) ? 15 : 34;
+        var vInputLeft = (paneId == 0) ? -10 : 10;
+
         //var html = '<div class="wnd_calc_size_element" style="margin-right: 20px; vertical-align: top; display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
         var html = '<div class="wnd_calc_size_element ' + szClass + '" style="width: 50px;height:' + height + 'px;">'
             + '<img style="position:absolute;left:0;top:0" src="' + thReal + '" alt="">'
             + '<img style="position:absolute;left:0;bottom:0" src="' + bhReal + '" alt="">'
-            + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:34px;top:0;"></div>'
+            + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:' + vLineLeft + 'px;top:0;"></div>'
             + '<input class="wnd_sel_wnd_height wnd_calc_size_wh" type="text" value="' + numHeight + '" '
-            + 'style="width:60px;height:23px;position:absolute;left:10px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
+            + 'style="width:60px;height:23px;position:absolute;left:' + vInputLeft + 'px;top:50%;transform:translate(0,-50%);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
             + 'data-height-min="' + numHeightMin + '" data-height-max="' + numHeightMax + '">'
             + '</div>';
 
