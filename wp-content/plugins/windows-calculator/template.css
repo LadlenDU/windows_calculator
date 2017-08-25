@@ -214,6 +214,15 @@
     text-align: left;
 }
 
+.wnd_calc_left_pane_elem {
+    display: inline-block;
+    float: left
+}
 
-
+.wnd_calc_right_pane_elem {
+    /*margin-right: 20px;*/
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+}
 
