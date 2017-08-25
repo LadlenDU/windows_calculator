@@ -164,8 +164,12 @@ jQuery(function ($) {
 
             //var html = generatePane(wndNum, paneNum, index, top);
             var html = generatePane(wndNum, paneNum, index);
-            //$(this).parent().replaceWith(html);
             $(this).parent().parent().replaceWith(html);
+            /*if ($(".wnd_calc_window_item").data('height-different')) {
+             $(this).parent().parent().replaceWith(html);
+             } else {
+             $(this).parent().replaceWith(html);
+             }*/
             setHeightElement(wndNum);
             setSubpaneSelectEvents();
             calculatePrice();
@@ -479,7 +483,7 @@ jQuery(function ($) {
 
         if (currUrl) {
             setHeightElement(number);
-         }
+        }
     }
 
     /**
@@ -505,9 +509,12 @@ jQuery(function ($) {
         } else {
             $(".wnd_calc_window_item").data('height-different', 0);
             $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
-                var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
-                var html = showHeightSizeHtml(height, number);
-                $(".wnd_calc_window_item").append(html);
+                //var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
+                var height = $(this).height();
+                var paneId = $(this).data('pane-id');
+                var html = showHeightSizeHtml(height, number, paneId, false);
+                //$(".wnd_calc_window_item").append(html);
+                $('.wnd_sel_pane_wnd[data-wnd-id="' + number + '"][data-pane-id="' + paneId + '"]').parent().after(html);
                 setSubpaneSelectEvents();
                 calculatePrice();
             });
@@ -531,21 +538,21 @@ jQuery(function ($) {
         }
         paneId = $(".wnd_calc_window_item").data('height-different') ? paneId : false;
 
-        var szClass = (paneId == 0) ? 'wnd_calc_left_pane_elem' : 'wnd_calc_right_pane_elem';
-        /*if (paneId == 0) {
-            var gg = 0;
-        }*/
         var numHeight = (paneId !== false) ? wndSelVariables.window.panes.height[windowNumber][paneId] : wndSelVariables.window.height[windowNumber];
         var numHeightMin = (paneId !== false) ? wndSelVariables.window.panes['height-min'][windowNumber][paneId] : wndSelVariables.window['height-min'][windowNumber];
         var numHeightMax = (paneId !== false) ? wndSelVariables.window.panes['height-max'][windowNumber][paneId] : wndSelVariables.window['height-max'][windowNumber];
 
-        var thReal = (paneId == 0) ? thl : th;
-        var bhReal = (paneId == 0) ? bhl : bh;
+        var szClass = (paneId === 0) ? 'wnd_calc_left_pane_elem' : 'wnd_calc_right_pane_elem';
+        /*if (paneId == 0) {
+         var gg = 0;
+         }*/
+        var thReal = (paneId === 0) ? thl : th;
+        var bhReal = (paneId === 0) ? bhl : bh;
 
-        var vLineLeft = (paneId == 0) ? 15 : 34;
-        var vInputLeft = (paneId == 0) ? -10 : 10;
+        var vLineLeft = (paneId === 0) ? 15 : 34;
+        var vInputLeft = (paneId === 0) ? -10 : 10;
 
-        var vMargin = (paneId == 0) ? 'margin-left: 20px;' : 'margin-right: 20px;';
+        var vMargin = (paneId === 0) ? 'margin-left: 20px;' : 'margin-right: 20px;';
 
         //var html = '<div class="wnd_calc_size_element" style="margin-right: 20px; vertical-align: top; display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
         var html = '<div class="wnd_calc_size_element ' + szClass + '" style="width: 50px;height:' + height + 'px;' + vMargin + '">'
