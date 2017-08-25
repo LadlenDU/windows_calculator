@@ -545,8 +545,10 @@ jQuery(function ($) {
         var vLineLeft = (paneId == 0) ? 15 : 34;
         var vInputLeft = (paneId == 0) ? -10 : 10;
 
+        var vMargin = (paneId == 0) ? 'margin-left: 20px;' : 'margin-right: 20px;';
+
         //var html = '<div class="wnd_calc_size_element" style="margin-right: 20px; vertical-align: top; display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
-        var html = '<div class="wnd_calc_size_element ' + szClass + '" style="width: 50px;height:' + height + 'px;">'
+        var html = '<div class="wnd_calc_size_element ' + szClass + '" style="width: 50px;height:' + height + 'px;' + vMargin + '">'
             + '<img style="position:absolute;left:0;top:0" src="' + thReal + '" alt="">'
             + '<img style="position:absolute;left:0;bottom:0" src="' + bhReal + '" alt="">'
             + '<div style="height:100%;width:1px;background-color:#d7d7d7;position:absolute;left:' + vLineLeft + 'px;top:0;"></div>'
