@@ -212,6 +212,8 @@ jQuery(function ($) {
                     paneContainer.children('table:last-child').remove();
                 }
             }
+            var dh = $(this).parent().parent().find(".wnd_calc_diff_heights_cell input");
+            diffHeightsHandle(dh);
             bindEventsToOptions();
         });
 
@@ -273,9 +275,14 @@ jQuery(function ($) {
             return false;
         });
 
-        $(".wnd_calc_diff_heights_cell input").unbind('change').change(function () {
-            var checked = $(this).prop('checked');
-            var tr = $(this).closest('tr');
+        /**
+         * Настроить атрибуты элементов в зависимости от того, различные высоты или нет.
+         *
+         * @param checkInput - элемент <input type="checkbox">
+         */
+        function diffHeightsHandle(checkInput) {
+            var checked = checkInput.prop('checked');
+            var tr = checkInput.closest('tr');
             tr.find('.wnd_calc_height_rel_cell input').prop('disabled', checked);
 
             tr.next('tr').find('td > table .wnd_calc_diff_heights_sub_cell input').prop('disabled', !checked);
@@ -284,6 +291,20 @@ jQuery(function ($) {
                 var wtp = fp.find('.wnd_calc_whether_top_panel input[type="checkbox"]');
                 fp.find('.wnd_calc_diff_heights_sub_cell input').prop('disabled', !wtp.prop('checked'));
             }
+        }
+
+        $(".wnd_calc_diff_heights_cell input").unbind('change').change(function () {
+            diffHeightsHandle($(this));
+            /*var checked = $(this).prop('checked');
+             var tr = $(this).closest('tr');
+             tr.find('.wnd_calc_height_rel_cell input').prop('disabled', checked);
+
+             tr.next('tr').find('td > table .wnd_calc_diff_heights_sub_cell input').prop('disabled', !checked);
+             if (!checked) {
+             var fp = tr.next().find('> td > .wnd_calc_panes_list:first-child');
+             var wtp = fp.find('.wnd_calc_whether_top_panel input[type="checkbox"]');
+             fp.find('.wnd_calc_diff_heights_sub_cell input').prop('disabled', !wtp.prop('checked'));
+             }*/
         });
 
         $('.wnd_calc_whether_top_panel input[type="checkbox"]').unbind('change').change(function () {
