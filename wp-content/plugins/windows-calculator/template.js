@@ -475,6 +475,9 @@ jQuery(function ($) {
             if (info[key][0]) {
                 currUrl = info[key][0];
                 html += generatePane(number, key, 0);
+                if (wndSelVariables.window.panes['whether-top-panel'][number] && wndSelVariables.window.panes['whether-top-panel'][number][key]) {
+                    html += '<br>';
+                }
             }
         }
 
