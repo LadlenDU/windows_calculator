@@ -435,27 +435,42 @@ jQuery(function ($) {
         var subPanePrice = wndSelVariables.window.panes.subtypes.price[wndNum][paneNum][subpaneNum];
         //var html = '<div style="position: relative; display: inline-block; line-height: 0; top: ' + (top || 0) + ';">'
 
+        var ifTopPanel = whetherTopPanel(wndNum, paneNum);
+
+        var css = ifTopPanel ? 'left:-35px;' : '';
+
         var szClass = (paneNum == 0) ? 'wnd_calc_right_pane_elem' : 'wnd_calc_left_pane_elem';
 
         var html = '<div style="position: relative; display: inline-block; line-height: 0; vertical-align: top;">'
             //+ '<div style="display: inline-block; float: left">'
-            + '<div class="' + szClass + '">'
+            + '<div class="' + szClass + '" style="' + css + '">'
             + '<img class="wnd_sel_pane_wnd" src="' + $("<div>").text(src).html()
             + '" alt="" data-wnd-id="' + wndNum + '" data-pane-id="' + paneNum + '" data-subpane-id="' + subpaneNum
             + '" data-pane-price="' + panePrice + '" data-subpane-name="' + subPaneName
-            + '" data-subpane-price="' + subPanePrice + '">'
-            + '<div class="wnd_calc_size_element" style="height:50px;width:100%;position:relative;">'
-            + '<img style="position:absolute;left:0;top:0" src="' + lw + '" alt="">'
-            + '<img style="position:absolute;right:0;top:0" src="' + rw + '" alt="">'
-            + '<div style="width:100%;height:1px;background-color:#d7d7d7;position:absolute;left:0;top:34px;"></div>'
-            + '<input class="wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.panes['width'][wndNum][paneNum] + '" '
-            + 'style="width:60px;height:23px;position:absolute;left:50%;top:22px;transform:translate(-50%, 0);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
-            + 'data-width-min="' + wndSelVariables.window.panes['width-min'][wndNum][paneNum] + '" data-width-max="' + wndSelVariables.window.panes['width-max'][wndNum][paneNum] + '">'
-            + '</div>'
-            + '</div>'
-            + '</div>';
+            + '" data-subpane-price="' + subPanePrice + '">';
+        if (!ifTopPanel) {
+            html += '<div class="wnd_calc_size_element" style="height:50px;width:100%;position:relative;">'
+                + '<img style="position:absolute;left:0;top:0" src="' + lw + '" alt="">'
+                + '<img style="position:absolute;right:0;top:0" src="' + rw + '" alt="">'
+                + '<div style="width:100%;height:1px;background-color:#d7d7d7;position:absolute;left:0;top:34px;"></div>'
+                + '<input class="wnd_calc_size_wh" type="text" value="' + wndSelVariables.window.panes['width'][wndNum][paneNum] + '" '
+                + 'style="width:60px;height:23px;position:absolute;left:50%;top:22px;transform:translate(-50%, 0);padding:0;text-align:center;font-family:\'GOST_A_italic\',sans-serif;" '
+                + 'data-width-min="' + wndSelVariables.window.panes['width-min'][wndNum][paneNum] + '" data-width-max="' + wndSelVariables.window.panes['width-max'][wndNum][paneNum] + '">'
+                + '</div>'
+                + '</div>'
+        }
+
+        html += '</div>';
+
+        if (ifTopPanel) {
+            html += '<br>';
+        }
 
         return html;
+    }
+
+    function whetherTopPanel(wndNum, paneNum) {
+        return (wndSelVariables.window.panes['whether-top-panel'][wndNum] && wndSelVariables.window.panes['whether-top-panel'][wndNum][paneNum]);
     }
 
     function selectWindow(number) {
@@ -475,9 +490,6 @@ jQuery(function ($) {
             if (info[key][0]) {
                 currUrl = info[key][0];
                 html += generatePane(number, key, 0);
-                if (wndSelVariables.window.panes['whether-top-panel'][number] && wndSelVariables.window.panes['whether-top-panel'][number][key]) {
-                    html += '<br>';
-                }
             }
         }
 
