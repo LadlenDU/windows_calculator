@@ -270,7 +270,7 @@ jQuery(function ($) {
         } else {
 
             // высота
-            var heightElement = $(".wnd_calc_window_item").find(".wnd_sel_wnd_height");
+            var heightElement = $(".wnd_calc_window_item").find(".wnd_sel_wnd_height").last();
             var heHeight = parseFloat(heightElement.val()) || 0;
             if (!heHeight) {
                 // скорее всего высота не подгрузилась
