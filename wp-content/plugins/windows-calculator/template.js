@@ -217,7 +217,7 @@ jQuery(function ($) {
                     heightElement.val(heHeight);
                     alert('Вы ввели слишком маленькую высоту - высота приведена к минимально возможному значению.');
                 } else if (heHeight > heHeightMax) {
-                    console.log("heHeight: " + heHeight);
+                    //console.log("heHeight: " + heHeight);
                     heHeight = heHeightMax;
                     heightElement.val(heHeight);
                     alert('Вы ввели слишком большую высоту - высота приведена к максимально возможному значению.');
@@ -332,6 +332,11 @@ jQuery(function ($) {
 
                 elements.window_panes.push(paneInfo);
             });
+
+            /*// Перенастройка на сталинскую панель если она есть
+            if (whetherTopPanel($(".wnd_calc_prev_window.wnd_calc_selected").data('id'), 0)) {
+
+            }*/
         }
 
         //TODO: tmpPrice => tmpKoeff и т.п.
@@ -437,13 +442,14 @@ jQuery(function ($) {
 
         var ifTopPanel = whetherTopPanel(wndNum, paneNum);
 
-        var css = ifTopPanel ? 'left:-35px;' : '';
+        //var css = ifTopPanel ? 'left:-35px;' : '';
 
         var szClass = (paneNum == 0) ? 'wnd_calc_right_pane_elem' : 'wnd_calc_left_pane_elem';
 
         var html = '<div style="position: relative; display: inline-block; line-height: 0; vertical-align: top;">'
             //+ '<div style="display: inline-block; float: left">'
-            + '<div class="' + szClass + '" style="' + css + '">'
+            //+ '<div class="' + szClass + '" style="' + css + '">'
+            + '<div class="' + szClass + '">'
             + '<img class="wnd_sel_pane_wnd" src="' + $("<div>").text(src).html()
             + '" alt="" data-wnd-id="' + wndNum + '" data-pane-id="' + paneNum + '" data-subpane-id="' + subpaneNum
             + '" data-pane-price="' + panePrice + '" data-subpane-name="' + subPaneName
@@ -470,7 +476,7 @@ jQuery(function ($) {
     }
 
     function whetherTopPanel(wndNum, paneNum) {
-        return (wndSelVariables.window.panes['whether-top-panel'][wndNum] && wndSelVariables.window.panes['whether-top-panel'][wndNum][paneNum]);
+        return (wndSelVariables.window.panes['whether-top-panel'] && wndSelVariables.window.panes['whether-top-panel'][wndNum] && wndSelVariables.window.panes['whether-top-panel'][wndNum][paneNum]);
     }
 
     function selectWindow(number) {
@@ -510,30 +516,48 @@ jQuery(function ($) {
         if (wndSelVariables.window['height-different'][number]) {
             $(".wnd_calc_window_item").data('height-different', 1);
             $(".wnd_calc_window_item .wnd_sel_pane_wnd").load(function () {
-                var height = $(this).height();
+                showHeightElement($(this), number);
+                /*var height = $(this).height();
                 var paneId = $(this).data('pane-id');
-                var html = showHeightSizeHtml(height, number, paneId, !paneId);
+                var html = getHeightSizeHtml(height, number, paneId, !paneId);
                 if (paneId) {
                     $('.wnd_sel_pane_wnd[data-wnd-id="' + number + '"][data-pane-id="' + paneId + '"]').parent().after(html);
                 } else {
                     $('.wnd_sel_pane_wnd[data-wnd-id="' + number + '"][data-pane-id="' + paneId + '"]').parent().before(html);
                 }
                 setSubpaneSelectEvents();
-                calculatePrice();
+                calculatePrice();*/
             });
         } else {
             $(".wnd_calc_window_item").data('height-different', 0);
+            if (whetherTopPanel(number, 0)) {
+                $(".wnd_calc_window_item .wnd_sel_pane_wnd").first().load(function () {
+                    showHeightElement($(this), number);
+                });
+            }
             $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().load(function () {
-                //var height = $(".wnd_calc_window_item .wnd_sel_pane_wnd").last().height();
-                var height = $(this).height();
+                showHeightElement($(this), number);
+                /*var height = $(this).height();
                 var paneId = $(this).data('pane-id');
-                var html = showHeightSizeHtml(height, number, paneId, false);
-                //$(".wnd_calc_window_item").append(html);
+                var html = getHeightSizeHtml(height, number, paneId, false);
                 $('.wnd_sel_pane_wnd[data-wnd-id="' + number + '"][data-pane-id="' + paneId + '"]').parent().after(html);
                 setSubpaneSelectEvents();
-                calculatePrice();
+                calculatePrice();*/
             });
         }
+    }
+    
+    function showHeightElement(jqElem, wndNum) {
+        var height = jqElem.height();
+        var paneId = jqElem.data('pane-id');
+        var html = getHeightSizeHtml(height, wndNum, paneId, !paneId);
+        if (!$(".wnd_calc_window_item").data('height-different') || paneId) {
+            $('.wnd_sel_pane_wnd[data-wnd-id="' + wndNum + '"][data-pane-id="' + paneId + '"]').parent().after(html);
+        } else {
+            $('.wnd_sel_pane_wnd[data-wnd-id="' + wndNum + '"][data-pane-id="' + paneId + '"]').parent().before(html);
+        }
+        setSubpaneSelectEvents();
+        calculatePrice();
     }
 
     /**
@@ -544,7 +568,7 @@ jQuery(function ($) {
      * @param paneId
      * @returns {string}
      */
-    function showHeightSizeHtml(height, windowNumber, paneId, left) {
+    function getHeightSizeHtml(height, windowNumber, paneId, left) {
         if (typeof paneId === "undefined") {
             paneId = false;
         }
