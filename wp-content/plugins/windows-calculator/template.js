@@ -340,13 +340,14 @@ jQuery(function ($) {
 
             var selPaneId = $(".wnd_calc_prev_window.wnd_calc_selected").data('id');
             if (whetherTopPanel(selPaneId, 0)) {
-                var panel = $(".wnd_sel_pane_wnd[data-wnd-id=" + selPaneId + "]");
+                var panel = $(".wnd_sel_pane_wnd[data-wnd-id=" + selPaneId + "]")[0];
+                panel = $(panel);
 
                 // цена
                 tmpPrice = parseFloat(panel.data('pane-price')) || 0;
                 price += tmpPrice;
 
-                var heightElement = $(this).parent().parent().find('> .wnd_calc_size_element input');
+                var heightElement = panel.parent().parent().find('> .wnd_calc_size_element input');
                 heightElement.val($.trim(heightElement.val()));
                 var heHeight = parseFloat(heightElement.val()) || 0;
 
@@ -355,11 +356,11 @@ jQuery(function ($) {
                 paneInfo.width = windowWidth;
                 weWidth = windowWidth;
 
-                var squarePrice = parseFloat($(this).data('subpane-price')) || 0;
+                var squarePrice = parseFloat(panel.data('subpane-price')) || 0;
                 var square = (heHeight / 1000) * (weWidth / 1000);
                 windowSquare += square;
                 tmpPrice = squarePrice * square;
-                paneInfo.name = $(this).data('subpane-name');
+                paneInfo.name = panel.data('subpane-name');
                 paneInfo.price_square = tmpPrice;
                 price += tmpPrice;
 
