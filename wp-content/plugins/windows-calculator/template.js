@@ -604,13 +604,22 @@ jQuery(function ($) {
         if (typeof left === "undefined") {
             left = false;
         }
-        paneId = $(".wnd_calc_window_item").data('height-different') ? paneId : false;
+
+        var ifTopPanel = whetherTopPanel(windowNumber, paneId);
+        paneId = ($(".wnd_calc_window_item").data('height-different') || ifTopPanel) ? paneId : false;
 
         var numHeight = (paneId !== false) ? wndSelVariables.window.panes.height[windowNumber][paneId] : wndSelVariables.window.height[windowNumber];
         var numHeightMin = (paneId !== false) ? wndSelVariables.window.panes['height-min'][windowNumber][paneId] : wndSelVariables.window['height-min'][windowNumber];
         var numHeightMax = (paneId !== false) ? wndSelVariables.window.panes['height-max'][windowNumber][paneId] : wndSelVariables.window['height-max'][windowNumber];
 
-        var szClass = (paneId === 0) ? 'wnd_calc_left_pane_elem' : 'wnd_calc_right_pane_elem';
+        /*var ifTopPanel = whetherTopPanel(windowNumber, paneId);
+        if (ifTopPanel) {
+            numHeight = wndSelVariables.window.panes.height[windowNumber][paneId];
+            numHeightMin = wndSelVariables.window.panes['height-min'][windowNumber][paneId];
+            numHeightMax = wndSelVariables.window.panes['height-max'][windowNumber][paneId];
+        }*/
+
+        var szClass = (paneId === 0 && !ifTopPanel) ? 'wnd_calc_left_pane_elem' : 'wnd_calc_right_pane_elem';
         /*if (paneId == 0) {
          var gg = 0;
          }*/
