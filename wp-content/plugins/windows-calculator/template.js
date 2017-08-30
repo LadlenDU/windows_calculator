@@ -620,16 +620,19 @@ jQuery(function ($) {
         }*/
 
         var szClass = (paneId === 0 && !ifTopPanel) ? 'wnd_calc_left_pane_elem' : 'wnd_calc_right_pane_elem';
+        /*if (ifTopPanel) {
+            szClass = 'wnd_calc_right_pane_elem';
+        }*/
         /*if (paneId == 0) {
          var gg = 0;
          }*/
-        var thReal = (paneId === 0) ? thl : th;
-        var bhReal = (paneId === 0) ? bhl : bh;
+        var thReal = (paneId === 0 && !ifTopPanel) ? thl : th;
+        var bhReal = (paneId === 0 && !ifTopPanel) ? bhl : bh;
 
-        var vLineLeft = (paneId === 0) ? 15 : 34;
-        var vInputLeft = (paneId === 0) ? -10 : 10;
+        var vLineLeft = (paneId === 0 && !ifTopPanel) ? 15 : 34;
+        var vInputLeft = (paneId === 0 && !ifTopPanel) ? -10 : 10;
 
-        var vMargin = (paneId === 0) ? 'margin-left: 20px;' : 'margin-right: 20px;';
+        var vMargin = (paneId === 0 && !ifTopPanel) ? 'margin-left: 20px;' : 'margin-right: 20px;';
 
         //var html = '<div class="wnd_calc_size_element" style="margin-right: 20px; vertical-align: top; display: inline-block; position: relative; width: 50px;height:' + height + 'px;">'
         var html = '<div class="wnd_calc_size_element ' + szClass + '" style="width: 50px;height:' + height + 'px;' + vMargin + '">'
