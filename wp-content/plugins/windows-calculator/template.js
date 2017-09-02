@@ -201,34 +201,64 @@ jQuery(function ($) {
 
         // панели
 
-        if ($(".wnd_calc_window_item").data('height-different')) {  // для окон с различной высотой
+        //if ($(".wnd_calc_window_item").data('height-different')) {  // для окон с различной высотой
+        if (true) {
             // цена и ширина
             $(".wnd_calc_window_item .wnd_sel_pane_wnd").each(function () {
                 var panel = $(this);
 
+                var ifTopPanel = whetherTopPanel(panel.data('wnd-id'), panel.data('pane-id'));
+
                 // высота
-                var heightElement = $(this).parent().parent().find('> .wnd_calc_size_element input');
-                heightElement.val($.trim(heightElement.val()));
-                var heHeight = parseFloat(heightElement.val()) || 0;
-                var heHeightMin = parseFloat(heightElement.data('height-min')) || 0;
-                var heHeightMax = parseFloat(heightElement.data('height-max')) || 0;
-                if (heHeight < heHeightMin) {
-                    heHeight = heHeightMin;
-                    heightElement.val(heHeight);
-                    alert('Вы ввели слишком маленькую высоту - высота приведена к минимально возможному значению.');
-                } else if (heHeight > heHeightMax) {
-                    //console.log("heHeight: " + heHeight);
-                    heHeight = heHeightMax;
-                    heightElement.val(heHeight);
-                    alert('Вы ввели слишком большую высоту - высота приведена к максимально возможному значению.');
+                if ($(".wnd_calc_window_item").data('height-different') || ifTopPanel) {
+
+                    var heightElement = panel.parent().parent().find('> .wnd_calc_size_element input');
+                    heightElement.val($.trim(heightElement.val()));
+                    var heHeight = parseFloat(heightElement.val()) || 0;
+                    if (!heHeight) {
+                        // скорее всего высота не подгрузилась
+                        return;
+                    }
+                    var heHeightMin = parseFloat(heightElement.data('height-min')) || 0;
+                    var heHeightMax = parseFloat(heightElement.data('height-max')) || 0;
+                    if (heHeight < heHeightMin) {
+                        heHeight = heHeightMin;
+                        heightElement.val(heHeight);
+                        alert('Вы ввели слишком маленькую высоту - высота приведена к минимально возможному значению.');
+                    } else if (heHeight > heHeightMax) {
+                        //console.log("heHeight: " + heHeight);
+                        heHeight = heHeightMax;
+                        heightElement.val(heHeight);
+                        alert('Вы ввели слишком большую высоту - высота приведена к максимально возможному значению.');
+                    }
+                } else {
+                    var heightElement = $(".wnd_calc_window_item").find(".wnd_sel_wnd_height").last();
+                    var heHeight = parseFloat(heightElement.val()) || 0;
+                    if (!heHeight) {
+                        // скорее всего высота не подгрузилась
+                        return;
+                    }
+                    var heHeightMin = parseFloat(heightElement.data('height-min')) || 0;
+                    var heHeightMax = parseFloat(heightElement.data('height-max')) || 0;
+                    if (heHeight < heHeightMin) {
+                        heHeight = heHeightMin;
+                        heightElement.val(heHeight);
+                        alert('Вы ввели слишком маленькую высоту - высота приведена к минимально возможному значению.');
+                    } else if (heHeight > heHeightMax) {
+                        heHeight = heHeightMax;
+                        heightElement.val(heHeight);
+                        alert('Вы ввели слишком большую высоту - высота приведена к максимально возможному значению.');
+                    }
                 }
 
                 // цена
                 tmpPrice = parseFloat(panel.data('pane-price')) || 0;
                 //elements.window_panes.push({name: 'Оконная панель ' + (index + 1), price: tmpPrice});
                 //var paneInfo = {name: 'Оконная панель ' + (index + 1), price: tmpPrice, height: heHeight};
-                var paneInfo = {price: tmpPrice, height: heHeight};
-                price += tmpPrice;
+                var paneInfo = {panel: panel, if_top_panel: ifTopPanel, price: tmpPrice, height: heHeight};
+                if (!ifTopPanel) {
+                    price += tmpPrice;
+                }
                 //windowPrice += tmpPrice;
 
                 paneInfo.height = heHeight;
@@ -236,34 +266,40 @@ jQuery(function ($) {
                 //windowPanesHeight += heHeight * 2;
 
                 // ширина
-                var widthElement = $(this).parent().find('input');
-                widthElement.val($.trim(widthElement.val()));
-                var weWidth = parseFloat(widthElement.val()) || 0;
-                var weWidthMin = parseFloat(widthElement.data('width-min')) || 0;
-                var weWidthMax = parseFloat(widthElement.data('width-max')) || 0;
-                if (weWidth < weWidthMin) {
-                    weWidth = weWidthMin;
-                    widthElement.val(weWidth);
-                    alert('Вы ввели слишком маленькую ширину - ширина приведена к минимально возможному значению.');
-                } else if (weWidth > weWidthMax) {
-                    weWidth = weWidthMax;
-                    widthElement.val(weWidth);
-                    alert('Вы ввели слишком большую ширину - ширина приведена к максимально возможному значению.');
+                if (!ifTopPanel) {
+                    var widthElement = panel.parent().find('input');
+                    widthElement.val($.trim(widthElement.val()));
+                    var weWidth = parseFloat(widthElement.val()) || 0;
+                    var weWidthMin = parseFloat(widthElement.data('width-min')) || 0;
+                    var weWidthMax = parseFloat(widthElement.data('width-max')) || 0;
+                    if (weWidth < weWidthMin) {
+                        weWidth = weWidthMin;
+                        widthElement.val(weWidth);
+                        alert('Вы ввели слишком маленькую ширину - ширина приведена к минимально возможному значению.');
+                    } else if (weWidth > weWidthMax) {
+                        weWidth = weWidthMax;
+                        widthElement.val(weWidth);
+                        alert('Вы ввели слишком большую ширину - ширина приведена к максимально возможному значению.');
+                    }
+
+                    paneInfo.width = weWidth;
+                    windowWidth += weWidth;
                 }
 
-                paneInfo.width = weWidth;
-                windowWidth += weWidth;
                 windowPanesHeight += heHeight * 2;
+                paneInfo.name = panel.data('subpane-name');
 
-                var squarePrice = parseFloat($(this).data('subpane-price')) || 0;
-                var square = (heHeight / 1000) * (weWidth / 1000);
-                windowSquare += square;
-                tmpPrice = squarePrice * square;
-                //elements.push({name: $(this).data('subpane-name'), price: tmpPrice});
-                paneInfo.name = $(this).data('subpane-name');
-                paneInfo.price_square = tmpPrice;
-                price += tmpPrice;
-                //windowPrice += tmpPrice;
+                if (!ifTopPanel) {
+                    var squarePrice = parseFloat(panel.data('subpane-price')) || 0;
+                    var square = (heHeight / 1000) * (weWidth / 1000);
+                    windowSquare += square;
+                    tmpPrice = squarePrice * square;
+                    //elements.push({name: $(this).data('subpane-name'), price: tmpPrice});
+                    //paneInfo.name = $(this).data('subpane-name');
+                    paneInfo.price_square = tmpPrice;
+                    price += tmpPrice;
+                    //windowPrice += tmpPrice;
+                }
 
                 elements.window_panes.push(paneInfo);
             });
@@ -367,6 +403,54 @@ jQuery(function ($) {
                 elements.window_panes.push(paneInfo);
             }
         }
+
+        var stalinPane = (elements.window_panes && elements.window_panes[0]);
+        if (stalinPane && stalinPane.if_top_panel) {
+            //elements.window_panes.push(paneInfo);
+            //var stalinPane = elements.window_panes[0];
+            var panel = stalinPane.panel;
+
+            price += stalinPane.price;
+
+            // ширина
+            stalinPane.width = windowWidth;
+
+            var squarePrice = parseFloat(panel.data('subpane-price')) || 0;
+            var square = (stalinPane.height / 1000) * (stalinPane.width / 1000);
+            windowSquare += square;
+            tmpPrice = squarePrice * square;
+            stalinPane.price_square = tmpPrice;
+            price += tmpPrice;
+        }
+
+        /*var selPaneId = $(".wnd_calc_prev_window.wnd_calc_selected").data('id');
+         if (whetherTopPanel(selPaneId, 0)) {
+         var panel = $(".wnd_sel_pane_wnd[data-wnd-id=" + selPaneId + "]")[0];
+         panel = $(panel);
+
+         // цена
+         tmpPrice = parseFloat(panel.data('pane-price')) || 0;
+         price += tmpPrice;
+
+         var heightElement = panel.parent().parent().find('> .wnd_calc_size_element input');
+         heightElement.val($.trim(heightElement.val()));
+         var heHeight = parseFloat(heightElement.val()) || 0;
+
+         var paneInfo = {price: tmpPrice, height: heHeight};
+
+         paneInfo.width = windowWidth;
+         weWidth = windowWidth;
+
+         var squarePrice = parseFloat(panel.data('subpane-price')) || 0;
+         var square = (heHeight / 1000) * (weWidth / 1000);
+         windowSquare += square;
+         tmpPrice = squarePrice * square;
+         paneInfo.name = panel.data('subpane-name');
+         paneInfo.price_square = tmpPrice;
+         price += tmpPrice;
+
+         elements.window_panes.push(paneInfo);
+         }*/
 
         //TODO: tmpPrice => tmpKoeff и т.п.
 
@@ -505,7 +589,9 @@ jQuery(function ($) {
     }
 
     function whetherTopPanel(wndNum, paneNum) {
-        return (wndSelVariables.window.panes['whether-top-panel'] && wndSelVariables.window.panes['whether-top-panel'][wndNum] && wndSelVariables.window.panes['whether-top-panel'][wndNum][paneNum]);
+        return (wndSelVariables.window.panes['whether-top-panel']
+            && wndSelVariables.window.panes['whether-top-panel'][wndNum]
+            && (wndSelVariables.window.panes['whether-top-panel'][wndNum][paneNum] === true || wndSelVariables.window.panes['whether-top-panel'][wndNum][paneNum] === 'on'));
     }
 
     function selectWindow(number) {
@@ -613,16 +699,16 @@ jQuery(function ($) {
         var numHeightMax = (paneId !== false) ? wndSelVariables.window.panes['height-max'][windowNumber][paneId] : wndSelVariables.window['height-max'][windowNumber];
 
         /*var ifTopPanel = whetherTopPanel(windowNumber, paneId);
-        if (ifTopPanel) {
-            numHeight = wndSelVariables.window.panes.height[windowNumber][paneId];
-            numHeightMin = wndSelVariables.window.panes['height-min'][windowNumber][paneId];
-            numHeightMax = wndSelVariables.window.panes['height-max'][windowNumber][paneId];
-        }*/
+         if (ifTopPanel) {
+         numHeight = wndSelVariables.window.panes.height[windowNumber][paneId];
+         numHeightMin = wndSelVariables.window.panes['height-min'][windowNumber][paneId];
+         numHeightMax = wndSelVariables.window.panes['height-max'][windowNumber][paneId];
+         }*/
 
         var szClass = (paneId === 0 && !ifTopPanel) ? 'wnd_calc_left_pane_elem' : 'wnd_calc_right_pane_elem';
         /*if (ifTopPanel) {
-            szClass = 'wnd_calc_right_pane_elem';
-        }*/
+         szClass = 'wnd_calc_right_pane_elem';
+         }*/
         /*if (paneId == 0) {
          var gg = 0;
          }*/
