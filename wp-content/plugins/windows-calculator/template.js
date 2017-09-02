@@ -163,7 +163,7 @@ jQuery(function ($) {
             // var top = matches[1] || 0;
 
             //var html = generatePane(wndNum, paneNum, index, top);
-            var html = generatePane(wndNum, paneNum, index);
+            var html = generatePane(wndNum, paneNum, index, false);
             $(this).parent().parent().replaceWith(html);
             /*if ($(".wnd_calc_window_item").data('height-different')) {
              $(this).parent().parent().replaceWith(html);
@@ -445,7 +445,7 @@ jQuery(function ($) {
     }
 
     //function generatePane(wndNum, paneNum, subpaneNum, top) {
-    function generatePane(wndNum, paneNum, subpaneNum) {
+    function generatePane(wndNum, paneNum, subpaneNum, topPanelBr) {
         var src = wndSelVariables.window.panes.subtypes.src_image[wndNum][paneNum][subpaneNum];
         var panePrice = wndSelVariables.window.panes.price[wndNum][paneNum];
         var subPaneName = wndSelVariables.window.panes.subtypes.name[wndNum][paneNum][subpaneNum];
@@ -478,9 +478,9 @@ jQuery(function ($) {
                 + '</div>'
         }
 
-        html += '</div>';
+        html += '</div></div>';
 
-        if (ifTopPanel) {
+        if (ifTopPanel && topPanelBr) {
             html += '<br>';
         }
 
@@ -509,7 +509,7 @@ jQuery(function ($) {
             }
             if (info[key][0]) {
                 currUrl = info[key][0];
-                html += generatePane(number, key, 0);
+                html += generatePane(number, key, 0, true);
             }
         }
 
